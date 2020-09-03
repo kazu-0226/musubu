@@ -1,0 +1,2 @@
+module Users::ShopsHelper
+end
