@@ -1,2 +1,78 @@
-<h1>Shops::Shops#edit</h1>
-<p>Find me in app/views/shops/shops/edit.html.erb</p>
+<div class="container">
+    <div class ="row">
+    <div class="info1">
+    <h3 class="heading">基本情報</h3>
+
+    <%= form_with model: @shop, local: true do |f| %>
+    <table class="table">
+    <tr>
+    <td><%=  f.label :name, "店名" %></td>
+    <td><%= f.text_field :name %></td>
+    </tr>
+    <tr>
+    <td><%=  f.label :name_kana, "カナ" %></td>
+    <td><%= f.text_field :name_kana %></td>
+    </tr>
+    <tr>
+    <td><%=  f.label :phone_number, "TEL" %></td>
+    <td><%= f.text_field :phone_number %></td>
+    </tr>
+    <tr>
+    <td><%=  f.label :category, "業種" %></td>
+    <%#= f.select :category %>
+    </tr>
+    </table>
+
+    <p>住所</p>
+    <table class="table">
+    <tr>
+    <td><%=  f.label :post_code, "郵便番号" %></td>
+    <td><%= f.text_field :post_code, id:"address_zipcode" %></td>
+    </tr>
+    <tr>
+    <td><%=  f.label :prefecture_code, "都道府県" %></td>
+    <td><%= f.collection_select :prefecture_code, JpPrefecture::Prefecture.all, :name, :name, id:"address_prefecture_name" %></td>
+    </tr>
+    <tr>
+    <td><%=  f.label :city, "市区町村" %></td>
+    <td><%= f.text_field :city, id:"address_city" %></td>
+    </tr>
+    <tr>
+    <td><%=  f.label :block, "番地" %></td>
+    <td><%= f.text_field :block, id: "address_block" %></td>
+    </table>
+
+    </div>
+    </div>
+    <div class ="info2">
+    <h3 class="heading">お店情報</h3>
+    <div class ="row">
+  <table class="table">
+    <tr>
+    <td><%=  f.label :catchcopy, "キャッチコピー" %></td>
+    <td><%= f.text_field :catchcopy %></td>
+    </tr>
+    </table>
+    </div>
+    <div class ="row">
+    <div class ="col-xs-6"></div>
+    <div class ="col-xs-6"></div>
+    </div>
+    <div class ="row">
+    <div class ="col-xs-6"></div>
+    <div class ="col-xs-6"></div>
+    </div>
+    <div class ="row">
+    <div class ="col-xs-6"></div>
+    <div class ="col-xs-6"></div>
+    </div>
+    </div>
+
+    <% end %>
+</div>
+
+<a href="https://api.gnavi.co.jp/api/scope/" target="_blank">
+<img src="https://api.gnavi.co.jp/api/img/credit/api_155_20.gif" width="155" height="20" border="0" alt="グルメ情報検索サイト　ぐるなび">
+</a>
+
+
