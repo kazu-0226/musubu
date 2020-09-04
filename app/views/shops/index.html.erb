@@ -1,2 +1,24 @@
-<h1>Users::Shops#index</h1>
-<p>Find me in app/views/users/shops/index.html.erb</p>
+<div class="container">
+    <div class= "row">
+        <div class ="col-xs-8">
+            <div>
+                <%= link_to "検索", "#", class: "btn btn-primary" %>
+            </div>
+        </div>
+    </div>
+    <% @shops.each do |shop| %>
+    <div class= "row">
+        <div class ="col-xs-7">
+            <%= attachment_image_tag shop, :main_image, class: "main_image", fallback: "no_image.svg", size:"300x300" %>
+        </div>
+        <div class ="col-xs-5">
+            <h2><%= shop.catchcopy %></h2>
+            <table>
+            <tr><h3><%= shop.name %></h3></tr>
+            <tr><h3>お店のアピールポイント</h3></tr>
+            <tr><%= shop.appeal_text  %></tr>
+            </table>
+        </div>
+    </div>
+    <% end %>
+ </div>
