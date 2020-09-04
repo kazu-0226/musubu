@@ -1,2 +1,35 @@
-<h1>Shops::Users#show</h1>
-<p>Find me in app/views/shops/users/show.html.erb</p>
+<div class="container">
+    <div class= "row">
+        <div class ="col-xs-6">
+            <div>
+                <%= attachment_image_tag @user, :user_image, class: "image", fallback: "no_image.svg", size:"300x300" %>
+            </div>
+            <table >
+            <tr>
+            <td><span>お名前:</span><%= @user.full_name %></td>
+            </tr>
+            <tr>
+            <td><span>フリガナ：</span><%= @user.full_name_kana %></td>
+            </tr>
+            <tr>
+            <td>地域<%=@user.prefecture_name %></td>
+            </tr>
+            </table>
+        </div>
+        <div class ="col-xs-6">
+        <%= @user.pr %>
+            <table >
+                <tr>
+                    <td>希望地域</td>
+                    <td><%=@user.hope_prefecture_name %></td>
+                </tr>
+                <tr>
+                    <td>希望業種</td>
+                    <td>ああああ</td>
+                </tr>
+            </table>
+        </div>
+    </div>
+    <div class= "row">
+    </div>
+</div>
