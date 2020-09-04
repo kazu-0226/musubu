@@ -4,7 +4,12 @@ class Shop < ApplicationRecord
   devise :database_authenticatable, :registerable,
          :recoverable, :rememberable, :validatable
   
+  #画像アップロード
   #attachment :main_image, :sub_image, :appeal_image, :recommend_image
+  attachment :main_image
+  attachment :sub_image
+  attachment :appeal_image
+  attachment :recommend_image
 
    #jp_prefectureを使用したprefecture_codeからprefecture_nameへの変換
    include JpPrefecture
@@ -19,11 +24,19 @@ class Shop < ApplicationRecord
   end
   
   def address
-    "%s %s %s %s %s"%([self.post_code, self.prefecture_name, self.city, self.block, self.building])
+    "%s %s %s"%([self.prefecture_name, self.city, self.block])
   end
 
   #adressを緯度経度に変換
   geocoded_by :address
   after_validation :geocode
+
+  # def category
+  #   require "open-uri"
+  #   require 'json'
+    
+  #   uri = URI.parse("https://api.gnavi.co.jp/master/CategoryLargeSearchAPI/v3/?keyid=e217cb5ef6510824a9bb5191ecf02507")
+  #   uri.open.read
+  # end
 
 end

@@ -8,25 +8,34 @@ class ShopsController < ApplicationController
   def edit
   end
 
-  def withdraw
-    
+  def update
+    if @shop.update(shop_params)
+      redirect_to shop_path(@shop)
+    else
+      render :edit
+    end
   end
 
   def index
-    
+    @shops= Shop.all
   end
 
   def search
     
   end
 
-  def update
+
+  def withdraw
     
   end
 
   private
   def set_shop
     @shop = Shop.find(params[:id])
+  end
+
+  def shop_params
+    params.require(:shop).permit(:name, :name_kana, :post_code, :prefecture_code, :city, :block, :building, :phone_number,:email, :category, :catchcopy, :main_image, :sub_image, :appeal_text, :appeal_image, :recommend_name, :recommend_text, :recommend_image, :is_deleted)
   end
 
 end
