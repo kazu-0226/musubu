@@ -1,2 +1,71 @@
-<h1>Users::Users#edit</h1>
-<p>Find me in app/views/users/users/edit.html.erb</p>
+<div class= "container">
+<%= form_with model:@user, local: true do |f| %>
+    <div class= "row">
+        <div class= "col-xs-8">
+            <%= attachment_image_tag @user, :user_image, class: "round_image", fallback: "no_image.svg", size:"300x300" %>
+            <%= f.attachment_field :user_image, placeholder: "画像", id: "user_image" %>
+        </div>
+    </div>
+    <div class= "row">
+        <div class= "col-xs-8">
+             <table class="table">
+                <tr>
+                    <td><%= f.label :first_name, '氏名' %></td>
+                    <td><%= f.text_field :last_name%><%= f.text_field :first_name %></td>
+                </tr>
+                <tr>
+                    <td><%= f.label :first_name_kana, 'フリガナ' %></td>
+                    <td><%= f.text_field :last_name_kana %><%=f.text_field :first_name_kana %></td>
+                </tr>
+                <tr>
+                    <td><%= f.label :prefecture_name, 'お住まいの地域' %></td>
+                    <td><%= f.collection_select :prefecture_code, JpPrefecture::Prefecture.all, :code, :name, id: "user_prefecture_code"%></td>
+                </tr>
+                 <tr>
+                    <td><%= f.label :phone_number, '電話番号' %></td>
+                    <td><%= f.telephone_field  :phone_number %></td>
+                </tr>
+                 <tr>
+                    <td><%= f.label :email, 'メールアドレス' %></td>
+                    <td><%= f.email_field :email %></td>
+                </tr>
+                <tr>
+                    <td>
+                        <%= f.label :personality, '個人' %><%= f.radio_button :is_active, :true %>
+                        <%= f.label :personality, '企業' %><%= f.radio_button :is_active, :false %>
+                    </td>
+                </tr>
+                <tr>
+                    <td><%= f.label :hope_category, '興味のある業種' %></td>
+                    <td>あああああ</td>
+                </tr>
+                 <tr>
+                    <td><%= f.label :hope_prefecture_code, '希望地域' %></td>
+                    <td><%= f.collection_select :hope_prefecture_code, JpPrefecture::Prefecture.all, :code, :name, id: "user_prefecture_code"%></td>
+                </tr>
+                <tr>
+                    <td><%= f.label :pr, '自己PR' %></td>
+                    <td><%= f.text_area :pr %></td>
+                </tr>
+            </table>
+            <%= f.submit "変更を保存する", class: "btn btn-primary" %>
+        </div>
+    </div>
+</div>
+<% end %>
+
+
+
+
+<!-- 画像プレビュー -->
+<script>
+$(function(){
+    $('#user_image').on('change', function (e) {
+    var reader = new FileReader();
+    reader.onload = function (e) {
+        $(".round_image").attr('src', e.target.result);
+}  
+reader.readAsDataURL(e.target.files[0]);    
+});
+});
+</script>

@@ -1,2 +1,62 @@
-<h1>Shops::Users#show</h1>
-<p>Find me in app/views/shops/users/show.html.erb</p>
+<div class="container">
+    <div class= "row">
+        <div class ="col-xs-6">
+            <div>
+                <%= attachment_image_tag @user, :user_image, class: "round_image", fallback: "no_image.svg", size:"300x300" %>
+            </div>
+            <table >
+            <tr>
+            <td><span>お名前:</span><%= @user.full_name %></td>
+            </tr>
+            <tr>
+            <td><span>フリガナ：</span><%= @user.full_name_kana %></td>
+            </tr>
+            <tr>
+            <td>地域<%=@user.prefecture_name %></td>
+            </tr>
+            <tr>
+                <td colspan="2"><%= link_to "プロフィール編集", edit_user_path(@user), class: "btn btn-primary" %></td>
+            </tr>
+            </table>
+        </div>
+        <div class ="col-xs-6">
+        <%= @user.pr %>
+            <table >
+                <tr>
+                    <td>希望地域</td>
+                    <td><%= @user.hope_prefecture_name %></td>
+                </tr>
+                <tr>
+                    <td>希望業種</td>
+                    <td>ああああ</td>
+                </tr>
+                <tr>
+                    <td><%= link_to "フォロー", "#", class: "btn btn-primary" %></td>
+                    <td><%= link_to "チャット", "#", class: "btn btn-primary" %></td>
+                </tr>
+            </table>
+        </div>
+    </div>
+    <div class= "row">
+        <p>
+            <a class="btn btn-primary" data-toggle="collapse" href="#multiCollapseExample1" role="button" aria-expanded="false" aria-controls="multiCollapseExample1">フォローしているお店</a>
+            <button class="btn btn-primary" type="button" data-toggle="collapse" data-target="#multiCollapseExample2" aria-expanded="false" aria-controls="multiCollapseExample2">フォローされているお店</button>
+        </p>
+        <div class="row">
+            <div class="col-6">
+                <div class="collapse multi-collapse" id="multiCollapseExample1">
+                    <div class="card card-body">
+                        Anim pariatur cliche reprehenderit, enim eiusmod high life accusamus terry richardson ad squid. Nihil anim keffiyeh helvetica, craft beer labore wes anderson cred nesciunt sapiente ea proident.
+                    </div>
+                </div>
+            </div>
+            <div class="col-6">
+                <div class="collapse multi-collapse" id="multiCollapseExample2">
+                    <div class="card card-body">
+                        Anim pariatur cliche reprehenderit, enim eiusmod high life accusamus terry richardson ad squid. Nihil anim keffiyeh helvetica, craft beer labore wes anderson cred nesciunt sapiente ea proident.
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
