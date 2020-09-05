@@ -22,7 +22,7 @@ class ShopsController < ApplicationController
   end
 
   def search
-    
+
   end
 
 
