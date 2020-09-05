@@ -2,7 +2,7 @@
 <%= form_with model:@user, local: true do |f| %>
     <div class= "row">
         <div class= "col-xs-8">
-            <%= attachment_image_tag @user, :user_image, class: "image", fallback: "no_image.svg", size:"300x300" %>
+            <%= attachment_image_tag @user, :user_image, class: "round_image", fallback: "no_image.svg", size:"300x300" %>
             <%= f.attachment_field :user_image, placeholder: "画像", id: "user_image" %>
         </div>
     </div>
@@ -63,7 +63,7 @@ $(function(){
     $('#user_image').on('change', function (e) {
     var reader = new FileReader();
     reader.onload = function (e) {
-        $(".image").attr('src', e.target.result);
+        $(".round_image").attr('src', e.target.result);
 }  
 reader.readAsDataURL(e.target.files[0]);    
 });

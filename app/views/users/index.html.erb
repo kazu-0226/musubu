@@ -1,2 +1,30 @@
-<h1>Shops::Users#index</h1>
-<p>Find me in app/views/shops/users/index.html.erb</p>
+<div class="container">
+    <div class= "row">
+        <div class ="col-xs-8">
+            <div>
+                <%= link_to "検索", "#", class: "btn btn-primary" %>
+            </div>
+        </div>
+    </div>
+    <% @users.each do |user| %>
+    <div class= "row">
+        <div class ="col-xs-7">
+            <%= attachment_image_tag user, :user_image, class: "round_image", fallback: "no_image.svg", size:"300x300" %>
+        </div>
+        <div class ="col-xs-5">
+            <table>
+            <tr><h3><%= user.full_name %></h3></tr>
+            <tr>
+            <td>希望地域</td>
+            <td><%= user.hope_prefecture_name %></td>
+            <td>希望業種</td>
+            <td><%= user.hope_prefecture_name %></td>
+            </tr>
+            <tr><td>希望業種</td></tr>
+            <tr><h3>アピールポイント</h3></tr>
+            <tr><%= user.pr  %></tr>
+            </table>
+        </div>
+    </div>
+    <% end %>
+ </div>
