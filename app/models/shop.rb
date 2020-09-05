@@ -30,13 +30,4 @@ class Shop < ApplicationRecord
   #adressを緯度経度に変換
   geocoded_by :address
   after_validation :geocode
-
-  # def category
-  #   require "open-uri"
-  #   require 'json'
-    
-  #   uri = URI.parse("https://api.gnavi.co.jp/master/CategoryLargeSearchAPI/v3/?keyid=e217cb5ef6510824a9bb5191ecf02507")
-  #   uri.open.read
-  # end
-
 end
