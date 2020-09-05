@@ -31,13 +31,13 @@
                 </tr>
                 <tr>
                     <td>
-                        <%= f.label :personality, '個人' %><%= f.radio_button :is_active, :true %>
-                        <%= f.label :personality, '企業' %><%= f.radio_button :is_active, :false %>
+                        <%= f.label :personality, '個人' %><%= f.radio_button :personality, :true %>
+                        <%= f.label :personality, '企業' %><%= f.radio_button :personality, :false %>
                     </td>
                 </tr>
                 <tr>
                     <td><%= f.label :hope_category, '興味のある業種' %></td>
-                    <td>あああああ</td>
+                    <td><%= f.select :hope_category , @categories.map { |category| [category['category_l_name'], category['category_l_code']] } %></td>
                 </tr>
                  <tr>
                     <td><%= f.label :hope_prefecture_code, '希望地域' %></td>

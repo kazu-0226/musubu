@@ -19,10 +19,9 @@
     </tr>
     <tr>
     <td><%=  f.label :category, "業種" %></td>
-    <%#= f.select :category %>
+    <td><%= f.select :category , @categories.map { |category| [category['category_l_name'], category['category_l_code']] } %></td>
     </tr>
     </table>
-
     <p>住所</p>
     <table class="table">
     <tr>
