@@ -36,8 +36,12 @@
                     </td>
                 </tr>
                 <tr>
-                    <td><%= f.label :hope_category, '興味のある業種' %></td>
-                    <td><%= f.select :hope_category , @categories.map { |category| [category['category_l_name'], category['category_l_code']] } %></td>
+                    <td><%= f.label :category_id, '興味のある業種' %></td>
+                    <td><%= f.select :category_id, Category.all.map{|category| [category.name, category.id]} %></td>
+                    <!-- 都度APIを叩かずにcategoryモデルにAPIのデータを保存する方法に変更 -->
+                    <% if false %>
+                      <td><%= f.select :hope_category , @categories.map { |category| [category['category_l_name'], category['category_l_code']] } %></td>
+                    <% end %>
                 </tr>
                  <tr>
                     <td><%= f.label :hope_prefecture_code, '希望地域' %></td>

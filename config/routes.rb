@@ -18,7 +18,11 @@ Rails.application.routes.draw do
   namespace :admins do
     get 'homes/top'
     resources :users, only: [:index, :edit, :show, :update]
-    resources :shops, only: [:index, :edit, :show, :update]
+    resources :shops, only: [:index, :edit, :show, :update] do
+      collection do
+        post 'g_category'
+      end
+    end
   end
 
   resources :shops, only: [:index, :edit, :show, :update] do

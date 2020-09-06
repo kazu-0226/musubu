@@ -18,8 +18,12 @@
     <td><%= f.text_field :phone_number %></td>
     </tr>
     <tr>
-    <td><%=  f.label :category, "業種" %></td>
+    <td><%=  f.label :category_id, "業種" %></td>
+    <td><%= f.select :category_id, Category.all.map{|category| [category.name, category.id]} %></td>
+    <!-- 都度APIを叩かずにcategoryモデルにAPIのデータを保存する方法に変更 -->
+    <%if false  %>
     <td><%= f.select :category , @categories.map { |category| [category['category_l_name'], category['category_l_code']] } %></td>
+    <% end %>
     </tr>
     </table>
     <p>住所</p>
