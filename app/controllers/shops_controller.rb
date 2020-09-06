@@ -23,9 +23,12 @@ class ShopsController < ApplicationController
   end
 
   def search
-
+    @content = params['content']
+    @prefecture_code = params['prefecture_code']
+    @category_ids = params['category_ids']
+    @shops = search_shop(@content, @prefecture_code, @category_ids)
+    render :index
   end
-
 
   def withdraw
     
@@ -39,6 +42,11 @@ class ShopsController < ApplicationController
 
   def shop_params
     params.require(:shop).permit(:name, :name_kana, :post_code, :prefecture_code, :city, :block, :building, :phone_number,:email, :category_id, :catchcopy, :main_image, :sub_image, :appeal_text, :appeal_image, :recommend_name, :recommend_text, :recommend_image, :is_deleted)
+  end
+
+  def search_shop(content, prefecture_code, category_ids)
+    binding.pry
+    Shop.where(['name LIKE ? OR name_kana LIKE ? OR catchcopy LIKE ?', "%#{content}%", "%#{content}%", "%#{content}%"]).where(category_id:category_ids)
   end
 
 end

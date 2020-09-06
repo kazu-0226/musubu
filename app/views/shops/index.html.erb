@@ -2,7 +2,21 @@
     <div class= "row">
         <div class ="col-xs-8">
             <div>
-                <%= link_to "検索", "#", class: "btn btn-primary" %>
+                <%= form_with url:search_shops_path, local: true, method: :post do |f| %>
+                    <div class="form-check">
+                    <p>業種一覧</p>
+                        <%= f.collection_check_boxes(:category_ids, Category.all, :id, :name) do |c| %>
+                            <%= c.label class: 'form-check-label' do %>
+                                <%= c.check_box class: 'form-check_input' %>
+                                <%= c.text %>
+                            <% end %>
+                        <% end %>
+                    </div>
+               <div class ="form-content">
+               <span>フリーワード</span><%= f.text_field :content %>
+               </div>
+               <%= f.submit "検索する" %>
+               <% end %>
             </div>
         </div>
     </div>
