@@ -4,6 +4,8 @@ class Shop < ApplicationRecord
   devise :database_authenticatable, :registerable,
          :recoverable, :rememberable, :validatable
   belongs_to :category
+  has_many :user_followings, dependent: :destroy
+  
   #画像アップロード
   #attachment :main_image, :sub_image, :appeal_image, :recommend_image
   attachment :main_image
@@ -30,4 +32,8 @@ class Shop < ApplicationRecord
   #adressを緯度経度に変換
   geocoded_by :address
   after_validation :geocode
+
+  def followed_by?(user)
+    user_followings.where(user_id: user.id).exists?
+  end
 end
