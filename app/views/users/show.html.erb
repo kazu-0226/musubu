@@ -31,7 +31,15 @@
                     <td><%= @user.category.name %></td>
                 </tr>
                 <tr>
-                    <td><%= link_to "フォロー", "#", class: "btn btn-primary" %></td>
+                    <td>
+                        <% if shop_signed_in? %>
+                            <% if @user.followed_by?(current_shop) %>
+                                <%= link_to "フォロー中", user_shop_followings_path(@user.id), method: :delete, class: "btn btn-primary" %>
+                            <% else %>
+                                <%= link_to "フォローする", user_shop_followings_path(@user.id), method: :post, class: "btn btn-primary" %>
+                        <% end %>
+                <% end %>
+                    </td>
                     <td><%= link_to "チャット", "#", class: "btn btn-primary" %></td>
                 </tr>
             </table>
@@ -56,9 +64,9 @@
             <div class="col-6">
                 <div class="collapse multi-collapse" id="multiCollapseExample2">
                     <div class="card card-body">
-                                               <% @user.user_followings.each do |f| %>
-                         <%= f.shop.name %>
-                         <%= attachment_image_tag f.shop, :main_image, class: "main_image", fallback: "no_image.svg", size:"300x300" %>
+                        <% @user.shop_followings.each do |f| %>
+                            <%= f.shop.name %>
+                            <%= attachment_image_tag f.shop, :sub_image, class: "main_image", fallback: "no_image.svg", size:"300x300" %>
                        <% end %>
                     </div>
                 </div>

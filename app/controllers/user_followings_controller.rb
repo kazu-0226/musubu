@@ -7,7 +7,6 @@ class UserFollowingsController < ApplicationController
     def destroy
         @follow = current_user.user_followings.find_by(shop_id: params[:shop_id])
         @follow.destroy
-
     end
 
 end

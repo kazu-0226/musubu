@@ -5,6 +5,7 @@ class Shop < ApplicationRecord
          :recoverable, :rememberable, :validatable
   belongs_to :category
   has_many :user_followings, dependent: :destroy
+  has_many :shop_followings, dependent: :destroy
   
   #画像アップロード
   #attachment :main_image, :sub_image, :appeal_image, :recommend_image
