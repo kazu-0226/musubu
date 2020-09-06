@@ -5,6 +5,7 @@ class User < ApplicationRecord
          :recoverable, :rememberable, :validatable
   belongs_to :category
   has_many :user_followings, dependent: :destroy
+  has_many :shop_followings, dependent: :destroy
   #画像アップロード
   attachment :user_image
 
@@ -31,5 +32,9 @@ class User < ApplicationRecord
 
   def hope_prefecture_name=(hope_prefecture_name)
     self.hope_prefecture_code = JpPrefecture::Prefecture.find(name: prefecture_name).code
+  end
+
+  def followed_by?(shop)
+    shop_followings.where(shop_id: shop.id).exists?
   end
 end

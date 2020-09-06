@@ -37,6 +37,7 @@ Rails.application.routes.draw do
   end
 
   resources :users, only: [:index, :edit, :show, :update] do
+    resource :shop_followings, only: [:create, :destroy]
     member do
       put 'withdraw'
     end
