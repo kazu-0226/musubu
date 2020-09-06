@@ -4,6 +4,7 @@ class User < ApplicationRecord
   devise :database_authenticatable, :registerable,
          :recoverable, :rememberable, :validatable
   belongs_to :category
+  has_many :user_followings, dependent: :destroy
   #画像アップロード
   attachment :user_image
 

@@ -5,9 +5,15 @@
         <div class ="col-xs-6">
             <%= attachment_image_tag @shop, :main_image, class: "main_image", fallback: "no_image.svg", size:"300x300" %>
             <div>
-                <%= link_to "フォロー", "#", class: "btn btn-primary" %>
-                <%= link_to "チャット", "#", class: "btn btn-primary" %>
+                <% if user_signed_in? %>
+                    <% if @shop.followed_by?(current_user) %>
+                         <%= link_to "フォロー中", shop_user_followings_path(@shop.id), method: :delete, class: "btn btn-primary" %>
+                    <% else %>
+                        <%= link_to "フォローする", shop_user_followings_path(@shop.id), method: :post, class: "btn btn-primary" %>
+                    <% end %>
+                <% end %>
             </div>
+            <%= link_to "チャット", "#", class: "btn btn-primary" %>
         </div>
         <div class ="col-xs-6">
             <table >

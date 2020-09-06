@@ -46,14 +46,20 @@
             <div class="col-6">
                 <div class="collapse multi-collapse" id="multiCollapseExample1">
                     <div class="card card-body">
-                        Anim pariatur cliche reprehenderit, enim eiusmod high life accusamus terry richardson ad squid. Nihil anim keffiyeh helvetica, craft beer labore wes anderson cred nesciunt sapiente ea proident.
+                       <% @user.user_followings.each do |f| %>
+                         <%= f.shop.name %>
+                         <%= attachment_image_tag f.shop, :main_image, class: "main_image", fallback: "no_image.svg", size:"300x300" %>
+                       <% end %>
                     </div>
                 </div>
             </div>
             <div class="col-6">
                 <div class="collapse multi-collapse" id="multiCollapseExample2">
                     <div class="card card-body">
-                        Anim pariatur cliche reprehenderit, enim eiusmod high life accusamus terry richardson ad squid. Nihil anim keffiyeh helvetica, craft beer labore wes anderson cred nesciunt sapiente ea proident.
+                                               <% @user.user_followings.each do |f| %>
+                         <%= f.shop.name %>
+                         <%= attachment_image_tag f.shop, :main_image, class: "main_image", fallback: "no_image.svg", size:"300x300" %>
+                       <% end %>
                     </div>
                 </div>
             </div>
