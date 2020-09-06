@@ -1,8 +1,33 @@
 <div class="container">
     <div class= "row">
         <div class ="col-xs-8">
-            <div>
-                <%= link_to "検索", "#", class: "btn btn-primary" %>
+            <div class ="form_box">
+                <%= form_with url:search_shops_path, local: true, method: :post do |f| %>
+                    <div class="form-check category">
+                    <p>業種一覧</p>
+                        <!-- デフォルトでhiddenタグが挿入されるのでinclude_hidden: false -->
+                        <%= f.collection_check_boxes(:category_ids, Category.all, :id, :name, include_hidden: false) do |c| %>
+                            <%= c.label class: 'form-check-label' do %>
+                                <%= c.check_box class: 'form-check_input' %>
+                                <%= c.text %>
+                            <% end %>
+                        <% end %>
+                    </div>
+                    <div class="form-check category">
+                    <p>都道府県</p>
+                        <!-- デフォルトでhiddenタグが挿入されるのでinclude_hidden: false -->
+                        <%= f.collection_check_boxes(:prefecture_code, JpPrefecture::Prefecture.all, :code, :name, include_hidden: false) do |p| %>
+                            <%= p.label class: 'form-check-label' do %>
+                                <%= p.check_box class: 'form-check_input' %>
+                                <%= p.text %>
+                            <% end %>
+                        <% end %>
+                    </div>
+                    <div class ="form-content">
+                        <span>フリーワード</span><%= f.text_field :content %>
+                    </div>
+               <%= f.submit "検索する" %>
+               <% end %>
             </div>
         </div>
     </div>
@@ -15,6 +40,12 @@
             <h2><%= shop.catchcopy %></h2>
             <table>
             <tr><h3><%= shop.name %></h3></tr>
+            <tr>
+                地域：<%= shop.prefecture_name %>
+            </tr>
+            <tr>
+                業種：<%= shop.category.name %>
+            </tr>
             <tr><h3>お店のアピールポイント</h3></tr>
             <tr><%= shop.appeal_text  %></tr>
             </table>
