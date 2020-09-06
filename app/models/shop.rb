@@ -3,7 +3,7 @@ class Shop < ApplicationRecord
   # :confirmable, :lockable, :timeoutable, :trackable and :omniauthable
   devise :database_authenticatable, :registerable,
          :recoverable, :rememberable, :validatable
-  
+  belongs_to :category
   #画像アップロード
   #attachment :main_image, :sub_image, :appeal_image, :recommend_image
   attachment :main_image

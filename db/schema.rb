@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2020_09_05_132104) do
+ActiveRecord::Schema.define(version: 2020_09_06_033613) do
 
   create_table "admins", force: :cascade do |t|
     t.string "email", default: "", null: false
@@ -45,7 +45,7 @@ ActiveRecord::Schema.define(version: 2020_09_05_132104) do
     t.string "block"
     t.string "building"
     t.string "phone_number"
-    t.string "category"
+    t.string "category_id"
     t.string "catchcopy"
     t.string "main_image_id"
     t.string "sub_image_id"
@@ -77,7 +77,7 @@ ActiveRecord::Schema.define(version: 2020_09_05_132104) do
     t.string "phone_number"
     t.boolean "is_deleted", default: false
     t.string "hope_prefecture_code"
-    t.string "hope_category"
+    t.string "category_id"
     t.boolean "personality", default: true
     t.string "user_image_id"
     t.text "pr"

@@ -3,10 +3,11 @@ class ShopsController < ApplicationController
   before_action :set_shop, only: [:show, :edit, :update, :withdraw]
 
   def show
+    
   end
 
   def edit
-    #@categories = g_category['category_l']
+    
   end
 
   def update
@@ -37,7 +38,7 @@ class ShopsController < ApplicationController
   end
 
   def shop_params
-    params.require(:shop).permit(:name, :name_kana, :post_code, :prefecture_code, :city, :block, :building, :phone_number,:email, :category, :catchcopy, :main_image, :sub_image, :appeal_text, :appeal_image, :recommend_name, :recommend_text, :recommend_image, :is_deleted)
+    params.require(:shop).permit(:name, :name_kana, :post_code, :prefecture_code, :city, :block, :building, :phone_number,:email, :category_id, :catchcopy, :main_image, :sub_image, :appeal_text, :appeal_image, :recommend_name, :recommend_text, :recommend_image, :is_deleted)
   end
 
 end
