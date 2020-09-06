@@ -45,8 +45,18 @@ class ShopsController < ApplicationController
   end
 
   def search_shop(content, prefecture_code, category_ids)
-    binding.pry
-    Shop.where(['name LIKE ? OR name_kana LIKE ? OR catchcopy LIKE ?', "%#{content}%", "%#{content}%", "%#{content}%"]).where(category_id:category_ids)
+    shops = Shop.all
+    #「where!」で例外処理を利用して、present?でtrueの検索をして「return shops」で値を返す
+    if content.present?
+      shops.where!(['name LIKE ? OR name_kana LIKE ? OR catchcopy LIKE ?', "%#{content}%", "%#{content}%", "%#{content}%"])
+    end
+    if prefecture_code.present?
+      shops.where!(prefecture_code: prefecture_code)
+    end
+    if category_ids.present?
+      shops.where!(category_id: category_ids)
+    end
+    return shops
   end
 
 end
