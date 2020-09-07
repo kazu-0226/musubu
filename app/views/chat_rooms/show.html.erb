@@ -1,2 +1,15 @@
-<h1>ChatRooms#show</h1>
-<p>Find me in app/views/chat_rooms/show.html.erb</p>
+<% if shop_signed_in? %>
+  店(you)
+<%= @room.shop.id %>
+ユーザ
+<%= @room.user.id %>
+
+<% elsif user_signed_in? %>
+ユーザ(you)
+<%= @room.user.id %>
+  店
+<%= @room.shop.id %>
+<% end %>
+
+
+

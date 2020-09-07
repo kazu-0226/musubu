@@ -1,9 +1,25 @@
 class ShopsController < ApplicationController
-  before_action :authenticate_shop!
+  before_action :authenticate_shop!, only: [:edit, :update, :withdraw]
   before_action :set_shop, only: [:show, :edit, :update, :withdraw]
 
   def show
-    
+    #ユーザが店舗詳細にてチャットを開始するため、店舗がログインしていないことが条件
+    unless shop_signed_in?
+      #お店と会員のチャットルームをeachで一つずつ取り出す
+      current_user.chat_rooms.each do |cur|
+        @shop.chat_rooms.each do |sr|
+          #お店と会員のルームIDが等しければすでにルームは作成済みのため、@isRoom = trueとして@roomId = cur.idを代入
+          if cur.id == sr.id
+            @isRoom = true
+            @roomId = cur.id
+          end
+        end
+      end
+      #@isRoomがfalse、つまりルームがなければインスタンス作成
+      unless @isRoom
+        @room = ChatRoom.new
+      end
+    end
   end
 
   def edit
