@@ -1,6 +1,5 @@
 Rails.application.routes.draw do
 
-  get 'chat_rooms/show'
   root 'homes#top'
 
   #非ログイン時TOP
@@ -9,13 +8,14 @@ Rails.application.routes.draw do
   get 'homes/new'
   get 'homes/login'
 
-  #管理者用ルーティング
+  #管理者用デバイス
   devise_for :admins
-  #会員用ルーティング
+  #会員用デバイス
   devise_for :users
-  #店舗用ルーティング
+  #店舗用デバイス
   devise_for :shops
 
+  #管理者用ルーティング 
   namespace :admins do
     get 'homes/top'
     resources :users, only: [:index, :edit, :show, :update]
@@ -26,6 +26,7 @@ Rails.application.routes.draw do
     end
   end
 
+  #店舗ルーティング 
   resources :shops, only: [:index, :edit, :show, :update] do
     resource :user_followings, only: [:create, :destroy]
     member do
@@ -37,6 +38,7 @@ Rails.application.routes.draw do
     end
   end
 
+  #会員ルーティング 
   resources :users, only: [:index, :edit, :show, :update] do
     resource :shop_followings, only: [:create, :destroy]
     member do
@@ -48,6 +50,10 @@ Rails.application.routes.draw do
     end
   end
 
+  #チャットルーティング 
+  resources :chat_rooms, only: [:show, :create] do
+    resources :chat_messages, only:[:create]
+  end
   
   
   # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
