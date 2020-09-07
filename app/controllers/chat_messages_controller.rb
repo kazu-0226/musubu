@@ -1,7 +1,9 @@
 class ChatMessagesController < ApplicationController
 
     def create
+        #送信内容とchat_room_idを渡す
         @message = ChatMessage.new(message_params)
+        #ログイン＝送信者として@messageに渡す
         if user_signed_in?
             @message.user_id = current_user.id
         elsif shop_signed_in?

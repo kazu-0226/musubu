@@ -15,6 +15,7 @@ class ChatRoomsController < ApplicationController
 
   def show
     @room = ChatRoom.find(params[:id])
+    #shopが送ったメッセージとuserが送ったメッセージを分ける
     @shop_messages = @room.chat_messages.where(shop_id: @room.shop_id)
     @user_messages = @room.chat_messages.where(user_id: @room.user_id)
     @message = ChatMessage.new

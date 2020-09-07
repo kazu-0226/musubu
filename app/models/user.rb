@@ -5,7 +5,7 @@ class User < ApplicationRecord
          :recoverable, :rememberable, :validatable
 
   #アソシエーション
-  belongs_to :category
+  belongs_to :category, optional: true
   has_many :user_followings, dependent: :destroy
   has_many :shop_followings, dependent: :destroy
   has_many :chat_rooms, dependent: :destroy
