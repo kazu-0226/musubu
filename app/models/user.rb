@@ -3,9 +3,14 @@ class User < ApplicationRecord
   # :confirmable, :lockable, :timeoutable, :trackable and :omniauthable
   devise :database_authenticatable, :registerable,
          :recoverable, :rememberable, :validatable
-  belongs_to :category
+
+  #アソシエーション
+  belongs_to :category, optional: true
   has_many :user_followings, dependent: :destroy
   has_many :shop_followings, dependent: :destroy
+  has_many :chat_rooms, dependent: :destroy
+  has_many :chat_messages, dependent: :destroy
+
   #画像アップロード
   attachment :user_image
 
@@ -25,6 +30,7 @@ class User < ApplicationRecord
   def prefecture_name=(prefecture_name)
     self.prefecture_code = JpPrefecture::Prefecture.find(name: prefecture_name).code
   end
+
   #希望地域のprefecture_codeからprefecture_nameへの変換
   def hope_prefecture_name
     JpPrefecture::Prefecture.find(code: hope_prefecture_code).try(:name)
@@ -34,6 +40,7 @@ class User < ApplicationRecord
     self.hope_prefecture_code = JpPrefecture::Prefecture.find(name: prefecture_name).code
   end
 
+  #ユーザがフォローしているお店をすでフォローしているかしていないか
   def followed_by?(shop)
     shop_followings.where(shop_id: shop.id).exists?
   end

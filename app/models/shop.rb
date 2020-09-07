@@ -3,12 +3,15 @@ class Shop < ApplicationRecord
   # :confirmable, :lockable, :timeoutable, :trackable and :omniauthable
   devise :database_authenticatable, :registerable,
          :recoverable, :rememberable, :validatable
-  belongs_to :category
+
+  #アソシエーション
+  belongs_to :category, optional: true
   has_many :user_followings, dependent: :destroy
   has_many :shop_followings, dependent: :destroy
+  has_many :chat_rooms, dependent: :destroy
+  has_many :chat_messages, dependent: :destroy
   
   #画像アップロード
-  #attachment :main_image, :sub_image, :appeal_image, :recommend_image
   attachment :main_image
   attachment :sub_image
   attachment :appeal_image
@@ -34,6 +37,7 @@ class Shop < ApplicationRecord
   geocoded_by :address
   after_validation :geocode
 
+  #お店がフォローしているユーザをすでフォローしているかしていないか
   def followed_by?(user)
     user_followings.where(user_id: user.id).exists?
   end
