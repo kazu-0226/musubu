@@ -3,9 +3,13 @@ class Shop < ApplicationRecord
   # :confirmable, :lockable, :timeoutable, :trackable and :omniauthable
   devise :database_authenticatable, :registerable,
          :recoverable, :rememberable, :validatable
+
+  #アソシエーション
   belongs_to :category
   has_many :user_followings, dependent: :destroy
   has_many :shop_followings, dependent: :destroy
+  has_many :chat_rooms, dependent: :destroy
+  has_many :chat_messages, dependent: :destroy
   
   #画像アップロード
   #attachment :main_image, :sub_image, :appeal_image, :recommend_image

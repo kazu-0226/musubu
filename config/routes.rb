@@ -1,5 +1,6 @@
 Rails.application.routes.draw do
 
+  get 'chat_rooms/show'
   root 'homes#top'
 
   #非ログイン時TOP
