@@ -12,7 +12,6 @@ class Shop < ApplicationRecord
   has_many :chat_messages, dependent: :destroy
   
   #画像アップロード
-  #attachment :main_image, :sub_image, :appeal_image, :recommend_image
   attachment :main_image
   attachment :sub_image
   attachment :appeal_image
@@ -38,6 +37,7 @@ class Shop < ApplicationRecord
   geocoded_by :address
   after_validation :geocode
 
+  #お店がフォローしているユーザをすでフォローしているかしていないか
   def followed_by?(user)
     user_followings.where(user_id: user.id).exists?
   end

@@ -30,6 +30,7 @@ class User < ApplicationRecord
   def prefecture_name=(prefecture_name)
     self.prefecture_code = JpPrefecture::Prefecture.find(name: prefecture_name).code
   end
+
   #希望地域のprefecture_codeからprefecture_nameへの変換
   def hope_prefecture_name
     JpPrefecture::Prefecture.find(code: hope_prefecture_code).try(:name)
@@ -39,6 +40,7 @@ class User < ApplicationRecord
     self.hope_prefecture_code = JpPrefecture::Prefecture.find(name: prefecture_name).code
   end
 
+  #ユーザがフォローしているお店をすでフォローしているかしていないか
   def followed_by?(shop)
     shop_followings.where(shop_id: shop.id).exists?
   end

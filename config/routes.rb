@@ -51,9 +51,13 @@ Rails.application.routes.draw do
   end
 
   #チャットルーティング 
-  resources :chat_rooms, only: [:show, :create] do
-    resources :chat_messages, only:[:create]
-  end
+  resources :chat_rooms, only: [:show, :create]
+  resources :chat_messages, only:[:create]
+  
+
+  # resources :chat_rooms, only: [:show, :create] do
+  #   resources :chat_messages, only:[:create]
+  # end
   
   
   # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
