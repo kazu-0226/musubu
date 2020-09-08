@@ -12,16 +12,21 @@
 <% end %>
 
 <%# メッセージ表示 %>
-<%= render 'chat_messages/chat_message', {user_messages: @user_messages, shop_messages: @shop_messages} %>
-
+<div id="chat_messages" data-chat_room_id="<%= @room.id %>">
+  <%= render 'chat_messages/chat_message', {user_messages: @user_messages, shop_messages: @shop_messages} %>
+</div>
 
 <br>
 
 <%# メッセージ送信フォーム %>
   <div class="posts">
-    <%= form_with model:@message, local: true do |f| %>
-      <%= f.text_field :content, placeholder: "メッセージを入力して下さい" , size: 70, class:"form-text-field" %>
-        <%= f.hidden_field :chat_room_id, value: @room.id %>
-          <%= f.submit "投稿",class: 'form-submit'%>
+    <%= form_tag url:chat_room_path(@room.id) do |f| %>
+      <%= text_field_tag :content, data: { behavior: "chat_post" } %>
+        <%= hidden_field_tag :shop_id, value: current_shop.id %>
     <% end %>
-  </div>
+
+
+
+<%# メッセージ送信フォーム %>
+
+

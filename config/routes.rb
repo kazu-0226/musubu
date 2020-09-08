@@ -1,5 +1,5 @@
 Rails.application.routes.draw do
-
+  mount ActionCable.server => '/cable'
   root 'homes#top'
 
   #非ログイン時TOP
