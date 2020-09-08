@@ -105,6 +105,13 @@
     </div>
     </div>
     </div>
+    <table>
+    <td><%= f.label :is_deleted, 'お店ステータス' %></td>
+                    <td>                   
+                        <span>有効</span><%= f.radio_button :is_deleted, :false %>
+                        <span>退会済み</span><%= f.radio_button :is_deleted, :true %>
+                    </td>
+    </table>
  <%= f.submit "変更を保存する", class: "btn btn-primary" %>
     <% end %>
 </div>
