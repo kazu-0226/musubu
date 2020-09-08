@@ -1,6 +1,9 @@
 class Admins::ShopsController < ApplicationController
-    def index
+    before_action :authenticate_admin!
+    before_action :set_shop, only: [:show, :edit, :update]
 
+    def index
+        @shops = Shop.all.order(id: "DESC").page(params[:page]).per(10)
     end
 
     def show
@@ -12,9 +15,14 @@ class Admins::ShopsController < ApplicationController
     end
 
     def update
-        
+        if @shop.update(shop_params)
+            redirect_to admins_shop_path(@shop)
+        else
+            render :edit
+        end 
     end
 
+    #ぐるなびAPIからカテゴリを作成
     def g_category
         #requireメソッドで下記のライブラリを読み込む
         require 'net/http'
@@ -31,5 +39,15 @@ class Admins::ShopsController < ApplicationController
           Category.new(name: row['category_l_name'], code: row['category_l_code']).save
          }
     end
+
+    private
+
+    def set_shop
+      @shop = Shop.find(params[:id])
+    end
+
+    def shop_params
+        params.require(:shop).permit(:name, :name_kana, :post_code, :prefecture_code, :city, :block, :building, :phone_number,:email, :category_id, :catchcopy, :main_image, :sub_image, :appeal_text, :appeal_image, :recommend_name, :recommend_text, :recommend_image, :is_deleted)
+      end
     
 end
