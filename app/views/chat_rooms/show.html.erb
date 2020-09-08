@@ -12,54 +12,8 @@
 <% end %>
 
 <%# メッセージ表示 %>
-<div class="chats">
-  <div class="chat">
-    <%# shopでログインしている場合の表示 %>
-    <% if shop_signed_in? %>
-      <% @shop_messages.each do |sm| %>
-        <div class="chat-box-left">
-          <div class="chat-face">
-            <%= sm.shop.name %>
-          </div>
-          <div class="chat-hukidashi"> <strong><%= sm.content %></strong> <br>
-              <%= sm.created_at.strftime("%Y-%m-%d %H:%M")%>
-          </div>
-        </div>
-      <% end %>
-      <% @user_messages.each do |um| %>
-        <div class="chat-box-right">
-          <div class="chat-face">
-            <%= um.user.full_name %>
-          </div>
-          <div class="chat-hukidashi"> <strong><%= um.content %></strong> <br>
-            <%= um.created_at.strftime("%Y-%m-%d %H:%M")%>
-          </div>
-        </div>
-      <% end %>
-      <%# userでログインしている場合の表示 %>
-      <% elsif user_signed_in? %>
-        <% @user_messages.each do |um| %>
-          <div class="chat-box-left">
-            <div class="chat-face">
-              <%= um.user.full_name %>
-            </div>
-            <div class="chat-hukidashi"> <strong><%= um.content %></strong> <br>
-              <%= um.created_at.strftime("%Y-%m-%d %H:%M")%>
-            </div>
-          </div>
-        <% end %>
-        <% @shop_messages.each do |sm| %>
-          <div class="chat-box-right">
-            <div class="chat-face">
-              <%= sm.shop.name %>
-            </div>
-            <div class="chat-hukidashi"> <strong><%= sm.content %></strong> <br>
-              <%= sm.created_at.strftime("%Y-%m-%d %H:%M")%>
-            </div>
-          </div>
-        <% end %>
-    <% end %>
-  </div>
+<%= render 'chat_messages/chat_message', {user_messages: @user_messages, shop_messages: @shop_messages} %>
+
 
 <br>
 
