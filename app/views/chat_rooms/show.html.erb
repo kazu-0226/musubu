@@ -10,7 +10,7 @@
   店
 <%= @room.shop.id %>
 <% end %>
-
+<div class="chats col-xs-10 col-xs-offset-1 ">
 <%# メッセージ表示 %>
 <div id="chat_messages" data-chat_room_id="<%= @room.id %>">
   <%= render 'chat_messages/chat_message', {user_messages: @user_messages, shop_messages: @shop_messages} %>
@@ -19,14 +19,11 @@
 <br>
 
 <%# メッセージ送信フォーム %>
-  <div class="posts">
+  <div class="posts col-xs-10 col-xs-offset-1">
     <%= form_tag url:chat_room_path(@room.id) do |f| %>
       <%= text_field_tag :content, data: { behavior: "chat_post" } %>
         <%= hidden_field_tag :shop_id, value: current_shop.id %>
     <% end %>
-
-
-
 <%# メッセージ送信フォーム %>
 
-
+</div>
