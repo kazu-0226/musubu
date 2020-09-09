@@ -24,6 +24,7 @@
     background-color: rgba(255,255,255,0);
     box-shadow: 0 3px 6px rgba(0, 0, 0, 0.05);
     margin-bottom: 30px;
+    padding-bottom: 10px;
   }
 
 
@@ -38,6 +39,11 @@
 }
 
 /*チャットの表示*/
+.chat-header{
+  background-color: #696969;
+  color: white;
+}
+
 .chat-box-left{
     text-align: left;
     padding-bottom: 10px;
