@@ -1,0 +1,95 @@
+<div class="container">
+    <div class= "row">
+        <div class ="col-xs-6">
+            <div>
+                <%= attachment_image_tag @user, :user_image, class: "round_image", fallback: "no_image.svg", size:"300x300" %>
+            </div>
+            <table >
+            <tr>
+            <td><span>お名前:</span><%= @user.full_name %></td>
+            </tr>
+            <tr>
+            <td><span>フリガナ：</span><%= @user.full_name_kana %></td>
+            </tr>
+            <tr>
+            <td>地域<%=@user.prefecture_name %></td>
+            </tr>
+            <tr>
+            <% if admin_signed_in? %>
+                <td colspan="2"><%= link_to "プロフィール編集", edit_admins_user_path(@user), class: "btn btn-primary" %></td>
+            <% end %>
+            </tr>
+            </table>
+        </div>
+        <div class ="col-xs-6">
+        <%= @user.pr %>
+            <table >
+                <tr>
+                    <td>希望地域</td>
+                    <td><%= @user.hope_prefecture_name %></td>
+                </tr>
+                <tr>
+                    <td>希望業種</td>
+                    <td><%= @user.category.name %></td>
+                </tr>
+                <tr>
+                    <td>
+                        <% if shop_signed_in? %>
+                            <% if @user.followed_by?(current_shop) %>
+                                <%= link_to "フォロー中", user_shop_followings_path(@user.id), method: :delete, class: "btn btn-primary" %>
+                            <% else %>
+                                <%= link_to "フォローする", user_shop_followings_path(@user.id), method: :post, class: "btn btn-primary" %>
+                            <% end %>
+                        <% end %>
+                    </td>
+                    <td>
+                    <%# ショップとしてログインしていなければチャットボタンは表示させない %>
+                    <% if shop_signed_in? %>
+                        <%# 相互フォローでなければチャットボタンは表示させない %>
+                        <% if @user.followed_by?(current_shop) && current_shop.followed_by?(@user)%>
+                            <%# @isRoomをコントローラで定義してすでに作成されているルームならそのルームに遷移 %>
+                            <% if @isRoom == true %>
+                                <a href="/chat_rooms/<%= @roomId %>" class="btn btn-primary btn-lg">チャットへ</a>
+                            <% else %>
+                            <%# ルーム新規作成の場合はhiffdenオプションでuser.idを渡す %>
+                                <%= form_with url: chat_rooms_path, local: true do |f| %>
+                                    <%= f.hidden_field :user_id, value: @user.id %>
+                                    <%= f.submit "チャットを始める", class:"btn btn-primary" %>
+                                <% end %>
+                            <% end %>
+                        <% end %>
+                    <% end %>
+                    </td>
+                </tr>
+            </table>
+        </div>
+    </div>
+    <div class= "row">
+        <p>
+            <a class="btn btn-primary" data-toggle="collapse" href="#multiCollapseExample1" role="button" aria-expanded="false" aria-controls="multiCollapseExample1">フォローしているお店</a>
+            <button class="btn btn-primary" type="button" data-toggle="collapse" data-target="#multiCollapseExample2" aria-expanded="false" aria-controls="multiCollapseExample2">フォローされているお店</button>
+        </p>
+        <div class="row">
+            <div class="col-6">
+                <div class="collapse multi-collapse" id="multiCollapseExample1">
+                    <div class="card card-body">
+                       <% @user.user_followings.each do |f| %>
+                         <%= f.shop.name %>
+                         <%= attachment_image_tag f.shop, :main_image, class: "main_image", fallback: "no_image.svg", size:"300x300" %>
+                       <% end %>
+                    </div>
+                </div>
+            </div>
+            <div class="col-6">
+                <div class="collapse multi-collapse" id="multiCollapseExample2">
+                    <div class="card card-body">
+                        <% @user.shop_followings.each do |f| %>
+                            <%= f.shop.name %>
+                            <%= attachment_image_tag f.shop, :sub_image, class: "main_image", fallback: "no_image.svg", size:"300x300" %>
+                       <% end %>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
