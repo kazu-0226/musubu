@@ -1,12 +1,12 @@
 <div class="container">
-    <div class ="col-xs-12">
+<div class ="col-sm-12">
     <div class ="form_box">
         <%= form_with url:search_admins_users_path, local: true, method: :post do |f| %>
             <div class="accordion" id="accordion-4">
                 <div class="card">
                     <div class="card-header" id="header-4a">
                     <button class="btn btn-link" type="button"data-toggle="collapse" data-target="#card-4a" aria-expanded="true" aria-controls="card-4a">
-                        希望地域
+                        希望業種
                     </button>
                     </div>
                     <div id="card-4a" class="collapse"aria-labelledby="header-4a" data-parent="#accordion-4">
@@ -23,7 +23,7 @@
                 <div class="card">
                     <div class="card-header" id="header-4b">
                     <button class="btn btn-link" type="button"data-toggle="collapse" data-target="#card-4b" aria-expanded="false" aria-controls="card-4b">
-                        都道府県
+                        希望地域
                     </button>
                     </div>
                     <div id="card-4b" class="collapse"
@@ -49,10 +49,10 @@
     <div class= "row">
         <% @users.each do |user| %>
             <div class= "row">
-                <div class ="col-xs-7">
+                <div class ="col-sm-7">
                     <%= attachment_image_tag user, :user_image, class: "round_image", fallback: "no_image.svg", size:"300x300" %>
                 </div>
-                <div class ="col-xs-5">
+                <div class ="col-sm-5">
                     <table style="word-wrap:break-word;">
                     <tr><h3><%= user.full_name %></h3></tr>
                     <tr>

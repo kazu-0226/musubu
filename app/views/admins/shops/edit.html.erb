@@ -61,12 +61,12 @@
     </table>
 
     <div class ="row">
-      <div class ="col-xs-6">
+      <div class ="col-sm-6">
         <h4><%=  f.label :main_image , "メインビジュアル" %></h4>
         <%= attachment_image_tag @shop, :main_image, class: "main_image", fallback: "no_image.svg", size:"300x300" %>
         <%= f.attachment_field :main_image, placeholder: "画像", id: "main_image" %>
       </div>
-    <div class ="col-xs-6">
+    <div class ="col-sm-6">
         <h4><%=  f.label :sub_image , "サブビジュアル" %></h4>
         <%= attachment_image_tag @shop, :sub_image, class: "image", fallback: "no_image.svg", size:"300x300" %>
         <%= f.attachment_field :sub_image, placeholder: "画像", id: "sub_image" %>
@@ -74,23 +74,23 @@
     </div>
 
     <div class ="row">
-    <div class ="col-xs-6">
+    <div class ="col-sm-6">
         <h4><%=  f.label :appeal_image , "アピールポイント" %></h4>
         <%= attachment_image_tag @shop, :appeal_image, class: "image", fallback: "no_image.svg", size:"300x300" %>
         <%= f.attachment_field :appeal_image, placeholder: "画像", id: "item_image" %>
     </div>
-    <div class ="col-xs-6">
+    <div class ="col-sm-6">
     <%= f.text_area :appeal_text %>
     </div>
     </div>
 
     <div class ="row">
-    <div class ="col-xs-6">
+    <div class ="col-sm-6">
     <h4><%=  f.label :recommend_image , "お店のおすすめ！" %></h4>
         <%= attachment_image_tag @shop, :recommend_image, class: "image", fallback: "no_image.svg", size:"300x300" %>
         <%= f.attachment_field :recommend_image, placeholder: "画像", id: "item_image" %>
     </div>
-    <div class ="col-xs-6">
+    <div class ="col-sm-6">
   <table class= "table">
   <tr>
   <td><h4><%=  f.label :recommend_name , "おすすめ商品名" %></h4></td>

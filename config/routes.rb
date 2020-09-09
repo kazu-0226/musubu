@@ -27,6 +27,7 @@ Rails.application.routes.draw do
     resources :shops, only: [:index, :edit, :show, :update] do
       collection do
         post 'g_category'
+        post 'search'
       end
     end
   end
