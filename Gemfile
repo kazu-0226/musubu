@@ -79,7 +79,7 @@ gem "geocoder"
 gem 'dotenv-rails'
 
 # View
-gem 'bootstrap-sass', '~> 3.4.1'
+gem 'bootstrap', '~> 4.2.1'
 gem 'font-awesome-sass', '~> 5.8.1'
 gem "toastr-rails"
 gem 'jquery-rails'

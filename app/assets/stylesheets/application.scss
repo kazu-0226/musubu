@@ -13,7 +13,6 @@
  *= require_tree .
  *= require_self
  */
- @import "bootstrap-sprockets";
  @import "bootstrap";
  @import 'font-awesome-sprockets';
  @import 'font-awesome';
@@ -112,4 +111,9 @@
     border-left: 18px solid #30e852;
     -webkit-transform: rotate(-35deg);
     transform: rotate(-35deg);
+  }
+
+
+  .form_box {
+    border: solid 1px rgba(0, 0, 0, 0.125) ;
   }

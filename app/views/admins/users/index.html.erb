@@ -1,76 +1,71 @@
 <div class="container">
-    <div class= "row">
-    <%# 検索フォーム  %>
-        <div class ="col-xs-8">
-            <div class ="form_box">
-                <%= form_with url:search_admins_users_path, local: true, method: :post do |f| %>
-                    <div class="accordion" id="accordionExample">
-                        <div class="card">
-                            <div class="card-header" id="headingOne">
-                                <h5 class="mb-0">
-                                      <button class="btn btn-link" type="button" data-toggle="collapse" data-target="#collapseOne" aria-expanded="true" aria-controls="collapseOne">
-                                        希望業種
-                                    </button>
-                                </h5>
-                            </div>
-                        <%#デフォルトでhiddenタグが挿入されるのでinclude_hidden: false %>
-                        <div id="collapseOne" class="collapse show" aria-labelledby="headingOne" data-parent="#accordionExample">
-                            <div class="card-body">
-                                <%= f.collection_check_boxes(:category_ids, Category.all, :id, :name, include_hidden: false) do |c| %>
-                                    <%= c.label class: 'form-check-label' do %>
-                                        <%= c.check_box class: 'form-check_input' %>
-                                        <%= c.text %>
-                                    <% end %>
-                                <% end %>
-                          </div>
-                        </div>
+    <div class ="col-xs-12">
+    <div class ="form_box">
+        <%= form_with url:search_admins_users_path, local: true, method: :post do |f| %>
+            <div class="accordion" id="accordion-4">
+                <div class="card">
+                    <div class="card-header" id="header-4a">
+                    <button class="btn btn-link" type="button"data-toggle="collapse" data-target="#card-4a" aria-expanded="true" aria-controls="card-4a">
+                        希望地域
+                    </button>
                     </div>
-                    <div class="card">
-                        <div class="card-header" id="headingTwo">
-                            <h5 class="mb-0">
-                                <button class="btn btn-link collapsed" type="button" data-toggle="collapse" data-target="#collapseTwo" aria-expanded="false" aria-controls="collapseTwo">
-                                都道府県
-                                 </button>
-                            </h5>
-                        </div>
-                        <%# デフォルトでhiddenタグが挿入されるのでinclude_hidden: false %>
-                        <div id="collapseTwo" class="collapse" aria-labelledby="headingTwo" data-parent="#accordionExample">
-                            <div class="card-body">
-                                <%= f.collection_check_boxes(:prefecture_code, JpPrefecture::Prefecture.all, :code, :name, include_hidden: false) do |p| %>
-                                    <%= p.label class: 'form-check-label' do %>
-                                        <%= p.check_box class: 'form-check_input' %>
-                                        <%= p.text %>
-                                    <% end %>
-                                <% end %>
-                             </div>
-                        </div>
-                     </div>
-                    <div class ="form-content">
-                        <span>フリーワード</span><%= f.text_field :content %>
+                    <div id="card-4a" class="collapse"aria-labelledby="header-4a" data-parent="#accordion-4">
+                    <div class="card-body">
+                        <%= f.collection_check_boxes(:category_ids, Category.all, :id, :name, include_hidden: false) do |c| %>
+                            <%= c.label class: 'form-check-label' do %>
+                            <%= c.check_box class: 'form-check_input' %>
+                            <%= c.text %>
+                            <% end %>
+                        <% end %>
                     </div>
-               <%= f.submit "検索する" %>
-               <% end %>
+                    </div>
+                </div>
+                <div class="card">
+                    <div class="card-header" id="header-4b">
+                    <button class="btn btn-link" type="button"data-toggle="collapse" data-target="#card-4b" aria-expanded="false" aria-controls="card-4b">
+                        都道府県
+                    </button>
+                    </div>
+                    <div id="card-4b" class="collapse"
+                        aria-labelledby="header-4b" data-parent="#accordion-4">
+                    <div class="card-body">
+                        <%= f.collection_check_boxes(:prefecture_code, JpPrefecture::Prefecture.all, :code, :name, include_hidden: false) do |p| %>
+                            <%= p.label class: 'form-check-label' do %>
+                            <%= p.check_box class: 'form-check_input' %>
+                            <%= p.text %>
+                            <% end %>
+                        <% end %>
+                    </div>
+                    </div>
+                </div>
             </div>
-        </div>
+            <div class ="form-content">
+                <span>フリーワード</span><%= f.text_field :content %>
+            </div>
+            <%= f.submit "検索する" %>
+        <% end %>
     </div>
-    <% @users.each do |user| %>
+</div>
     <div class= "row">
-        <div class ="col-xs-7">
-            <%= attachment_image_tag user, :user_image, class: "round_image", fallback: "no_image.svg", size:"300x300" %>
-        </div>
-        <div class ="col-xs-5">
-            <table>
-            <tr><h3><%= user.full_name %></h3></tr>
-            <tr>
-            <td>希望地域</td>
-            <td><%= user.hope_prefecture_name %></td>
-            <td>希望業種</td>
-            <td><%= user.category.name %></td>
-            </tr>
-            <tr><h3>アピールポイント</h3></tr>
-            <tr><%= user.pr  %></tr>
-            </table>
-        </div>
+        <% @users.each do |user| %>
+            <div class= "row">
+                <div class ="col-xs-7">
+                    <%= attachment_image_tag user, :user_image, class: "round_image", fallback: "no_image.svg", size:"300x300" %>
+                </div>
+                <div class ="col-xs-5">
+                    <table style="word-wrap:break-word;">
+                    <tr><h3><%= user.full_name %></h3></tr>
+                    <tr>
+                    <td>希望地域</td>
+                    <td><%= user.hope_prefecture_name %></td>
+                    <td>希望業種</td>
+                    <td><%= user.category.name %></td>
+                    </tr>
+                    <tr><h3>アピールポイント</h3></tr>
+                    <tr><%= user.pr  %></tr>
+                    </table>
+                </div>
+            </div>
+        <% end %>
     </div>
-    <% end %>
  </div>
