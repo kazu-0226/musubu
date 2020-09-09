@@ -1,11 +1,13 @@
 <header class="sticky-top js-header">  
-    <nav class="navbar navbar-custom navbar-fixed-top navbar-transparent" role="navigation">    
-        <div class="container">
-            <div class="navbar-header">
-                <button class="navbar-toggle" type="button" data-toggle="collapse" data-target="#custom-collapse"></button><a class="navbar-brand" href="/">結ぶ</a>
-            </div>
+    <nav class="navbar navbar-expand-lg navbar-light bg-light">
+        <%= link_to root_path, class:"navbar-brand"  do %>
+            <% image_tag 'logo4.png', class:"logo" %>
+        <% end %>
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavDropdown" aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+        </button>
             <% if admin_signed_in? %>
-            <div class="collapse navbar-collapse" id="custom-collapse">
+            <div class="collapse navbar-collapse" id="navbarSupportedContent">
                 <ul class="nav navbar-nav navbar-right">
                     <li><%= link_to "TOP", admins_homes_top_path %></li>
                     <li><%= link_to "店舗一覧", admins_shops_path %></li>
@@ -14,7 +16,7 @@
                 </ul>
             </div>
             <% elsif user_signed_in? %>
-            <div class="collapse navbar-collapse" id="custom-collapse">
+            <div class="collapse navbar-collapse" id="navbarSupportedContent">
                 <ul class="nav navbar-nav navbar-right">
                     <li><%= link_to "マイページ", user_path(current_user.id) %></li>
                     <li><%= link_to "店舗一覧", shops_path %></li>
@@ -22,7 +24,7 @@
                 </ul>
             </div>
             <% elsif shop_signed_in? %>
-            <div class="collapse navbar-collapse" id="custom-collapse">
+            <div class="collapse navbar-collapse" id="navbarSupportedContent">
                 <ul class="nav navbar-nav navbar-right">
                     <li><%= link_to "マイページ", shop_path(current_shop.id) %></li>
                     <li><%= link_to "会員一覧", users_path %></li>
@@ -30,7 +32,7 @@
                 </ul>
             </div>
             <% else %>
-                <div class="collapse navbar-collapse" id="custom-collapse">
+                <div class="collapse navbar-collapse" id="navbarSupportedContent">
                     <ul class="nav navbar-nav navbar-right">
                         <li class="dropdown"><a class="dropdown-toggle" href="#" data-toggle="dropdown">ログイン</a>
                         <ul class="dropdown-menu">
