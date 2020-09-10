@@ -1,0 +1,16 @@
+ <%# ユーザーとしてログインしていなければチャットボタンは表示させない %>
+                    <% if user_signed_in? %>
+                        <%# 相互フォローでなければチャットボタンは表示させない %>
+                        <% if shop.followed_by?(current_user) && current_user.followed_by?(shop)%>
+                            <%# @isRoomをコントローラで定義してすでに作成されているルームならそのルームに遷移 %>
+                            <% if @isRoom == true %>
+                                <a href="/chat_rooms/<%= @roomId %>" class="btn btn-primary btn-lg">チャットへ</a>
+                            <% else %>
+                            <%# ルーム新規作成の場合はhiffdenオプションでshop.idを渡す %>
+                                <%= form_for @room do |f| %>
+                                    <%= f.hidden_field :shop_id, value: shop.id %>
+                                    <%= f.submit "チャットを始める", class:"btn btn-primary" %>
+                                <% end %>
+                            <% end %>
+                        <% end %>
+                    <% end %>

@@ -1,5 +1,4 @@
 class ShopsController < ApplicationController
-  before_action :authenticate_admin!
   before_action :authenticate_shop!, only: [:edit, :update, :withdraw]
   before_action :set_shop, only: [:show, :edit, :update, :withdraw]
 
