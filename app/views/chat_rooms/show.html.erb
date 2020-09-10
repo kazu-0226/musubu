@@ -26,9 +26,16 @@
       <%# <%= text_field_tag :content, data: { behavior: "chat_post" } %> %>
         <%#= hidden_field_tag :shop_id, value: current_shop.id %>
     <%# <% end %> %>
-<%# メッセージ送信フォーム %>
 
-<%= label_tag :shop_form, 'Say something:' %>
-<%= text_field_tag :shop_form, nil, data: { behavior: 'chat_post' } %>
-<input value= @room.id type="hidden" name="chat_room[shop_id]" id="chat_room_shop_id">
-</div>
+
+
+<%# メッセージ送信フォーム %>
+<form class="chat-form">
+  <% if shop_signed_in? %>
+     <input type="hidden" name="shop_id" id="shop-id-form" value="<%= @room.shop.id %>">
+  <% elsif  %>
+    <input type="hidden" name="user_id" id="user-id-form" value="<%= @room.user.id %>">
+  <% end %>
+  <input type="hidden" name="chat_room_id" id="chat-room-id-form"  value="<%= @room.id %>">
+  <input type="text" name="content" id="content-form" data-behavior="chat_speaker">
+</form>

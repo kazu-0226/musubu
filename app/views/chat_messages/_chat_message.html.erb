@@ -2,7 +2,7 @@
   <div class="chat">
     <%# shopでログインしている場合の表示 %>
     <% if shop_signed_in? %>
-      <% shop_messages.zip(user_messages) do |sm, um| %>
+      <% shop_messages.each do |sm| %>
         <div class="chat-box-right">
           <div class="faceicon-right">
             <%= link_to shop_path(sm.shop) do %>
@@ -14,6 +14,8 @@
               <%= sm.created_at.strftime("%Y-%m-%d %H:%M")%>
           </div>
         </div>
+        <% end %>
+        <% user_messages.each do |um| %>
          <div class="chat-box-left">
           <div class="faceicon-left">
             <%= link_to user_path(um.user) do %>

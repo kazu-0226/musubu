@@ -8,24 +8,21 @@ App.chat_room = App.cable.subscriptions.create("ChatRoomChannel", {
   },
 
   received: function(data) {
-      alert("dfdf")
     // Called when there's incoming data on the websocket for this channel
+      return $('#chat_messages').append('<li>' + data["content"] + '</li>');
   },
 
-  speak: function(message) {
-      alert(message);
-      return this.perform('speak');
+  speak: function(chat_room_id, user_id, shop_id, content) {
+     return this.perform('speak', { chat_room_id: chat_room_id, user_id: user_id, shop_id: shop_id, content: content });
+  
     }
-  }, $(document).on('keypress', '[data-behavior~=chat_post]', function(event) {
+  }, $(document).on('keypress', '[data-behavior~=chat_speaker]', function(event) {
     if (event.keyCode === 13) {
-      debugger
       var userForm = $('#user-id-form');
       var shopForm = $('#shop-id-form');
-      alert(shopForm.val())
-      var chatRoomForm = $('#chat-room-form');
-      alert(chatRoomForm.val())
-      var chatForm = $('#chat-form');
-      App.chat_room.speak(chatForm.val());
-      return chatForm.val('');
+      var chatRoomForm = $('#chat-room-id-form');
+      var contentForm = $('#content-form');
+      App.chat_room.speak(chatRoomForm.val(),userForm.val(),shopForm.val(),contentForm.val());
+      return contentForm.val('');
     }
   }));
