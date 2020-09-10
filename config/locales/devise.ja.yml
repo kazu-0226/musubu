@@ -1,7 +1,7 @@
 ja:
   devise:
     confirmations:
-      confirmed: 'アカウントを登録しました。'
+      confirmed: 'アカウントを登録しました。編集からマイページの情報を充実させましょう。'
       send_instructions: 'アカウントの有効化について数分以内にメールでご連絡します。'
       send_paranoid_instructions: "あなたのメールアドレスが登録済みの場合、本人確認用のメールが数分以内に送信されます。"
     failure:
@@ -34,7 +34,7 @@ ja:
       updated_not_active: 'パスワードが正しく変更されました。'
     registrations:
       destroyed: 'アカウントを削除しました。またのご利用をお待ちしております。'
-      signed_up: 'アカウント登録が完了しました。'
+      signed_up: 'アカウント登録が完了しました。編集からマイページの情報を充実させましょう。'
       signed_up_but_inactive: 'ログインするためには、アカウントを有効化してください。'
       signed_up_but_locked: 'アカウントが凍結されているためログインできません。'
       signed_up_but_unconfirmed: '本人確認用のメールを送信しました。メール内のリンクからアカウントを有効化させてください。'

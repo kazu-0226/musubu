@@ -30,7 +30,11 @@
                 </tr>
                 <tr>
                     <td>希望業種</td>
-                    <td><%= @user.category.name %></td>
+                    <td>
+                        <% if @user.category_id.present? %>
+                            <%= @user.category.name %>
+                        <% end %>
+                    </td>
                 </tr>
                 <tr>
                     <td>

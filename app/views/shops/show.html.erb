@@ -40,7 +40,11 @@
                 <tbody>
                     <tr>
                         <td>業種</td>
-                        <td><%= @shop.category.name %></td>
+                        <td>
+                            <% if @shop.category_id.present? %>
+                              <%= @shop.category.name %>
+                            <% end %>
+                        </td>
                     </tr>
                     <tr>
                         <td>住所</td>
