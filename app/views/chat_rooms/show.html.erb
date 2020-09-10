@@ -1,3 +1,4 @@
+
   <div class="chat-header col-10 offset-sm-1">
     <span class="chat-name">
     <% if shop_signed_in? %>
@@ -10,7 +11,7 @@
     </span>
   </div>
 
-<div class="chats col-sm-10 offset-sm-1">
+<div class="chats shadow col-sm-10 offset-sm-1">
 
 <%# メッセージ表示 %>
 <div id="chat_messages" data-chat_room_id="<%= @room.id %>">
@@ -20,11 +21,14 @@
 <br>
 
 <%# メッセージ送信フォーム %>
-  <div class="posts col-sm-10 col-sm-offset-1">
+  <%# <div class="posts col-sm-10 col-sm-offset-1">
     <%= form_tag url:chat_room_path(@room.id) do |f| %>
-      <%= text_field_tag :content, data: { behavior: "chat_post" } %>
+      <%# <%= text_field_tag :content, data: { behavior: "chat_post" } %> %>
         <%#= hidden_field_tag :shop_id, value: current_shop.id %>
-    <% end %>
+    <%# <% end %> %>
 <%# メッセージ送信フォーム %>
 
+<%= label_tag :shop_form, 'Say something:' %>
+<%= text_field_tag :shop_form, nil, data: { behavior: 'chat_post' } %>
+<input value= @room.id type="hidden" name="chat_room[shop_id]" id="chat_room_shop_id">
 </div>
