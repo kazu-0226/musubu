@@ -5,31 +5,14 @@
         <div class ="col-xs-6">
             <%= attachment_image_tag @shop, :main_image, class: "main_image", fallback: "no_image.svg", size:"300x300" %>
             <div>
-                <% if user_signed_in? %>
-                    <% if @shop.followed_by?(current_user) %>
-                         <%= link_to "フォロー中", shop_user_followings_path(@shop.id), method: :delete, class: "btn btn-primary" %>
-                    <% else %>
-                        <%= link_to "フォローする", shop_user_followings_path(@shop.id), method: :post, class: "btn btn-primary" %>
-                    <% end %>
-                <% end %>
+                <span id="follow_<%= @shop.id %>">
+                <%= render 'user_followings/follow', shop:@shop %>
+                </span>
             </div>
                 <div>
-                   <%# ユーザーとしてログインしていなければチャットボタンは表示させない %>
-                    <% if user_signed_in? %>
-                        <%# 相互フォローでなければチャットボタンは表示させない %>
-                        <% if @shop.followed_by?(current_user) && @current_user.followed_by?(@shop)%>
-                            <%# @isRoomをコントローラで定義してすでに作成されているルームならそのルームに遷移 %>
-                            <% if @isRoom == true %>
-                                <a href="/chat_rooms/<%= @roomId %>" class="btn btn-primary btn-lg">チャットへ</a>
-                            <% else %>
-                            <%# ルーム新規作成の場合はhiffdenオプションでshop.idを渡す %>
-                                <%= form_for @room do |f| %>
-                                    <%= f.hidden_field :shop_id, value: @shop.id %>
-                                    <%= f.submit "チャットを始める", class:"btn btn-primary" %>
-                                <% end %>
-                            <% end %>
-                        <% end %>
-                    <% end %>
+                <span id="chat_<%= @shop.id %>">
+                    <%= render 'chat_rooms/shop_chat_button', shop:@shop %>
+                </span>
                 </div>
         </div>
         <div class ="col-xs-6">

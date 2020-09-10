@@ -32,31 +32,14 @@
                 </tr>
                 <tr>
                     <td>
-                        <% if shop_signed_in? %>
-                            <% if @user.followed_by?(current_shop) %>
-                                <%= link_to "フォロー中", user_shop_followings_path(@user.id), method: :delete, class: "btn btn-primary" %>
-                            <% else %>
-                                <%= link_to "フォローする", user_shop_followings_path(@user.id), method: :post, class: "btn btn-primary" %>
-                            <% end %>
-                        <% end %>
+                        <span id="follow_<%= @user.id %>">
+                            <%= render 'shop_followings/follow', user:@user %>
+                        </span>
                     </td>
                     <td>
-                    <%# ショップとしてログインしていなければチャットボタンは表示させない %>
-                    <% if shop_signed_in? %>
-                        <%# 相互フォローでなければチャットボタンは表示させない %>
-                        <% if @user.followed_by?(current_shop) && current_shop.followed_by?(@user)%>
-                            <%# @isRoomをコントローラで定義してすでに作成されているルームならそのルームに遷移 %>
-                            <% if @isRoom == true %>
-                                <a href="/chat_rooms/<%= @roomId %>" class="btn btn-primary btn-lg">チャットへ</a>
-                            <% else %>
-                            <%# ルーム新規作成の場合はhiffdenオプションでuser.idを渡す %>
-                                <%= form_with url: chat_rooms_path, local: true do |f| %>
-                                    <%= f.hidden_field :user_id, value: @user.id %>
-                                    <%= f.submit "チャットを始める", class:"btn btn-primary" %>
-                                <% end %>
-                            <% end %>
-                        <% end %>
-                    <% end %>
+                    <span id="chat_<%= @user.id %>">
+                        <%= render 'chat_rooms/user_chat_button', user:@user %>
+                    </span>
                     </td>
                 </tr>
             </table>

@@ -1,0 +1,7 @@
+<% if shop_signed_in? %>
+    <% if user.followed_by?(current_shop) %>
+        <%= link_to "フォロー中", user_shop_followings_path(user.id), method: :delete, remote: true,  class: "btn btn-primary" %>
+    <% else %>
+        <%= link_to "フォローする", user_shop_followings_path(user.id), method: :post, remote: true,  class: "btn btn-primary" %>
+    <% end %>
+<% end %>
