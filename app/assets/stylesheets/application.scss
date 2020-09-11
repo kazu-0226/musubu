@@ -182,3 +182,11 @@ height: 300px;
   -o-background-size: cover;
   background-size: cover;
 }
+
+.appeal-card-text{
+  overflow: hidden;
+  text-overflow: ellipsis;
+  display: -webkit-box;
+  -webkit-box-orient: vertical;
+  -webkit-line-clamp: 3;
+}

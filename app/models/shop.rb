@@ -41,4 +41,9 @@ class Shop < ApplicationRecord
   def followed_by?(user)
     user_followings.where(user_id: user.id).exists?
   end
+
+
+  def updated?
+    self.updated_at.between?(1.week.ago, Time.current)
+  end
 end
