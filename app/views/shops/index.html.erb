@@ -1,42 +1,57 @@
 <div class="container">
-    <div class= "row">
-        <div class ="col-xs-8">
-            <div class ="form_box">
-                <%= form_with url:search_shops_path, local: true, method: :post do |f| %>
-                    <div class="form-check category">
-                    <p>業種一覧</p>
-                        <!-- デフォルトでhiddenタグが挿入されるのでinclude_hidden: false -->
+    <div class ="col-sm-12">
+    <div class ="form_box">
+        <%= form_with url:search_shops_path, local: true, method: :post do |f| %>
+            <div class="accordion" id="accordion-4">
+                <div class="card">
+                    <div class="card-header" id="header-4a">
+                    <button class="btn btn-link" type="button"data-toggle="collapse" data-target="#card-4a" aria-expanded="true" aria-controls="card-4a">
+                        業種
+                    </button>
+                    </div>
+                    <div id="card-4a" class="collapse"aria-labelledby="header-4a" data-parent="#accordion-4">
+                    <div class="card-body">
                         <%= f.collection_check_boxes(:category_ids, Category.all, :id, :name, include_hidden: false) do |c| %>
                             <%= c.label class: 'form-check-label' do %>
-                                <%= c.check_box class: 'form-check_input' %>
-                                <%= c.text %>
+                            <%= c.check_box class: 'form-check_input' %>
+                            <%= c.text %>
                             <% end %>
                         <% end %>
                     </div>
-                    <div class="form-check category">
-                    <p>都道府県</p>
-                        <!-- デフォルトでhiddenタグが挿入されるのでinclude_hidden: false -->
+                    </div>
+                </div>
+                <div class="card">
+                    <div class="card-header" id="header-4b">
+                    <button class="btn btn-link" type="button"data-toggle="collapse" data-target="#card-4b" aria-expanded="false" aria-controls="card-4b">
+                        都道府県
+                    </button>
+                    </div>
+                    <div id="card-4b" class="collapse"
+                        aria-labelledby="header-4b" data-parent="#accordion-4">
+                    <div class="card-body">
                         <%= f.collection_check_boxes(:prefecture_code, JpPrefecture::Prefecture.all, :code, :name, include_hidden: false) do |p| %>
                             <%= p.label class: 'form-check-label' do %>
-                                <%= p.check_box class: 'form-check_input' %>
-                                <%= p.text %>
+                            <%= p.check_box class: 'form-check_input' %>
+                            <%= p.text %>
                             <% end %>
                         <% end %>
                     </div>
-                    <div class ="form-content">
-                        <span>フリーワード</span><%= f.text_field :content %>
                     </div>
-               <%= f.submit "検索する" %>
-               <% end %>
+                </div>
             </div>
-        </div>
+            <div class ="form-content">
+                <span>フリーワード</span><%= f.text_field :content %>
+            </div>
+            <%= f.submit "検索する" %>
+        <% end %>
     </div>
+</div>
     <% @shops.each do |shop| %>
     <div class= "row">
-        <div class ="col-xs-7">
+        <div class ="col-sm-7">
             <%= attachment_image_tag shop, :main_image, class: "main_image", fallback: "no_image.svg", size:"300x300" %>
         </div>
-        <div class ="col-xs-5">
+        <div class ="col-sm-5">
             <h2><%= shop.catchcopy %></h2>
             <table>
             <tr><h3><%= shop.name %></h3></tr>

@@ -1,6 +1,7 @@
 class ChatMessagesController < ApplicationController
 
     def create
+        binding.pry
         #送信内容とchat_room_idを渡す
         @message = ChatMessage.new(message_params)
         #ログイン＝送信者として@messageに渡す

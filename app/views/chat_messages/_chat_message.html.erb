@@ -1,0 +1,58 @@
+<%# メッセージ表示 %>
+  <div class="chat">
+    <%# shopでログインしている場合の表示 %>
+    <% if shop_signed_in? %>
+      <% shop_messages.each do |sm| %>
+        <div class="chat-box-right">
+          <div class="faceicon-right">
+            <%= link_to shop_path(sm.shop) do %>
+            <%= attachment_image_tag sm.shop, :main_image, class: "round_image", fallback: "no_image.svg", size:"50x50" %>
+            <% end %>
+          </div>
+          <div class="mycomment">
+           <strong><%= sm.content %></strong> <br>
+              <%= sm.created_at.strftime("%Y-%m-%d %H:%M")%>
+          </div>
+        </div>
+        <% end %>
+        <% user_messages.each do |um| %>
+         <div class="chat-box-left">
+          <div class="faceicon-left">
+            <%= link_to user_path(um.user) do %>
+            <%= attachment_image_tag um.user, :user_image, class: "round_image", fallback: "no_image.svg", size:"50x50" %>
+            <% end %>
+          </div>
+          <div class="says"> <strong><%= um.content %></strong> <br>
+            <%= um.created_at.strftime("%Y-%m-%d %H:%M")%>
+          </div>
+        </div>
+      <% end %>
+ 
+      <%# userでログインしている場合の表示 %>
+      <% elsif user_signed_in? %>
+        <% user_messages.each do |um| %>
+          <div class="chat-box-right">
+            <div class="faceicon-right">
+            <%= link_to user_path(um.user) do %>
+              <%= attachment_image_tag um.user, :user_image, class: "round_image", fallback: "no_image.svg", size:"50x50" %>
+            <% end %>
+            </div>
+            <div class="mycomment"> <strong><%= um.content %></strong> <br>
+              <%= um.created_at.strftime("%Y-%m-%d %H:%M")%>
+            </div>
+          </div>
+        <% end %>
+        <% shop_messages.each do |sm| %>
+          <div class="chat-box-left">
+            <div class="faceicon-left">
+            <%= link_to shop_path(sm.shop) do %>
+              <%= attachment_image_tag sm.shop, :main_image, class: "round_image", fallback: "no_image.svg", size:"50x50" %>
+            <% end %>
+            </div>
+            <div class="says"> <strong><%= sm.content %></strong> <br>
+              <%= sm.created_at.strftime("%Y-%m-%d %H:%M")%>
+            </div>
+          </div>
+        <% end %>
+    <% end %>
+  </div>

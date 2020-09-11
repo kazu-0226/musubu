@@ -13,35 +13,121 @@
  *= require_tree .
  *= require_self
  */
- @import "bootstrap-sprockets";
  @import "bootstrap";
  @import 'font-awesome-sprockets';
  @import 'font-awesome';
  @import "toastr";
 
- .round_image{
+/*ヘッダー*/
+ header {
+    background-color: rgba(255,255,255,0);
+    box-shadow: 0 3px 6px rgba(0, 0, 0, 0.05);
+    margin-bottom: 30px;
+    padding-bottom: 10px;
+  }
+
+  .logo{
+    width: 30%;
+  }
+
+.round_image{
      border-radius: 50%;
 }
 .circle{
     width: 80px;
     height: 80px;
     border-radius: 50%;
-    background: skyblue;/*背景色*/
+    background: skyblue;
+}
+
+/*チャットの表示*/
+.chat-header{
+  background-color: #696969;
+  color: white;
 }
 
 .chat-box-left{
-    float: left;
+    text-align: left;
+    padding-bottom: 10px;
 }
 
 .chat-box-right{
-    float: right;
+    text-align: right;
+    padding-bottom: 10px;
 }
 
+.faceicon-right{
+    float: right;
+    margin-left: 10px;
+}
 
-header {
-    background-color: rgba(255,255,255,0);
-    box-shadow: 0 3px 6px rgba(0, 0, 0, 0.05);
-    margin-bottom: 30px;
+.faceicon-left{
+    float: left;
+    
+}
+
+.chats{
+    text-align: right;
+    font-size: 14px;
+    background: #7da4cd;
+  
+  }
+  
+.says {
+    display: inline-block;
+    position: relative; 
+    margin: 0 0 0 10px;
+    padding: 10px;
+    max-width: 250px;
+    border-radius: 12px;
+    background: #edf1ee;
+  }
+  
+.says:after {
+    content: "";
+    display: inline-block;
+    position: absolute;
+    top: 3px; 
+    left: -19px;
+    border: 8px solid transparent;
+    border-right: 18px solid #edf1ee;
+    -webkit-transform: rotate(35deg);
+    transform: rotate(35deg);
+  }
+
+.mycomment {
+    display: inline-block;
+    position: relative; 
+    margin: 0 0 0 50px;
+    padding: 10px;
+    max-width: 250px;
+    border-radius: 12px;
+    background: #30e852;
+  }
+
+.mycomment:after {
+    content: "";
+    position: absolute;
+    top: 3px; 
+    right: -19px;
+    border: 8px solid transparent;
+    border-left: 18px solid #30e852;
+    -webkit-transform: rotate(-35deg);
+    transform: rotate(-35deg);
   }
 
   
+  .shadow {
+    box-shadow: 0 4px 4px rgba(0, 0, 0, 0.1), 
+                0 1px 6px rgba(0, 0, 0, 0.05), 
+                0 8px 8px rgba(0, 0, 0, 0.1), 
+                0 16px 16px rgba(0, 0, 0, 0.1), 
+                8px 32px 32px rgba(0, 0, 0, 0.15), 
+                8px 64px 64px rgba(0, 0, 0, 0.15);
+  }
+  
+
+
+  .form_box {
+    border: solid 1px rgba(0, 0, 0, 0.125) ;
+  }

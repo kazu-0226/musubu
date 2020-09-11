@@ -1,13 +1,13 @@
 <div class= "container">
 <%= form_with model:@user, local: true do |f| %>
     <div class= "row">
-        <div class= "col-xs-8">
+        <div class= "col-sm-8">
             <%= attachment_image_tag @user, :user_image, class: "round_image", fallback: "no_image.svg", size:"300x300" %>
             <%= f.attachment_field :user_image, placeholder: "画像", id: "user_image" %>
         </div>
     </div>
     <div class= "row">
-        <div class= "col-xs-8">
+        <div class= "col-sm-8">
              <table class="table">
                 <tr>
                     <td><%= f.label :first_name, '氏名' %></td>

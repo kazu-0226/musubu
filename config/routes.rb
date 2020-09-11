@@ -1,5 +1,5 @@
 Rails.application.routes.draw do
-
+  mount ActionCable.server => '/cable'
   root 'homes#top'
 
   #非ログイン時TOP
@@ -27,6 +27,7 @@ Rails.application.routes.draw do
     resources :shops, only: [:index, :edit, :show, :update] do
       collection do
         post 'g_category'
+        post 'search'
       end
     end
   end

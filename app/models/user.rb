@@ -15,11 +15,15 @@ class User < ApplicationRecord
   attachment :user_image
 
   def full_name
-    self.last_name + self.first_name
+    if self.last_name.present? && self.first_name.present?
+      self.last_name + self.first_name
+    end
   end
 
   def full_name_kana
+    if self.last_name_kana.present? && self.first_name_kana.present?
     self.last_name_kana + self.first_name_kana
+  end
   end
 
   #jp_prefectureを使用したprefecture_codeからprefecture_nameへの変換

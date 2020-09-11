@@ -4,7 +4,7 @@
     <% if user.followed_by?(current_shop) && current_shop.followed_by?(user)%>
         <%# @isRoomをコントローラで定義してすでに作成されているルームならそのルームに遷移 %>
          <% if @isRoom == true %>
-            <a href="/chat_rooms/<%= @roomId %>" class="btn btn-primary btn-lg">チャットへ</a>
+            <a href="/chat_rooms/<%= @roomId %>" class="btn btn-primary">チャットへ</a>
             <% else %>
             <%# ルーム新規作成の場合はhiffdenオプションでuser.idを渡す %>
             <%= form_with url: chat_rooms_path, local: true do |f| %>

@@ -2,7 +2,7 @@
 <h2><%= @shop.catchcopy %></h2>
 
     <div class= "row">
-        <div class ="col-xs-6">
+        <div class ="col-sm-6">
             <%= attachment_image_tag @shop, :main_image, class: "main_image", fallback: "no_image.svg", size:"300x300" %>
             <div>
                 <span id="follow_<%= @shop.id %>">
@@ -15,7 +15,7 @@
                 </span>
                 </div>
         </div>
-        <div class ="col-xs-6">
+        <div class ="col-sm-6">
             <table >
                 <thead>
                 <td><h3><%= @shop.name %></h3></td>
@@ -23,7 +23,11 @@
                 <tbody>
                     <tr>
                         <td>業種</td>
-                        <td><%= @shop.category.name %></td>
+                        <td>
+                            <% if @shop.category_id.present? %>
+                              <%= @shop.category.name %>
+                            <% end %>
+                        </td>
                     </tr>
                     <tr>
                         <td>住所</td>
@@ -40,32 +44,32 @@
     </div>
 
     <div class= "row">
-        <div class ="col-xs-6">
+        <div class ="col-sm-6">
             <h3>お店のアピールポイント</h3>
             <%= @shop.appeal_text  %>
         </div>
-        <div class ="col-xs-6">
+        <div class ="col-sm-6">
             <%= attachment_image_tag @shop, :appeal_image, class: "main_image", fallback: "no_image.svg", size:"300x300" %>
         </div>
     </div>
 
     <div class= "row">
-        <div class ="col-xs-6">
+        <div class ="col-sm-6">
             <h3>お店のおすすめ！</h3>
             <table>
                 <td><%= @shop.recommend_name %></td>
                 <td><%= @shop.recommend_text %></td>
             </table>
         </div>
-        <div class ="col-xs-6">
+        <div class ="col-sm-6">
             <%= attachment_image_tag @shop, :recommend_image, class: "main_image", fallback: "no_image.svg", size:"300x300" %>
         </div>
     </div>
 
     <div class= "row">
-        <div class ="col-xs-6">
+        <div class ="col-sm-6">
         </div>
-        <div class ="col-xs-6">
+        <div class ="col-sm-6">
         </div>
     </div>  
 </div>
