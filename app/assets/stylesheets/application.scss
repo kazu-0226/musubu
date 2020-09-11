@@ -125,6 +125,7 @@
   }
   
 
+// 
 .index-search{
   width: 70%;
 }
@@ -147,7 +148,31 @@
   text-align: right;
 }
 
+// 
+.index_main_image{
+width: auto;
+height: 300px;
+}
 
+.appeal_txet{
+  overflow: hidden;
+  text-overflow: ellipsis;
+  display: -webkit-box;
+  -webkit-box-orient: vertical;
+  -webkit-line-clamp: 6;
+}
+
+.appeal_box{
+  padding: 0.2em 0.5em;
+  margin: 2em 0;
+  color: #565656;
+  background: #d6ebff;
+  box-shadow: 0px 0px 0px 10px #d6ebff;
+  border: dashed 2px white;
+  border-radius: 8px
+}
+
+// 
 .carousel-item {
   height: 65vh;
   min-height: 300px;

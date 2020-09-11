@@ -51,14 +51,18 @@
 <!-- Page Content -->
     <div class="container">
         <% @shops.each do |shop| %>
+        <% if shop.name.present? %>
         <div class= "row">
-            <div class ="col-sm-7">
-                <%= attachment_image_tag shop, :main_image, class: "main_image", fallback: "no_image.svg", size:"300x300" %>
-            </div>
+        <hr>
             <div class ="col-sm-5">
+                <%= link_to shop_path(shop) do %>
+                    <%= attachment_image_tag shop, :main_image, class: "index_main_image", fallback: "no_image.svg" %>
+                <% end %>
+            </div>
+            <div class ="col-sm-7 index_info">
                 <h2><%= shop.catchcopy %></h2>
                 <table>
-                <tr><h3>店名：<%= shop.name %></h3></tr>
+                <tr><h3>店名：<%= link_to shop.name, shop_path(shop) %></h3></tr>
                 <tr>
                     地域：<%= shop.prefecture_name %>
                 </tr>
@@ -71,11 +75,21 @@
                 <% end %>
                 </tr>
                 <tr><h3>お店のアピールポイント</h3></tr>
-                <tr><%= shop.appeal_text  %></tr>
+                <tr>
+                <div class="appeal_box">
+                    <p class= "appeal_txet"><%= shop.appeal_text  %></p>
+                </div>
+                </tr>
+                 <tr>
+                    <span id="follow_<%= shop.id %>">
+                        <%= render 'user_followings/follow', shop:shop %>
+                    </span>
+                </tr>
                 </table>
             </div>
         </div>
-        <hr>
+        <hr>                 
+        <% end %>
         <% end %>
     </div>
 <!-- Page Content -->
