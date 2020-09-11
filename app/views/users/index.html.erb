@@ -1,12 +1,12 @@
 <div class="container">
-   <div class ="col-sm-12">
+    <div class ="col-sm-12">
     <div class ="form_box">
         <%= form_with url:search_users_path, local: true, method: :post do |f| %>
             <div class="accordion" id="accordion-4">
                 <div class="card">
                     <div class="card-header" id="header-4a">
                     <button class="btn btn-link" type="button"data-toggle="collapse" data-target="#card-4a" aria-expanded="true" aria-controls="card-4a">
-                        希望業種
+                        業種
                     </button>
                     </div>
                     <div id="card-4a" class="collapse"aria-labelledby="header-4a" data-parent="#accordion-4">
@@ -23,7 +23,7 @@
                 <div class="card">
                     <div class="card-header" id="header-4b">
                     <button class="btn btn-link" type="button"data-toggle="collapse" data-target="#card-4b" aria-expanded="false" aria-controls="card-4b">
-                        希望地域
+                        都道府県
                     </button>
                     </div>
                     <div id="card-4b" class="collapse"
@@ -40,30 +40,57 @@
                 </div>
             </div>
             <div class ="form-content">
-                <span>フリーワード</span><%= f.text_field :content %>
+                <span class="form-content-label">フリーワード</span><%= f.text_field :content , class:"index-search" %>
             </div>
-            <%= f.submit "検索する" %>
+            <div class ="form-aciton">
+                <%= f.submit "検索する" %>
+            </div>
         <% end %>
     </div>
 </div>
+ <div class="container">
     <% @users.each do |user| %>
+    <% if user.full_name.present? %>
     <div class= "row">
-        <div class ="col-sm-7">
-            <%= attachment_image_tag user, :user_image, class: "round_image", fallback: "no_image.svg", size:"300x300" %>
-        </div>
         <div class ="col-sm-5">
+        <%= link_to user_path(user) do %>
+            <%= attachment_image_tag user, :user_image, class: "round_image  ", fallback: "no_image.svg", size:"300x300" %>
+        <% end %>
+        </div>
+        <div class ="col-sm-7">
             <table>
-            <tr><h3><%= user.full_name %></h3></tr>
             <tr>
-            <td>希望地域</td>
-            <td><%= user.hope_prefecture_name %></td>
-            <td>希望業種</td>
-            <td><%= user.category.name %></td>
+                <h3><%= link_to user.full_name, user_path(user) %></h3>
             </tr>
-            <tr><h3>アピールポイント</h3></tr>
-            <tr><%= user.pr  %></tr>
+            <tr>
+            希望地域:<%= user.hope_prefecture_name %></tr>
+            <br>
+            <tr>希望業種:
+                <% if user.category_id.present? %>
+                    <%= user.category.name %></td>
+                <% else %>
+                    未設定
+                <% end %>
+            </tr>
+            <tr>
+                <h3>アピールポイント</h3>
+            </tr>
+            <tr>
+            <div class="appeal_box">
+                <p class= "appeal_txet"><%= user.pr  %></p>
+            </div>
+            </tr>
+            <tr>
+                <td>
+                    <span id="follow_<%= user.id %>">
+                        <%= render 'shop_followings/follow', user:user %>
+                    </span>
+                </td>
+            </tr>
             </table>
         </div>
     </div>
+    <hr>
+    <% end %>
     <% end %>
  </div>

@@ -21,8 +21,6 @@
 /*ヘッダー*/
  header {
     background-color: rgba(255,255,255,0);
-    box-shadow: 0 3px 6px rgba(0, 0, 0, 0.05);
-    margin-bottom: 30px;
     padding-bottom: 10px;
   }
 
@@ -127,7 +125,68 @@
   }
   
 
+// 
+.index-search{
+  width: 70%;
+}
 
-  .form_box {
+.form_box {
     border: solid 1px rgba(0, 0, 0, 0.125) ;
-  }
+    margin-bottom: 30px;
+}
+
+.form-content{
+  padding: 12px 20px;
+}
+
+.form-content-label{
+  padding: 6px 12px;
+}
+
+.form-aciton{
+  padding: 5px 40px;
+  text-align: right;
+}
+
+// 
+.index_main_image{
+width: auto;
+height: 300px;
+}
+
+.appeal_txet{
+  overflow: hidden;
+  text-overflow: ellipsis;
+  display: -webkit-box;
+  -webkit-box-orient: vertical;
+  -webkit-line-clamp: 6;
+}
+
+.appeal_box{
+  padding: 0.2em 0.5em;
+  margin: 2em 0;
+  color: #565656;
+  background: #d6ebff;
+  box-shadow: 0px 0px 0px 10px #d6ebff;
+  border: dashed 2px white;
+  border-radius: 8px
+}
+
+// 
+.carousel-item {
+  height: 65vh;
+  min-height: 300px;
+  background: no-repeat center center scroll;
+  -webkit-background-size: cover;
+  -moz-background-size: cover;
+  -o-background-size: cover;
+  background-size: cover;
+}
+
+.appeal-card-text{
+  overflow: hidden;
+  text-overflow: ellipsis;
+  display: -webkit-box;
+  -webkit-box-orient: vertical;
+  -webkit-line-clamp: 3;
+}
