@@ -1,0 +1,11 @@
+<div class="chat-box-left">
+    <div class="faceicon-left">
+        <%= link_to target_path do %>
+            <%= attachment_image_tag image, image_name, class: "round_image", fallback: "no_image.svg", size:"50x50" %>
+        <% end %>
+    </div>
+    <div class="says">
+        <strong><%= content %></strong> <br>
+        <%= created_at.strftime("%Y-%m-%d %H:%M")%>
+    </div>
+</div>
