@@ -92,3 +92,9 @@ gem 'rails-i18n'
 # Pagination
 gem 'kaminari'
 gem 'kaminari-i18n'
+
+
+
+group :production do
+  gem 'mysql2'
+end
