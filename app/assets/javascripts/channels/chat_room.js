@@ -9,7 +9,8 @@ App.chat_room = App.cable.subscriptions.create("ChatRoomChannel", {
 
   received: function(data) {
     // Called when there's incoming data on the websocket for this channel
-      return $('#chat_messages').append('<li>' + data["content"] + '</li>');
+    console.log(data)
+      return $('#chat_messages').append(data["message"]);
   },
 
   speak: function(chat_room_id, user_id, shop_id, content) {

@@ -12,12 +12,9 @@ class ChatRoomChannel < ApplicationCable::Channel
   #room_channel.jsで実行されたspeakのメッセージを受け取り、メッセージ作成？
   def speak(data)
     if data["user_id"].present?
-    ChatMessage.create! content: data["content"], user_id: data["user_id"], chat_room_id: data["chat_room_id"]
-    ActionCable.server.broadcast 'chat_room_channel',content: data["content"]
-
-    elsif data["shop_id"].present?
-    ChatMessage.create! content: data["content"], shop_id: data["shop_id"], chat_room_id: data["chat_room_id"]
-    ActionCable.server.broadcast 'chat_room_channel',content: data["content"]
+      ChatMessage.create! content: data["content"], user_id: data["user_id"], chat_room_id: data["chat_room_id"]
+    else
+      ChatMessage.create! content: data["content"], shop_id: data["shop_id"], chat_room_id: data["chat_room_id"]
     end
   end
 end
