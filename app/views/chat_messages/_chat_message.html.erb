@@ -1,21 +1,19 @@
 <%# メッセージ表示 %>
-  <div class="chat">
     <%# shopでログインしている場合の表示 %>
     <% if shop_signed_in? %>
-      <% shop_messages.each do |sm| %>
-        <%= render 'chat_messages/chat_message_right', {target_path: shop_path(sm.shop),image_name: :main_image , image: sm.shop, content:sm.content, created_at: sm.created_at  } %>
+      <% messages.each do |m| %>
+        <% if m.shop_id.present? %>
+          <%= render 'chat_messages/chat_message_right', {target_path: shop_path(m.shop),image_name: :main_image , image: m.shop, content:m.content, created_at: m.created_at  } %>
+        <% else %>
+          <%= render 'chat_messages/chat_message_left', {target_path: user_path(m.user), image_name: :user_image , image: m.user, content:m.content, created_at: m.created_at  } %>
         <% end %>
-        <% user_messages.each do |um| %>
-        <%= render 'chat_messages/chat_message_left', {target_path: user_path(um.user), image_name: :user_image , image: um.user, content:um.content, created_at: um.created_at  } %>
       <% end %>
- 
-      <%# userでログインしている場合の表示 %>
-      <% elsif user_signed_in? %>
-        <% user_messages.each do |um| %>
-          <%= render 'chat_messages/chat_message_right', {target_path: user_path(um.user), image_name: :user_image , image: um.user, content:um.content, created_at: um.created_at  } %>
+    <% else %>
+      <% messages.each do |m| %>
+        <% if m.user_id.present? %>
+          <%= render 'chat_messages/chat_message_right', {target_path: user_path(m.user), image_name: :user_image , image: m.user, content:m.content, created_at: m.created_at  } %>
+        <% else %>
+          <%= render 'chat_messages/chat_message_left', {target_path: shop_path(m.shop),image_name: :main_image , image: m.shop, content:m.content, created_at: m.created_at  } %>
         <% end %>
-        <% shop_messages.each do |sm| %>
-        <%= render 'chat_messages/chat_message_left', {target_path: shop_path(sm.shop),image_name: :main_image , image: sm.shop, content:sm.content, created_at: sm.created_at  } %>
       <% end %>
     <% end %>
-  </div>
