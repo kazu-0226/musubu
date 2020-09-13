@@ -1,5 +1,4 @@
 <%# メッセージ表示 %>
-  <div class="chat">
     <%# shopでログインしている場合の表示 %>
     <% if shop_signed_in? %>
       <% messages.each do |m| %>
@@ -18,4 +17,3 @@
         <% end %>
       <% end %>
     <% end %>
-  </div>
