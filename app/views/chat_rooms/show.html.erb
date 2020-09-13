@@ -10,6 +10,13 @@
     </span>
   </div>
 
+<% if shop_signed_in? %>
+  <div id="show_id" data-show_id="<%= current_shop.id %>"></div>
+<% elsif user_signed_in? %>
+  <div id="show_id" data-show_id="<%= current_user.id %>"></div>
+<% end %>
+
+
 <div class="chats shadow col-sm-10 offset-sm-1">
 <%# メッセージ表示 %>
   <div id="chat_messages" data-chat_room_id="<%= @room.id %>">

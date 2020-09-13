@@ -12,7 +12,8 @@ App.chat_room = App.cable.subscriptions.create("ChatRoomChannel", {
       $('#chat_messages').append(data["message"]);
       debugger
       // 自分の発言かどうかif分岐
-      if (data['current_id']== $('#chat_messages').children().last().user_id || $('#chat_messages').children().last().shop_id ){ 
+      show_id = $('#show_id').data('show_id')
+      if (data['current_id'] == show_id){ 
       // class="chat_messages"のchildrenの最後(送信した発言)
       lastChild = $('#chat_messages').children().last();
       // chat_boxのleft → rightに変換する
