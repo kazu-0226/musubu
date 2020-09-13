@@ -16,5 +16,6 @@ class ChatRoomChannel < ApplicationCable::Channel
     else
       ChatMessage.create! content: data["content"], shop_id: data["shop_id"], chat_room_id: data["chat_room_id"]
     end
+    ActionCable.server.broadcast 'chat_room_channel', message: ChatMessageBroadcastJob.render_chat_message(data)
   end
 end
