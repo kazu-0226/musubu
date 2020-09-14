@@ -3,8 +3,8 @@ class ShopsController < ApplicationController
   before_action :set_shop, only: [:show, :edit, :update, :withdraw]
 
   def show
-    #ユーザが店舗詳細にてチャットを開始するため、店舗がログインしていないことが条件
-    unless shop_signed_in?
+    #ユーザが店舗詳細にてチャットを開始するため、ユーザがログインしていることが条件
+    if user_signed_in?
       #お店と会員のチャットルームをeachで一つずつ取り出す
       current_user.chat_rooms.each do |cur|
         @shop.chat_rooms.each do |sr|
