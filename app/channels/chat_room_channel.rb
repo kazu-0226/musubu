@@ -2,7 +2,9 @@ class ChatRoomChannel < ApplicationCable::Channel
   def subscribed
     # stream_from "some_channel"
     #chat_room_channel.rbとchat_room_channel.coffee間のデータをデータを送受信
-    stream_from "chat_room_channel"
+    p params
+    stream_from "chat_room_channel_#{params[:room]}"
+    #stream_from "chat_room_channel_#{params['room_id']}"
   end
 
   def unsubscribed
