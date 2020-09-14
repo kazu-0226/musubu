@@ -10,6 +10,7 @@
     </span>
   </div>
 
+<%# メッセージの表示を返す時、左右を分けるために誰がページを見ているか情報を渡す %>
 <% if shop_signed_in? %>
   <div id="show_id" data-show_id="<%= current_shop.id %>"></div>
 <% elsif user_signed_in? %>
@@ -29,10 +30,8 @@
     <div class= "col-sm-10 offset-sm-1"></div>
       <% if shop_signed_in? %>
         <input type="hidden" name="shop_id" id="shop-id-form" value="<%= @room.shop.id %>">
-        <input type="hidden" name="current_id" id="chat-current_id" value="<%= current_shop.id %>">
       <% else %>
         <input type="hidden" name="user_id" id="user-id-form" value="<%= @room.user.id %>">
-        <input type="hidden" name="current_id" id="chat-current_id" value="<%= current_user.id %>">
       <% end %>
       <input type="hidden" name="chat_room_id" id="chat-room-id-form"  value="<%= @room.id %>">
 
