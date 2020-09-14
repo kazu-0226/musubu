@@ -4,9 +4,9 @@ class ChatMessageBroadcastJob < ApplicationJob
   #private以下の記述で左右のパーシャル両方をmessage_right、 message_leftに渡す。また左右の表示を分けるためにsend_idを渡す。
   def perform(chat_message)
     if chat_message.user_id.present? 
-      ActionCable.server.broadcast 'chat_room_channel', message_right: render_message_right(chat_message), message_left: render_message_left(chat_message),send_id: @arguments[0].user_id
+      ActionCable.server.broadcast "chat_room_channel_#{chat_message.chat_room_id}", message_right: render_message_right(chat_message), message_left: render_message_left(chat_message),send_id: @arguments[0].user_id
     else
-      ActionCable.server.broadcast 'chat_room_channel', message_right: render_message_right(chat_message), message_left: render_message_left(chat_message),send_id: @arguments[0].shop_id
+      ActionCable.server.broadcast "chat_room_channel_#{chat_message.chat_room_id}", message_right: render_message_right(chat_message), message_left: render_message_left(chat_message),send_id: @arguments[0].shop_id
     end
   end
 

@@ -1,4 +1,4 @@
-App.chat_room = App.cable.subscriptions.create("ChatRoomChannel", {
+App.chat_room = App.cable.subscriptions.create({channel:"ChatRoomChannel",room:location.pathname.match(/[0-9]{1,}/).pop()}, {
   connected: function() {
     // Called when the subscription is ready for use on the server
   },
