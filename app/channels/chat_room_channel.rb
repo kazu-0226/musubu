@@ -9,13 +9,12 @@ class ChatRoomChannel < ApplicationCable::Channel
     # Any cleanup needed when channel is unsubscribed
   end
 
-  #room_channel.jsで実行されたspeakのメッセージを受け取り、メッセージ作成？
+  #room_channel.jsで実行されたspeakのメッセージを受け取り、メッセージ作成（after_create_commit）
   def speak(data)
     if data["user_id"].present?
       ChatMessage.create! content: data["content"], user_id: data["user_id"], chat_room_id: data["chat_room_id"]
     else
       ChatMessage.create! content: data["content"], shop_id: data["shop_id"], chat_room_id: data["chat_room_id"]
     end
-    ActionCable.server.broadcast 'chat_room_channel', message: ChatMessageBroadcastJob.render_chat_message(data)
   end
 end
