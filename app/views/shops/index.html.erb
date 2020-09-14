@@ -54,12 +54,12 @@
         <% if shop.name.present? %>
         <div class= "row">
         <hr>
-            <div class ="col-sm-5">
+            <div class ="col-sm-6">
                 <%= link_to shop_path(shop) do %>
                     <%= attachment_image_tag shop, :main_image, class: "index_main_image", fallback: "no_image.svg" %>
                 <% end %>
             </div>
-            <div class ="col-sm-7 index_info">
+            <div class ="col-sm-6 index_info">
                 <h2><%= shop.catchcopy %></h2>
                 <table>
                 <tr><h3>店名：<%= link_to shop.name, shop_path(shop) %></h3></tr>
