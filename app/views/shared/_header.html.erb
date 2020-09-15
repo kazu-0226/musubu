@@ -1,5 +1,5 @@
 <header class="sticky-top js-header">  
-    <nav class="navbar navbar-expand-lg navbar-light bg-light">
+    <nav class="navbar navbar-expand-lg navbar-light">
         <%= link_to root_path, class:"navbar-brand"  do %>
             <% image_tag 'logo4.png', class:"logo" %>
         <% end %>
@@ -9,26 +9,76 @@
             <% if admin_signed_in? %>
             <div class="collapse navbar-collapse" id="navbarSupportedContent">
                 <ul class="nav navbar-nav navbar-right">
-                    <li><%= link_to "TOP", admins_homes_top_path %></li>
-                    <li><%= link_to "店舗一覧", admins_shops_path %></li>
-                    <li><%= link_to "会員一覧", admins_users_path %></li>
-                    <li><%= link_to "ログアウト", destroy_admin_session_path, method: :delete %></li>
+                    <li >
+                        <%= link_to  admins_homes_top_path do %>
+                            Top<i class="fas fa-home"></i>
+                        <% end %>
+                    </li>
+                    <li class="nav-item">
+                        <%= link_to admins_shops_path do %>
+                            店舗一覧<i class="fas fa-store-alt"></i>
+                        <% end %>
+                    </li>
+                    <li class="nav-item">
+                        <%= link_to  admins_users_path do %>
+                            ユーザ一覧<i class="fas fa-users"></i>
+                        <% end %>
+                    </li>
+                    <li class="nav-item">
+                        <%= link_to  destroy_admin_session_path, method: :delete do %>
+                            <i class="fas fa-door-open"></i>
+                        <% end %>
+                    </li>
                 </ul>
             </div>
             <% elsif user_signed_in? %>
             <div class="collapse navbar-collapse" id="navbarSupportedContent">
                 <ul class="nav navbar-nav navbar-right">
-                    <li><%= link_to "マイページ", user_path(current_user.id) %></li>
-                    <li><%= link_to "店舗一覧", shops_path %></li>
-                    <li><%= link_to "ログアウト",destroy_user_session_path, method: :delete  %></li>
+                    <li class="nav-item">
+                        <%= link_to user_path(current_user.id) do %>
+                            マイページ<i class="fas fa-home"></i>
+                        <% end %>
+                    </li>
+                    <li class="nav-item">
+                        <%= link_to chat_rooms_path do %>
+                            チャット<i class="far fa-envelope"></i>
+                        <% end %>
+                    </li>
+                    <li class="nav-item">
+                        <%= link_to  shops_path do %>
+                           お店を探す<i class="fas fa-store-alt"></i>
+                        <% end %>
+                    </li>
+                    <li class="nav-item">
+                        <%= link_to destroy_user_session_path, method: :delete  do %>
+                            ログアウト<i class="fas fa-door-open"></i>
+                        <% end %>
+                    </li>
                 </ul>
             </div>
             <% elsif shop_signed_in? %>
             <div class="collapse navbar-collapse" id="navbarSupportedContent">
                 <ul class="nav navbar-nav navbar-right">
-                    <li><%= link_to "マイページ", shop_path(current_shop.id) %></li>
-                    <li><%= link_to "会員一覧", users_path %></li>
-                    <li><%= link_to "ログアウト",destroy_shop_session_path, method: :delete %></li>
+                    <li class="nav-item">
+                        <%= link_to  shop_path(current_shop.id) do %>
+                            マイページ<i class="fas fa-home"></i>
+                        <% end %>
+                    </li>
+                     <li class="nav-item">
+                        <%= link_to chat_rooms_path do %>
+                            チャット<i class="far fa-envelope"></i>
+                        <% end %>
+                    </li>
+                    <li class="nav-item">
+                        <%= link_to  users_path do %>
+                            後継者を探す<i class="fas fa-users"></i>
+                        <% end %>
+                    </li>
+                    <li class="nav-item">
+                        <%= link_to destroy_shop_session_path, method: :delete do %>
+                            ログアウト<i class="fas fa-door-open"></i>
+                        <% end %>
+                    </li>
                 </ul>
             </div>
             <% else %>
@@ -36,14 +86,14 @@
                     <ul class="nav navbar-nav navbar-right">
                         <li class="dropdown"><a class="dropdown-toggle" href="#" data-toggle="dropdown">ログイン</a>
                         <ul class="dropdown-menu">
-                            <li><%= link_to "会員の方", new_user_session_path  %></li>
-                            <li><%= link_to "お店の方", new_shop_session_path %></li>
+                            <li class="nav-item"><%= link_to "会員の方", new_user_session_path  %></li>
+                            <li class="nav-item"><%= link_to "お店の方", new_shop_session_path %></li>
                         </ul>
                         </li>
                         <li class="dropdown"><a class="dropdown-toggle" href="#" data-toggle="dropdown">新規登録</a>
                             <ul class="dropdown-menu">
-                                <li><%= link_to "会員の方", new_user_registration_path  %></li>
-                                <li><%= link_to "お店の方", new_shop_registration_path %></li>
+                                <li class="nav-item"><%= link_to "会員の方", new_user_registration_path  %></li>
+                                <li class="nav-item"><%= link_to "お店の方", new_shop_registration_path %></li>
                             </ul>
                         </li>
                     </ul>
