@@ -13,9 +13,9 @@
 <div id="room" data-room_id="<%= @room.id %>"></div>
 <%# メッセージの表示を返す時、左右を分けるために誰がページを見ているか情報を渡す %>
 <% if shop_signed_in? %>
-  <div id="show_id" data-show_id="<%= current_shop.id %>"></div>
+  <div id="show_id" data-show_id="shop"></div>
 <% elsif user_signed_in? %>
-  <div id="show_id" data-show_id="<%= current_user.id %>"></div>
+  <div id="show_id" data-show_id="user"></div>
 <% end %>
 
 
