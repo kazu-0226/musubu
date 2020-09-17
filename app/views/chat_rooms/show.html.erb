@@ -22,7 +22,7 @@
 <div class="chats shadow col-sm-10 offset-sm-1">
 <%# メッセージ表示 %>
   <div id="chat_messages" data-chat_room_id="<%= @room.id %>">
-    <%= render 'chat_messages/chat_message', {messages: @room.chat_messages} %>
+    <%= render 'chat_messages/chat_message', {messages: @messages} %>
   </div>
 <br>
 
