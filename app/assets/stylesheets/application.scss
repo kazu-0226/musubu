@@ -28,14 +28,14 @@
     width: 30%;
   }
 
+.nav-item{
+  margin-left: 10px;
+}
+
+/*イメージ*/
 .round_image{
      border-radius: 50%;
-}
-.circle{
-    width: 80px;
-    height: 80px;
-    border-radius: 50%;
-    background: skyblue;
+     object-fit: cover;
 }
 
 /*チャットの表示*/
@@ -125,7 +125,7 @@
   }
   
 
-// 
+/*検索ボックス*/
 .index-search{
   width: 70%;
 }
@@ -148,7 +148,7 @@
   text-align: right;
 }
 
-// 
+/*一覧表示*/
 .index_main_image{
 width: auto;
 height: 300px;
@@ -172,7 +172,7 @@ height: 300px;
   border-radius: 8px
 }
 
-// 
+/*お店詳細*/
 .carousel-item {
   height: 65vh;
   min-height: 300px;
@@ -189,4 +189,64 @@ height: 300px;
   display: -webkit-box;
   -webkit-box-orient: vertical;
   -webkit-line-clamp: 3;
+}
+
+#carouselControls{
+  height: 400px;
+}
+
+.show_title {
+  position: relative;
+  display: inline-block;
+  margin: 1rem 0 1rem -10px;
+  padding: 1rem 3rem;
+  color: #fff;
+  border-radius: 0 100vh 100vh 0;
+  background:#FE9F18;
+  -webkit-box-shadow: 3px 3px 5px rgba(0, 0, 0, .2);
+  box-shadow: 3px 3px 5px rgba(0, 0, 0, .2);
+}
+
+.show_title:before {
+  position: absolute;
+  bottom: -10px;
+  left: 0;
+  width: 0;
+  height: 0;
+  content: '';
+  border-top: 10px solid #FE9F18;
+  border-left: 10px solid transparent;
+}  
+
+.box_show{
+  border: dashed 2px #ffc3c3;
+  border-radius: 8px;
+  margin-bottom: 10px;
+  padding: 10px;
+}
+
+.show_text{
+  background-color: #F5F2EE;
+}
+
+/*ユーザ詳細*/
+
+.profile-info{
+  text-align: center;
+}
+
+.main-raised {
+  margin: -60px 30px 0px;
+  border-radius: 6px;
+  box-shadow: 0 16px 24px 2px rgba(0, 0, 0, 0.14), 0 6px 30px 5px rgba(0, 0, 0, 0.12), 0 8px 10px -5px rgba(0, 0, 0, 0.2);
+  padding: 50px 0px;
+}
+
+
+.profile-content{
+  width: 80%;
+}
+
+.follow-btn{
+  margin-right: 30px;
 }

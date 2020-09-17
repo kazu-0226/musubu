@@ -1,0 +1,36 @@
+<h2>チャット一覧</h2>
+<% if shop_signed_in? %>
+    <table class="table table">
+        <% @shop_chat_rooms.each do |e| %>
+            <tr>
+                <td>
+                <!-- 名前からroomの詳細に飛べるようにリンク化 -->
+                <%= link_to chat_room_path(e.id), data: {"turbolinks"=>false} do %>
+                    <%= attachment_image_tag e.user, :user_image, format: 'jpeg', class: "rounded-circle", fallback: "no_image.jpg", size: "30x30" %>
+                    <%= e.user.full_name %>
+                <% end %>
+                </td>
+                <td>
+                    <h6 style="color: #C0C0C0;"><%= e.updated_at.strftime("%Y/%m/%d %H:%M") %></h6>
+                </td>
+            </tr>
+        <% end %>
+    </table>
+<% elsif user_signed_in? %>
+    <table class="table table-striped">
+        <% @user_chat_rooms.each do |e| %>
+            <tr>
+                <td>
+                    <!-- 名前からroomの詳細に飛べるようにリンク化 -->
+                    <%= link_to chat_room_path(e.id), data: {"turbolinks"=>false} do %>
+                        <%= attachment_image_tag e.shop, :main_image, format: 'jpeg', class: "rounded-circle", fallback: "no_image.jpg", size: "30x30" %>
+                        <%= e.shop.name %>
+                    <% end %>
+                </td>
+                <td>
+                    <h6 style="color: #C0C0C0;"><%= e.updated_at.strftime("%Y/%m/%d %H:%M") %></h6>
+                </td>
+            </tr>
+        <% end %>
+    </table>
+<% end %>

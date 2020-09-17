@@ -15,10 +15,28 @@ class ChatRoomsController < ApplicationController
 
   def show
     @room = ChatRoom.find(params[:id])
-    #shopが送ったメッセージとuserが送ったメッセージを分ける
-    @shop_messages = @room.chat_messages.where(shop_id: @room.shop_id)
-    @user_messages = @room.chat_messages.where(user_id: @room.user_id)
     @message = ChatMessage.new
   end
+
+  def index
+    if shop_signed_in?
+      @shop = current_shop
+      @current_room = current_shop.chat_rooms
+      myRoomIds = []
+      @current_room.each do |chat_room|
+        myRoomIds << chat_room.id
+      end
+      @shop_chat_rooms = ChatRoom.where(id: myRoomIds).order(created_at: :desc)
+    elsif user_signed_in?
+      @user = current_user
+      @current_room = current_user.chat_rooms
+      myRoomIds = []
+      @current_room.each do |chat_room|
+        myRoomIds << chat_room.id
+      end
+      @user_chat_rooms = ChatRoom.where(id: myRoomIds).order(created_at: :desc)
+    end
+  end
+
 
 end

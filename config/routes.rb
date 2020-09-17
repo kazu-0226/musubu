@@ -57,7 +57,7 @@ Rails.application.routes.draw do
   end
 
   #チャットルーティング 
-  resources :chat_rooms, only: [:show, :create]
+  resources :chat_rooms, only: [:show, :create, :index]
   resources :chat_messages, only:[:create]
   
 
