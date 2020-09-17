@@ -1,80 +1,52 @@
 <div class="container">
-    <div class= "row">
-        <div class ="col-sm6-">
-            <div>
+    <div class= "row justify-content-center">
+        <div class ="col-sm6">
+            <div class="profile-image-box">
                 <%= attachment_image_tag @user, :user_image, class: "round_image", fallback: "no_image.svg", size:"300x300" %>
             </div>
-            <table >
-            <tr>
-            <td><span>お名前:</span><%= @user.full_name %></td>
-            </tr>
-            <tr>
-            <td><span>フリガナ：</span><%= @user.full_name_kana %></td>
-            </tr>
-            <tr>
-            <td>住んでいる地域：<%=@user.prefecture_name %></td>
-            </tr>
-            <tr>
-            <% if @user == current_user %>
-              <td colspan="2"><%= link_to "プロフィール編集", edit_user_path(@user), class: "btn btn-primary" %></td>
-            <% end %>
-            </tr>
-            </table>
-        </div>
-        <div class ="col-sm6-">
-        <%= @user.pr %>
-            <table >
-                <tr>
-                    <td>希望地域</td>
-                    <td><%= @user.hope_prefecture_name %></td>
-                </tr>
-                <tr>
-                    <td>希望業種</td>
-                    <td>
-                        <% if @user.category_id.present? %>
-                            <%= @user.category.name %>
-                        <% end %>
-                    </td>
-                </tr>
-                <tr>
-                    <td>
-                        <span id="follow_<%= @user.id %>">
-                            <%= render 'shop_followings/follow', user:@user %>
-                        </span>
-                    </td>
-                    <td>
-                    <span id="chat_<%= @user.id %>">
-                        <%= render 'chat_rooms/user_chat_button', user:@user %>
-                    </span>
-                    </td>
-                </tr>
-            </table>
-        </div>
-    </div>
-    <div class= "row">
-        <p>
-            <a class="btn btn-primary col-sm-5" data-toggle="collapse" href="#multiCollapseExample1" role="button" aria-expanded="false" aria-controls="multiCollapseExample1">フォローしているお店</a>
-            <button class="btn btn-primary col-sm-5 offset-sm-1" type="button" data-toggle="collapse" data-target="#multiCollapseExample2" aria-expanded="false" aria-controls="multiCollapseExample2">フォローされているお店</button>
-        </p>
-        <div class="row">
-            <div class="col-sm-5">
-                <div class="collapse multi-collapse" id="multiCollapseExample1">
-                    <div class="card card-body">
-                       <% @user.user_followings.each do |f| %>
-                         <%= f.shop.name %>
-                         <%= attachment_image_tag f.shop, :main_image, class: "main_image", fallback: "no_image.svg", size:"300x300" %>
-                       <% end %>
+         </div>
+     </div>
+    <div class= "row justify-content-center">
+        <div class ="col-sm6">
+            <div class= "main main-raised">
+                <table class="table table-borderless profile-info" >
+                    <tr>
+                        <td>お名前:<%= @user.full_name %></td>
+                    </tr>
+                    <tr>
+                        <td>フリガナ:<%= @user.full_name_kana %></td>
+                    </tr>
+                    <tr>
+                        <td>住んでいる地域:<%=@user.prefecture_name %></td>
+                    </tr>
+                    <tr>
+                        <td>希望地域:<%= @user.hope_prefecture_name %></td>
+                    </tr>
+                    <tr>
+                        <td>
+                            <% if @user.category_id.present? %>
+                                希望業種:<%= @user.category.name %>
+                            <% end %>
+                        </td>
+                    </tr>
+                    <tr>
+                    <% if @user == current_user %>
+                    <td colspan="2"><%= link_to "プロフィール編集", edit_user_path(@user), class: "btn btn-primary" %></td>
+                    <% end %>
+                    </tr>
+                </table>
+                <div class= "row justify-content-center">
+                    <div class= "profile-content">
+                        <%= @user.pr %>
                     </div>
                 </div>
-            </div>
-            <div class="col-sm-5 offset-sm-1">
-                <div class="collapse multi-collapse" id="multiCollapseExample2">
-                    <div class="card card-body">
-                        <% @user.shop_followings.each do |f| %>
-                            <%= f.shop.name %>
-                            <%= attachment_image_tag f.shop, :sub_image, class: "main_image", fallback: "no_image.svg", size:"300x300" %>
-                       <% end %>
-                    </div>
+                <div class= "row justify-content-center">
+                    <span id="follow_<%= @user.id %>" class="follow-btn">
+                        <%= render 'shop_followings/follow', user:@user %>
+                    </span>
+                    <span id="chat_<%= @user.id %>" class="chat-btn">
+                        <%= render 'chat_rooms/user_chat_button', user:@user %>
+                    </span>
                 </div>
             </div>
         </div>
