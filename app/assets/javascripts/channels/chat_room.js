@@ -28,7 +28,7 @@ App.chat_room = App.cable.subscriptions.create({
       });
   }
 },
-$(document).on('keypress', '[data-behavior~=chat_speaker]', function (event) {
+$('#content-form').on('keypress', function (event) {
       if (event.keyCode === 13) {
           var userForm = $('#user-id-form');
           var shopForm = $('#shop-id-form');
