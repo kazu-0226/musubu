@@ -26,9 +26,10 @@
                     </thead>
                     <tbody>
                     <tr>
-                        <td id ="follow-count">
-                            フォロー数：<%= link_to @shop.shop_followings.count, followings_shop_path(@shop) %>
-                            フォロー数：<%= link_to @shop.user_followings.count, followers_shop_path(@shop) %>
+                        <td>
+                            <span id ="follow-count_<%= @shop.id %>">
+                                <%= render 'shops/follow_data', shop:@shop %>
+                            </span>
                         </td>
                     </tr>
                         <tr>
