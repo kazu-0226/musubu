@@ -1,14 +1,16 @@
 <div class= "container">
-<h2><%= @shop.catchcopy %></h2>
+<h2 class="catch">
+    <%= @shop.catchcopy %>
+</h2>
         <div class= "row">
             <div class ="col-sm-6">
                 <div id="carouselControls" class="carousel slide" data-ride="carousel">
                     <div class="carousel-inner">
                         <div class="carousel-item active">
-                            <%= attachment_image_tag @shop, :main_image, class: "main_image", fallback: "no_image.svg" %>
+                            <%= attachment_image_tag @shop, :main_image, class: "shop-show-iamge", fallback: "no_image.svg" %>
                         </div>
                         <div class="carousel-item">
-                            <%= attachment_image_tag @shop, :sub_image, class: "main_image", fallback: "no_image.svg" %>
+                            <%= attachment_image_tag @shop, :sub_image, class: "shop-show-iamge", fallback: "no_image.svg" %>
                         </div>
                     </div>
                     <a class="carousel-control-prev" href="#carouselControls" role="button" data-slide="prev">
@@ -22,7 +24,7 @@
             <div class ="col-sm-5 offset-1">
                 <table >
                     <thead>
-                    <td><h3><%= @shop.name %></h3></td>
+                        <td><h3><%= @shop.name %></h3></td>
                     </thead>
                     <tbody>
                     <tr>
@@ -45,6 +47,10 @@
                             <td><%= @shop.address %></td>
                         </tr>
                         <tr>
+                        <td>TELL</td>
+                        <td><%= @shop.phone_number %></td>
+                        </tr>
+                        <tr>
                         <td colspan="2">
                             <div id="map"></div>
                         </td>
@@ -58,6 +64,9 @@
                     <span id="chat_<%= @shop.id %>">
                         <%= render 'chat_rooms/shop_chat_button', shop:@shop %>
                     </span>
+                    <% if @shop == current_shop %>
+                      <%= link_to "編集する", edit_shop_path(@shop), class:"btn btn-primary" %>
+                    <% end %>
                 </div>
             </div>
         </div>
@@ -67,8 +76,8 @@
             <h3 class="show_title">お店のアピールポイント</h3>
             <p><%= @shop.appeal_text  %></p>
         </div>
-        <div class ="col-sm-6 offset-1">
-            <%= attachment_image_tag @shop, :appeal_image, class: "main_image", fallback: "no_image.svg"  %>
+        <div class ="col-sm-6 offset-1 show-box-image">
+            <%= attachment_image_tag @shop, :appeal_image, class: "show-image", fallback: "no_image.svg"  %>
         </div>
     </div>
     </div>
@@ -80,8 +89,8 @@
                 <h4><%= @shop.recommend_name %></h4>
                 <p><%= @shop.recommend_text %></p>
         </div>
-        <div class ="col-sm-6 offset-1">
-            <%= attachment_image_tag @shop, :recommend_image, class: "main_image", fallback: "no_image.svg" %>
+        <div class ="col-sm-6 offset-1 show-box-image">
+            <%= attachment_image_tag @shop, :recommend_image, class: "show-image", fallback: "no_image.svg" %>
         </div>
     </div>
     </div>
