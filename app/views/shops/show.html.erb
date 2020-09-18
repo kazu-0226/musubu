@@ -25,6 +25,13 @@
                     <td><h3><%= @shop.name %></h3></td>
                     </thead>
                     <tbody>
+                    <tr>
+                        <td>
+                            <span id ="follow-count_<%= @shop.id %>">
+                                <%= render 'shops/follow_data', shop:@shop %>
+                            </span>
+                        </td>
+                    </tr>
                         <tr>
                             <td>業種</td>
                             <td>
@@ -44,7 +51,7 @@
                         </tr>
                     </tbody>
                 </table>
-                            <div class= "aciton-box">
+                <div class= "aciton-box">
                     <span id="follow_<%= @shop.id %>">
                         <%= render 'user_followings/follow', shop:@shop %>
                     </span>

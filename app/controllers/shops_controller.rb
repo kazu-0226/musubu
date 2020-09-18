@@ -1,6 +1,6 @@
 class ShopsController < ApplicationController
   before_action :authenticate_shop!, only: [:edit, :update, :withdraw]
-  before_action :set_shop, only: [:show, :edit, :update, :withdraw]
+  before_action :set_shop, only: [:show, :edit, :update, :withdraw, :followers, :followings ]
 
   def show
     #ユーザが店舗詳細にてチャットを開始するため、ユーザがログインしていることが条件
@@ -46,9 +46,18 @@ class ShopsController < ApplicationController
     render :index
   end
 
+  def followers
+    
+  end
+
+  def followings
+    
+  end
+
   def withdraw
     
   end
+
 
 
   private
