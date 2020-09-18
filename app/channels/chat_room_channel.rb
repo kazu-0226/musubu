@@ -2,11 +2,13 @@ class ChatRoomChannel < ApplicationCable::Channel
   def subscribed
     # stream_from "some_channel"
     #chat_room_channel.rbとchat_room_channel.coffee間のデータをデータを送受信
+    #stop_all_streams
     stream_from "chat_room_channel_#{params[:room]}"
   end
 
   def unsubscribed
     # Any cleanup needed when channel is unsubscribed
+    #stop_all_streams
   end
 
   #room_channel.jsで実行されたspeakのメッセージを受け取り、メッセージ作成（after_create_commit）
