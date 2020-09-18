@@ -49,6 +49,8 @@ Rails.application.routes.draw do
     resource :shop_followings, only: [:create, :destroy]
     member do
       put 'withdraw'
+      get 'followings'
+      get 'followers'
     end
     collection do
       #検索用に追加
