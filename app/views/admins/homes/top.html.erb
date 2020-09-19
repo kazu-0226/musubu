@@ -1,3 +1,60 @@
-<h1>Admins::Homes#top</h1>
-<p>Find me in app/views/admins/homes/top.html.erb</p>
+
 <%= link_to "カテゴリ作成", g_category_admins_shops_path, method: :post %>
+
+<div calss="container">
+<h3 class="heading">管理者画面</h3>
+    <div class="row justify-content-center">
+        <div class= "card admin-content admin-users">
+            <div class="card-body">
+                <h3 class="display-4 dashbord-counter"><%= @active_users.count %>/<small><%= @users.count %></small></h3>
+                <p>会員数</p>
+                <i class="fas fa-users fa-4x dashbord-icon"></i>
+            </div>
+            <%= link_to admins_users_path, class:"card-footer text-center more-info" do %>
+            <p>
+            詳しい情報へ
+            <span><i class="fas fa-arrow-alt-circle-right"></i></span>
+            </p>
+            <% end %>
+        </div>
+        <div class= "card admin-content admin-shops">
+            <div class="card-body">
+                <h3 class="display-4 dashbord-counter"><%= @active_shops.count %>/<small><%= @shops.count %></small></h3>
+                <p>店舗数</p>
+                <i class="fas fa-store-alt fa-4x dashbord-icon"></i>
+            </div>
+            <%= link_to admins_shops_path, class:"card-footer text-center more-info" do %>
+            <p>
+            詳しい情報へ
+            <span><i class="fas fa-arrow-alt-circle-right"></i></span>
+            </p>
+            <% end %>
+        </div>
+        <div class= "card admin-content admin-chats">
+            <div class="card-body">
+                <h3 class="display-4 dashbord-counter"><%= @chat_rooms.count %></h3>
+                <p>チャット数</p>
+                <i class="fas fa-envelope fa-4x dashbord-icon"></i>
+            </div>
+            <%= link_to admins_users_path, class:"card-footer text-center more-info" do %>
+            <p>
+            詳しい情報へ
+            <span><i class="fas fa-arrow-alt-circle-right"></i></span>
+            </p>
+            <% end %>
+        </div>          
+        <div class= "card admin-content admin-categories">
+            <div class="card-body">
+                <h3 class="display-4 dashbord-counter"><%= @categories.count %></h3>
+                <p>カテゴリ数</p>
+                <i class="fas fa-utensils fa-4x dashbord-icon"></i>
+            </div>
+            <%= link_to admins_users_path, class:"card-footer text-center more-info" do %>
+            <p>
+            詳しい情報へ
+            <span><i class="fas fa-arrow-alt-circle-right"></i></span>
+            </p>
+            <% end %>
+        </div>
+    </div>    
+</div>
