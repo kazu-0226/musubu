@@ -26,11 +26,15 @@ Rails.application.routes.draw do
     end
     resources :shops, only: [:index, :edit, :show, :update] do
       collection do
-        post 'g_category'
         post 'search'
       end
     end
     resources :chat_rooms, only: [:index]
+    resources :categories, only: [:index] do
+      collection do
+        post 'g_category'
+      end
+    end
   end
 
   #店舗ルーティング 
