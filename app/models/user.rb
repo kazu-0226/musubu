@@ -48,4 +48,9 @@ class User < ApplicationRecord
   def followed_by?(shop)
     shop_followings.where(shop_id: shop.id).exists?
   end
+
+  #ユーザが退会している場合はログインを弾く
+  def active_for_authentication?
+    super && (self.is_deleted == false)
+  end
 end

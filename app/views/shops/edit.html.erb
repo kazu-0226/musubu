@@ -17,7 +17,13 @@
                 <td><%= f.text_field :phone_number,  size: 35 %></td>
               </tr>
               <tr>
-                <td><%=  f.label :category_id, "業種" %></td>
+                <td>
+                  <%=  f.label :category_id, "業種" %>
+                  <br>
+                  <a href="https://api.gnavi.co.jp/api/scope/" target="_blank">
+                    <img src="https://api.gnavi.co.jp/api/img/credit/api_155_20.gif" width="155" height="20" border="0" alt="グルメ情報検索サイト ぐるなび">
+                  </a>
+                </td>
                 <td><%= f.select :category_id, Category.all.map{|category| [category.name, category.id]},  size: 35 %></td>
               </tr>
             </table>
@@ -102,15 +108,19 @@
           </div>
         </div>
       </section>
-      <div class ="shop-edit-action">
+      <div class ="shop-edit-action row justify-content-center">
         <%= f.submit "変更を保存する", class: "btn btn-primary" %>
       </div>
   <% end %>
+    <div class= "row justify-content-end">
+    <% if shop_signed_in? && @shop.id == current_shop.id %>
+      <%= link_to "退会", withdraw_shop_path(current_shop), method: :put, "data-confirm" => "本当に退会しますか？", class: "btn btn-outline-danger" %>
+    <% end %>
+  </div>
 </div>
 
-<a href="https://api.gnavi.co.jp/api/scope/" target="_blank">
-<img src="https://api.gnavi.co.jp/api/img/credit/api_155_20.gif" width="155" height="20" border="0" alt="グルメ情報検索サイト　ぐるなび">
-</a>
+
+
 
 
 <!-- 画像プレビュー -->
