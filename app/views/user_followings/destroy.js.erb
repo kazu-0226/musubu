@@ -1,2 +1,3 @@
 $('#follow_<%= @shop.id %>').html("<%= j(render partial: 'user_followings/follow', locals: {shop: @shop}) %>");
 $('#chat_<%= @shop.id %>').html("<%= j(render partial: 'chat_rooms/shop_chat_button', locals: {shop: @shop}) %>");
+$('#follow-count_<%= @shop.id %>').html("<%= j(render partial: 'shops/follow_data', locals: {shop: @shop}) %>");

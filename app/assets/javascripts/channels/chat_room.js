@@ -26,10 +26,10 @@ App.chat_room = App.cable.subscriptions.create({
           shop_id: shop_id,
           content: content
       });
-  }
+  },
 },
-$('#content-form').on('keypress', function (event) {
-      if (event.keyCode === 13) {
+$('#chat_sendbtn').on('click', function (event) {
+        console.log("click")
           var userForm = $('#user-id-form');
           var shopForm = $('#shop-id-form');
           var chatRoomForm = $('#chat-room-id-form');
@@ -37,8 +37,11 @@ $('#content-form').on('keypress', function (event) {
           App.chat_room.speak(chatRoomForm.val(), userForm.val(), shopForm.val(), contentForm.val());
           //App.chat_room.speak(chatRoomForm.val(),userForm.val(),shopForm.val(),contentForm.val(), currentUserId.val());
           return contentForm.val('');
-      }
   }
 )
 );
+});
+
+$(document).on('turbolinks:visit', function() { 
+    App.chat_room.unsubscribe();
 });

@@ -60,7 +60,7 @@
                 <% end %>
             </div>
             <div class ="col-sm-6 index_info">
-                <h2><%= shop.catchcopy %></h2>
+                <h3><%= shop.catchcopy %></h3>
                 <table>
                 <tr><h3>店名：<%= link_to shop.name, shop_path(shop) %></h3></tr>
                 <tr>
@@ -74,7 +74,7 @@
                 未設定
                 <% end %>
                 </tr>
-                <tr><h3>お店のアピールポイント</h3></tr>
+                <tr><h4>お店のアピールポイント</h4></tr>
                 <tr>
                 <div class="appeal_box">
                     <p class= "appeal_txet"><%= shop.appeal_text  %></p>

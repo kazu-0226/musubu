@@ -1,0 +1,29 @@
+<div class ="container">
+    <div class= "row justify-content-center">
+        <h2>フォローされているお店</h2>
+    </div>
+        <div class= "row justify-content-center">
+            <div class ="col-sm-10">
+                <div class= "main main-raised">
+                    <table class="table table-striped" >
+                        <% @user.shop_followings.each do |f| %>
+                            <tr>
+                                <td>
+                                    <!-- 名前からroomの詳細に飛べるようにリンク化 -->
+                                    <%= link_to shop_path(f.shop.id) do %>
+                                        <%= attachment_image_tag f.shop, :main_image, format: 'jpeg', class: "rounded-circle", fallback: "no_image.svg", size: "30x30" %>
+                                        <%= f.shop.name %>
+                                    <% end %>
+                                </td>
+                                <td>
+                                    <span id="follow_<%= f.shop.id %>">
+                                        <%= render 'user_followings/follow', shop:f.shop %>
+                                    </span>
+                                </td>
+                            </tr>
+                        <% end %>
+                    </table>
+                </div>
+            </div>
+        </div>       
+    </div>

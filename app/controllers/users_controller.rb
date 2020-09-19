@@ -1,6 +1,6 @@
 class UsersController < ApplicationController
   before_action :authenticate_user!, only: [:edit, :update, :withdraw]
-  before_action :set_user, only: [:show, :edit, :update, :withdraw]
+  before_action :set_user, only: [:show, :edit, :update, :withdraw, :followers, :followings ]
 
   def show
     #店がユーザ詳細にてチャットを開始するため、店舗がログインしていることが条件
@@ -45,6 +45,14 @@ class UsersController < ApplicationController
     @category_ids = params['category_ids']
     @users = search_user(@content, @prefecture_code, @category_ids)
     render :index
+  end
+
+  def followers
+    
+  end
+
+  def followings
+    
   end
 
   def withdraw

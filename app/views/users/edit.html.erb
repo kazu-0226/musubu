@@ -13,7 +13,8 @@
             <div class= "main main-raised">
                 <table class="table table-borderless">
                     <tr>
-                        <td colspan="2">プロフィール画像：  <%= f.attachment_field :user_image, placeholder: "画像", id: "user_image" %></td>
+                        <td></td>
+                        <td><%= f.attachment_field :user_image, placeholder: "画像", id: "user_image" %></td>
                     </tr>
                     <tr>
                         <td><%= f.label :first_name, '氏名' %></td>
@@ -36,6 +37,7 @@
                         <td><%= f.email_field :email %></td>
                     </tr>
                     <tr>
+                        <td></td>
                         <td>
                             <%= f.label :personality, '個人' %><%= f.radio_button :personality, :true %>
                             <%= f.label :personality, '企業' %><%= f.radio_button :personality, :false %>
@@ -55,10 +57,12 @@
                     </tr>
                     <tr>
                         <td><%= f.label :pr, '自己PR' %></td>
-                        <td><%= f.text_area :pr %></td>
+                        <td><%= f.text_area :pr, size: "40x10" %></td>
                     </tr>
                 </table>
-                <%= f.submit "変更を保存する", class: "btn btn-primary"%>
+                <div class= "row justify-content-center">
+                    <%= f.submit "変更を保存する", class: "btn btn-primary"%>
+                </div>
             </div>
         </div>
     </div>

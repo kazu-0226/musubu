@@ -5,7 +5,7 @@ class UserFollowingsController < ApplicationController
         @follow.save
         #非同期通信の際にインタンス変数を渡す必要があるため、チャットボタンの表示を定義する
         #ユーザが店舗詳細にてチャットを開始するため、店舗がログインしていないことが条件
-        unless shop_signed_in?
+      unless shop_signed_in?
         #お店と会員のチャットルームをeachで一つずつ取り出す
         current_user.chat_rooms.each do |cur|
           @shop.chat_rooms.each do |sr|

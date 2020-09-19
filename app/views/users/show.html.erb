@@ -7,9 +7,16 @@
          </div>
      </div>
     <div class= "row justify-content-center">
-        <div class ="col-sm6">
+        <div class ="col-sm-10">
             <div class= "main main-raised">
                 <table class="table table-borderless profile-info" >
+                    <tr>
+                        <td>
+                            <span id ="follow-count_<%= @user.id %>">
+                                <%= render 'users/follow_data', user:@user %>
+                            </span>
+                        </td>
+                    </tr>
                     <tr>
                         <td>お名前:<%= @user.full_name %></td>
                     </tr>
