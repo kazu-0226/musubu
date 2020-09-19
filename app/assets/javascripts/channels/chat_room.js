@@ -26,7 +26,7 @@ App.chat_room = App.cable.subscriptions.create({
           shop_id: shop_id,
           content: content
       });
-  }
+  },
 },
 $('#chat_sendbtn').on('click', function (event) {
         console.log("click")
@@ -40,4 +40,8 @@ $('#chat_sendbtn').on('click', function (event) {
   }
 )
 );
+});
+
+$(document).on('turbolinks:visit', function() { 
+    App.chat_room.unsubscribe();
 });
