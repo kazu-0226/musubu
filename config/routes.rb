@@ -30,6 +30,7 @@ Rails.application.routes.draw do
         post 'search'
       end
     end
+    resources :chat_rooms, only: [:index]
   end
 
   #店舗ルーティング 
