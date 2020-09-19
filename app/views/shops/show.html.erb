@@ -1,3 +1,4 @@
+<% if @shop.is_deleted == false %>
 <div class= "container">
 <h2 class="catch">
     <%= @shop.catchcopy %>
@@ -93,15 +94,10 @@
             <%= attachment_image_tag @shop, :recommend_image, class: "show-image", fallback: "no_image.svg" %>
         </div>
     </div>
-    </div>
-
-    <div class= "row">
-        <div class ="col-sm-6">
-        </div>
-        <div class ="col-sm-6">
-        </div>
-    </div>  
 </div>
+<% else %>
+    <%= @shop.name %>は退会しました。
+<% end %>
 
 
 <script type="text/javascript">

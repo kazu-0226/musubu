@@ -42,7 +42,12 @@ class Shop < ApplicationRecord
     user_followings.where(user_id: user.id).exists?
   end
 
+  #お店が退会している場合はログインを弾く
+  def active_for_authentication?
+    super && (self.is_deleted == false)
+  end
 
+  #updateされたら新着に表示
   def updated?
     self.updated_at.between?(1.week.ago, Time.current)
   end

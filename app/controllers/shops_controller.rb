@@ -3,22 +3,27 @@ class ShopsController < ApplicationController
   before_action :set_shop, only: [:show, :edit, :update, :withdraw, :followers, :followings ]
 
   def show
-    #ユーザが店舗詳細にてチャットを開始するため、ユーザがログインしていることが条件
-    if user_signed_in?
-      #お店と会員のチャットルームをeachで一つずつ取り出す
-      current_user.chat_rooms.each do |cur|
-        @shop.chat_rooms.each do |sr|
-          #お店と会員のルームIDが等しければすでにルームは作成済みのため、@isRoom = trueとして@roomId = cur.idを代入
-          if cur.id == sr.id
-            @isRoom = true
-            @roomId = cur.id
+    if @shop.is_deleted == false
+      #ユーザが店舗詳細にてチャットを開始するため、ユーザがログインしていることが条件
+      if user_signed_in?
+        #お店と会員のチャットルームをeachで一つずつ取り出す
+        current_user.chat_rooms.each do |cur|
+          @shop.chat_rooms.each do |sr|
+            #お店と会員のルームIDが等しければすでにルームは作成済みのため、@isRoom = trueとして@roomId = cur.idを代入
+            if cur.id == sr.id
+              @isRoom = true
+              @roomId = cur.id
+            end
           end
         end
+        #@isRoomがfalse、つまりルームがなければインスタンス作成
+        unless @isRoom
+          @room = ChatRoom.new
+        end
       end
-      #@isRoomがfalse、つまりルームがなければインスタンス作成
-      unless @isRoom
-        @room = ChatRoom.new
-      end
+    else
+      flash[:notice] = "この店舗は退会しました"
+      redirect_back(fallback_location: root_path)
     end
   end
 
@@ -27,7 +32,6 @@ class ShopsController < ApplicationController
   end
 
   def update
-    binding.pry
     if @shop.update(shop_params)
       redirect_to shop_path(@shop)
     else
@@ -36,7 +40,7 @@ class ShopsController < ApplicationController
   end
 
   def index
-    @shops= Shop.all    
+    @shops= Shop.where(is_deleted: false)
   end
 
   def search
@@ -56,7 +60,10 @@ class ShopsController < ApplicationController
   end
 
   def withdraw
-    
+    @shop.update(is_deleted: true)
+    reset_session
+    flash[:notice] = "ありがとうございました。またのご利用を心よりお待ちしております。"
+    redirect_to root_path
   end
 
 
@@ -71,7 +78,7 @@ class ShopsController < ApplicationController
   end
 
   def search_shop(content, prefecture_code, category_ids)
-    shops = Shop.all
+    shops = Shop.where(is_deleted: false)
     #「where!」で例外処理を利用して、present?でtrueの検索をして「return shops」で値を返す
     if content.present?
       shops.where!(['name LIKE ? OR name_kana LIKE ? OR catchcopy LIKE ?', "%#{content}%", "%#{content}%", "%#{content}%"])

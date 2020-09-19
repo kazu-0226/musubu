@@ -1,3 +1,4 @@
+<% if @user.is_deleted == false %>
 <div class="container">
     <div class= "row justify-content-center">
         <div class ="col-sm6">
@@ -64,3 +65,6 @@
         </div>
     </div>
 </div>
+<% else %>
+    <%= @shop.name %>は退会しました。
+<% end %>
