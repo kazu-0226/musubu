@@ -1,90 +1,97 @@
 <div class= "container">
-<h2><%= @shop.catchcopy %></h2>
-
-    <div class= "row">
-        <div class ="col-sm-6">
-            <%= attachment_image_tag @shop, :main_image, class: "main_image", fallback: "no_image.svg", size:"300x300" %>
-            <div>
-                <% if user_signed_in? %>
-                    <% if @shop.followed_by?(current_user) %>
-                         <%= link_to "フォロー中", shop_user_followings_path(@shop.id), method: :delete, class: "btn btn-primary" %>
-                    <% else %>
-                        <%= link_to "フォローする", shop_user_followings_path(@shop.id), method: :post, class: "btn btn-primary" %>
-                    <% end %>
-                <% end %>
+    <h2 class="catch">
+        <%= @shop.catchcopy %>
+        <% if @shop.is_deleted == false %>
+            <span class= "btn btn-primary"><%= "有効" %></span>
+        <% else %> 
+            <span class= "btn btn-danger"><%= "無効" %></span>
+        <% end %>
+    </h2>
+        <div class= "row">
+            <div class ="col-sm-6">
+                <div id="carouselControls" class="carousel slide" data-ride="carousel">
+                    <div class="carousel-inner">
+                        <div class="carousel-item active">
+                            <%= attachment_image_tag @shop, :main_image, class: "shop-show-iamge", fallback: "no_image.svg" %>
+                        </div>
+                        <div class="carousel-item">
+                            <%= attachment_image_tag @shop, :sub_image, class: "shop-show-iamge", fallback: "no_image.svg" %>
+                        </div>
+                    </div>
+                    <a class="carousel-control-prev" href="#carouselControls" role="button" data-slide="prev">
+                        <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+                    </a>
+                    <a class="carousel-control-next" href="#carouselControls" role="button" data-slide="next">
+                        <span class="carousel-control-next-icon" aria-hidden="true"></span>
+                    </a>
+                </div>
             </div>
-                <div>
-                   <%# ユーザーとしてログインしていなければチャットボタンは表示させない %>
-                    <% if user_signed_in? %>
-                        <%# 相互フォローでなければチャットボタンは表示させない %>
-                        <% if @shop.followed_by?(current_user) && @current_user.followed_by?(@shop)%>
-                            <%# @isRoomをコントローラで定義してすでに作成されているルームならそのルームに遷移 %>
-                            <% if @isRoom == true %>
-                                <a href="/chat_rooms/<%= @roomId %>" class="btn btn-primary btn-lg">チャットへ</a>
-                            <% else %>
-                            <%# ルーム新規作成の場合はhiffdenオプションでshop.idを渡す %>
-                                <%= form_for @room do |f| %>
-                                    <%= f.hidden_field :shop_id, value: @shop.id %>
-                                    <%= f.submit "チャットを始める", class:"btn btn-primary" %>
+            <div class ="col-sm-5 offset-1">
+                <table >
+                    <thead>
+                        <td><h3><%= @shop.name %></h3></td>
+                    </thead>
+                    <tbody>
+                    <tr>
+                        <td>
+                            <span id ="follow-count_<%= @shop.id %>">
+                                <%= render 'shops/follow_data', shop:@shop %>
+                            </span>
+                        </td>
+                    </tr>
+                        <tr>
+                            <td>業種</td>
+                            <td>
+                                <% if @shop.category_id.present? %>
+                                <%= @shop.category.name %>
                                 <% end %>
-                            <% end %>
-                        <% end %>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>住所</td>
+                            <td><%= @shop.address %></td>
+                        </tr>
+                        <tr>
+                        <td>TEL</td>
+                        <td><%= @shop.phone_number %></td>
+                        </tr>
+                        <tr>
+                        <td colspan="2">
+                            <div id="map"></div>
+                        </td>
+                        </tr>
+                    </tbody>
+                </table>
+                <div class= "aciton-box">
+                    <% if admin_signed_in? %>
+                        <%= link_to "お店情報編集", edit_admins_shop_path(@shop), class: "btn btn-primary" %>
                     <% end %>
                 </div>
+            </div>
         </div>
-        <div class ="col-sm-6">
-            <table >
-                <thead>
-                <td><h3><%= @shop.name %></h3></td>
-                </thead>
-                <tbody>
-                    <tr>
-                        <td>業種</td>
-                        <td><%= @shop.category.name %></td>
-                    </tr>
-                    <tr>
-                        <td>住所</td>
-                        <td><%= @shop.address %></td>
-                    </tr>
-                    <tr>
-                    <td colspan="2">
-                        <div id="map"></div>
-                    </td>
-                    </tr>
-                </tbody>
-            </table>
+    <div class ="container">
+    <div class= "row box_show">
+        <div class ="col-sm-5 show_text">
+            <h3 class="show_title">お店のアピールポイント</h3>
+            <p><%= @shop.appeal_text  %></p>
+        </div>
+        <div class ="col-sm-6 offset-1 show-box-image">
+            <%= attachment_image_tag @shop, :appeal_image, class: "show-image", fallback: "no_image.svg"  %>
         </div>
     </div>
-
-    <div class= "row">
-        <div class ="col-sm-6">
-            <h3>お店のアピールポイント</h3>
-            <%= @shop.appeal_text  %>
-        </div>
-        <div class ="col-sm-6">
-            <%= attachment_image_tag @shop, :appeal_image, class: "main_image", fallback: "no_image.svg", size:"300x300" %>
-        </div>
     </div>
 
-    <div class= "row">
-        <div class ="col-sm-6">
-            <h3>お店のおすすめ！</h3>
-            <table>
-                <td><%= @shop.recommend_name %></td>
-                <td><%= @shop.recommend_text %></td>
-            </table>
+    <div class ="container">
+    <div class= "row box_show">
+        <div class ="col-sm-5 show_text">
+            <h3 class="show_title" >お店のおすすめ！</h3>
+                <h4><%= @shop.recommend_name %></h4>
+                <p><%= @shop.recommend_text %></p>
         </div>
-        <div class ="col-sm-6">
-            <%= attachment_image_tag @shop, :recommend_image, class: "main_image", fallback: "no_image.svg", size:"300x300" %>
+        <div class ="col-sm-6 offset-1 show-box-image">
+            <%= attachment_image_tag @shop, :recommend_image, class: "show-image", fallback: "no_image.svg" %>
         </div>
     </div>
-
-    <div class= "row">
-        <div class ="col-sm-6">
-        </div>
-        <div class ="col-sm-6">
-        </div>
-    </div>  
 </div>
 
 
