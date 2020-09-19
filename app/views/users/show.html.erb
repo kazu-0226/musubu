@@ -55,6 +55,11 @@
                         <%= render 'chat_rooms/user_chat_button', user:@user %>
                     </span>
                 </div>
+                <div class= "row justify-content-end withdraw">
+                    <% if user_signed_in? && @user.id == current_user.id %>
+                        <%= link_to "退会", withdraw_user_path(current_user), method: :put, "data-confirm" => "本当に退会しますか？", class: "btn btn-outline-danger" %>
+                    <% end %>
+                </div>
             </div>
         </div>
     </div>

@@ -6,7 +6,7 @@ ja:
       send_paranoid_instructions: "あなたのメールアドレスが登録済みの場合、本人確認用のメールが数分以内に送信されます。"
     failure:
       already_authenticated: 'すでにログインしています。'
-      inactive: 'アカウントが有効化されていません。メールに記載された手順にしたがって、アカウントを有効化してください。'
+      inactive: 'アカウントが有効化されていません。管理者にお問い合わせください。'
       invalid: "%{authentication_keys} もしくはパスワードが不正です。"
       locked: 'あなたのアカウントは凍結されています。'
       last_attempt: 'あなたのアカウントが凍結される前に、複数回の操作がおこなわれています。'
