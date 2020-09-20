@@ -13,7 +13,7 @@
             <% @chat_rooms.each do |cr| %>
                 <tr>
                     <td>
-                        <%= link_to cr.id, chat_room_path(cr.id)  %>
+                        <%= link_to cr.id, chat_room_path(cr.id), data: {"turbolinks" => false}  %>
                     </td>
                     <td>
                         <%= link_to admins_user_path(cr.user.id) do %>
