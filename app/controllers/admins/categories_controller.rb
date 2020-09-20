@@ -15,10 +15,18 @@ class Admins::CategoriesController < ApplicationController
   json = Net::HTTP.get(uri)
   #上記で取得したjsonをJSONとして解析してresultへ代入
   result = JSON.parse(json)
-  result['category_l'].each { |row|
-    Category.new(name: row['category_l_name'], code: row['category_l_code']).save
-    }
+    result['category_l'].each { |row|
+      unless Category.exists?(code: row['category_l_code'])
+        Category.new(name: row['category_l_name'], code: row['category_l_code']).save
+      end
+      }
+    redirect_to admins_categories_path
   end
 
+  def destroy
+    @category = Category.find(params[:id])
+    @category.destroy
+    redirect_to admins_categories_path
+  end
   
 end

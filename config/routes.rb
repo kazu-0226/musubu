@@ -30,7 +30,7 @@ Rails.application.routes.draw do
       end
     end
     resources :chat_rooms, only: [:index]
-    resources :categories, only: [:index] do
+    resources :categories, only: [:index, :destroy] do
       collection do
         post 'g_category'
       end
