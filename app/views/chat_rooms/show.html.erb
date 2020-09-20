@@ -25,19 +25,36 @@
     <%= render 'chat_messages/chat_message', {messages: @messages} %>
   </div>
 <br>
-
 <%# メッセージ送信フォーム %>
   <div class= "row justify-content-center">
-    <div class= "col-sm-10 offset-sm-1"></div>
+    <div class ="message-post">
       <% if shop_signed_in? %>
         <input type="hidden" name="shop_id" id="shop-id-form" value="<%= @room.shop.id %>">
       <% else %>
         <input type="hidden" name="user_id" id="user-id-form" value="<%= @room.user.id %>">
       <% end %>
       <input type="hidden" name="chat_room_id" id="chat-room-id-form"  value="<%= @room.id %>">
-
-      <input type="text" name="content" id="content-form" data-behavior="chat_speaker">
+      <input type="text" name="content" id="content-form" data-behavior="chat_speaker" size="50">
       <button id="chat_sendbtn" data-behavior="chat_speaker"><i class="fas fa-paper-plane"></i></i></button>
     </div>
   </div>
 </div>
+
+<%# 送信ボタンの入力制御 %>
+<script>
+window.addEventListener('DOMContentLoaded',function(){
+document.getElementById('chat_sendbtn').disabled = true;
+document.getElementById('content-form').addEventListener('keyup',function(){
+if (this.value.length < 1) {
+document.getElementById('chat_sendbtn').disabled = true;
+} else {
+document.getElementById('chat_sendbtn').disabled = false;
+}
+},false);
+document.getElementById('content-form').addEventListener('change',function(){
+if (this.value.length < 1) {
+document.getElementById('chat_sendbtn').disabled = true;
+}
+},false);
+},false);
+</script>

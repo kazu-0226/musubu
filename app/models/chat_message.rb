@@ -4,6 +4,10 @@ class ChatMessage < ApplicationRecord
   belongs_to :user, optional: true
   belongs_to :shop, optional: true
 
-# Callbacks
-after_create_commit { ChatMessageBroadcastJob.perform_later self }
+  #バリデーション
+  validates :content, presence: true
+
+  # Callbacks
+  after_create_commit { ChatMessageBroadcastJob.perform_later self }
+
 end
