@@ -50,3 +50,11 @@
 //         return chatForm.val('');
 //       }
 //     }));
+
+// function addToSearchUrl() {
+//     let path = location.pathname;
+//     let pattern = /users\/search.*$/
+  
+//     // URLが正しければ変更は不要
+//     if(path.match(pattern)){history.replaceState('', '', `${ path }`)} return;
+//   };

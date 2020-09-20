@@ -3,7 +3,7 @@ class Category < ApplicationRecord
     has_many :products
 
   #バリデーション
-  with_options presence: true,on: :update do
+  with_options presence: true do
     validates :code
     validates :name
   end

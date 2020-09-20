@@ -1,5 +1,5 @@
 class ChatRoomsController < ApplicationController
-
+  before_action :block_wrong_chat, only: [:show]
   def create
     #お店が作成した場合は、cuurent_shop.idとhiddenオプションで送られてきたuser_idを保存
     if shop_signed_in?
@@ -36,6 +36,24 @@ class ChatRoomsController < ApplicationController
         myRoomIds << chat_room.id
       end
       @user_chat_rooms = ChatRoom.where(id: myRoomIds).order(created_at: :desc)
+    end
+  end
+
+  private
+  def block_wrong_chat
+    chat_room = ChatRoom.find_by(id: params[:id])
+    if user_signed_in?
+      if chat_room.user_id != current_user.id
+      flash[:alert] = "権限がありません"
+      redirect_to root_path
+      end
+    elsif shop_signed_in?
+      if chat_room.shop_id != current_shop.id
+        flash[:alert] = "権限がありません"
+        redirect_to root_path
+      end
+    elsif admin_signed_in?
+      flash[:alert] = "管理者でログインしています"
     end
   end
 

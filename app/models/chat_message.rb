@@ -5,7 +5,7 @@ class ChatMessage < ApplicationRecord
   belongs_to :shop, optional: true
 
   #バリデーション
-  with_options presence: true,on: :update do
+  with_options presence: true do
     validates :content
     validates :chat_room_id
   end
