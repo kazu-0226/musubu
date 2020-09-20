@@ -36,7 +36,8 @@ $('#chat_sendbtn').on('click', function (event) {
           var contentForm = $('#content-form');
           App.chat_room.speak(chatRoomForm.val(), userForm.val(), shopForm.val(), contentForm.val());
           //App.chat_room.speak(chatRoomForm.val(),userForm.val(),shopForm.val(),contentForm.val(), currentUserId.val());
-          return contentForm.val('');
+          document.getElementById('chat_sendbtn').disabled = true;
+          contentForm.val('');
   }
 )
 );

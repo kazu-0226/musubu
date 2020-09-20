@@ -1,5 +1,6 @@
 <div class= "container">
     <%= form_with model:@user, local: true do |f| %>
+    <%= render 'shared/error_messages', model: f.object %>
         <div class= "row justify-content-center">
             <div class= "col-sm6">
                 <%= attachment_image_tag @user, :user_image, class: "round_image", fallback: "no_image.svg", size:"300x300" %>
@@ -15,11 +16,11 @@
                         </tr>
                         <tr>
                             <td><%= f.label :first_name, '氏名' %></td>
-                            <td><%= f.text_field :last_name%><%= f.text_field :first_name %></td>
+                            <td><%= f.text_field :last_name%> <%= f.text_field :first_name %></td>
                         </tr>
                         <tr>
                             <td><%= f.label :first_name_kana, 'フリガナ' %></td>
-                            <td><%= f.text_field :last_name_kana %><%=f.text_field :first_name_kana %></td>
+                            <td><%= f.text_field :last_name_kana %> <%=f.text_field :first_name_kana %></td>
                         </tr>
                         <tr>
                             <td><%= f.label :prefecture_name, 'お住まいの地域' %></td>

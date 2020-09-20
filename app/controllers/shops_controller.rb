@@ -35,6 +35,7 @@ class ShopsController < ApplicationController
     if @shop.update(shop_params)
       redirect_to shop_path(@shop)
     else
+      flash[:error] = "保存に失敗しました。"
       render :edit
     end
   end

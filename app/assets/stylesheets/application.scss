@@ -68,7 +68,7 @@
     text-align: right;
     font-size: 14px;
     background: #7da4cd;
-  
+    margin-bottom: 20px;
   }
   
 .says {
@@ -127,6 +127,14 @@
   .fa-paper-plane{
     color: blue;
   }
+
+.message-post{
+  width: 100%;
+  background-color: #dcdcdc;
+  padding: 5px;
+  text-align: center;
+}
+
 
 /*検索ボックス*/
 .index-search{
