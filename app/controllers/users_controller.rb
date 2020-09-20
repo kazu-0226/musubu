@@ -35,6 +35,7 @@ class UsersController < ApplicationController
     if @user.update(user_params)
       redirect_to user_path(@user)
     else
+      flash[:error] = "保存に失敗しました。"
       render :edit
     end
   end
