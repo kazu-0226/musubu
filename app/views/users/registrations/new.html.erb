@@ -1,29 +1,39 @@
-<h2>Sign up</h2>
+<div class="container">
+<div class="card-header text-center login-card">
+<h2>会員新規登録</h2>
+</div>
+    <div class= "row justify-content-center">
+      <div class= "main main-raised col-sm-8">
+        <div class ="col-sm-6 offset-3">
+          <%= form_for(resource, as: resource_name, url: registration_path(resource_name)) do |f| %>
+            <%= render "users/shared/error_messages", resource: resource %>
+          <table class="table table-borderless">
+           <tr>
+           <td><%= f.label :email %></td>
+           <td><%= f.email_field :email, autofocus: true, autocomplete: "email", placeholder:"email..."  %></td>
+           </tr>
 
-<%= form_for(resource, as: resource_name, url: registration_path(resource_name)) do |f| %>
-  <%= render "users/shared/error_messages", resource: resource %>
+           <tr>
+            <td><%= f.label :password %>
+            <br>
+            <% if @minimum_password_length %>
+            <em>(<%= @minimum_password_length %> 文字以上)</em>
+            <% end %>
+            </td>
+            <td><%= f.password_field :password, autocomplete: "new-password", placeholder:"password..."   %></td>
+          </tr>
 
-  <div class="field">
-    <%= f.label :email %><br />
-    <%= f.email_field :email, autofocus: true, autocomplete: "email" %>
-  </div>
+            <tr>
+              <td><%= f.label :password_confirmation %></td>
+              <td><%= f.password_field :password_confirmation, autocomplete: "new-password", placeholder:"再入力..." %></td>
+            </tr>
 
-  <div class="field">
-    <%= f.label :password %>
-    <% if @minimum_password_length %>
-    <em>(<%= @minimum_password_length %> characters minimum)</em>
-    <% end %><br />
-    <%= f.password_field :password, autocomplete: "new-password" %>
-  </div>
-
-  <div class="field">
-    <%= f.label :password_confirmation %><br />
-    <%= f.password_field :password_confirmation, autocomplete: "new-password" %>
-  </div>
-
-  <div class="actions">
-    <%= f.submit "Sign up" %>
-  </div>
-<% end %>
-
-<%= render "users/shared/links" %>
+          <tr>
+            <td colspan="2"><%= f.submit "新規登録", class: "btn btn-primary" %></td>
+          </tr>
+          </table>
+          <% end %>
+        </div>
+      </div>
+    </div>
+</div>
