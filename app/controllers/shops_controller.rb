@@ -1,5 +1,6 @@
 class ShopsController < ApplicationController
   before_action :authenticate_shop!, only: [:edit, :update, :withdraw]
+  before_action :block_wrong_shop, only: [:edit, :update, :withdraw]
   before_action :set_shop, only: [:show, :edit, :update, :withdraw, :followers, :followings ]
 
   def show
@@ -72,6 +73,13 @@ class ShopsController < ApplicationController
   private
   def set_shop
     @shop = Shop.find(params[:id])
+  end
+
+  def block_wrong_shop
+    if params[:id].to_i != current_shop.id
+      flash[:alert] = "権限がありません"
+      redirect_to root_path
+    end
   end
 
   def shop_params

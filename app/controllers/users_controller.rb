@@ -1,5 +1,6 @@
 class UsersController < ApplicationController
   before_action :authenticate_user!, only: [:edit, :update, :withdraw]
+  before_action :block_wrong_user, only: [:edit, :update, :withdraw]
   before_action :set_user, only: [:show, :edit, :update, :withdraw, :followers, :followings ]
 
   def show
@@ -71,6 +72,13 @@ class UsersController < ApplicationController
   private
   def set_user
     @user = User.find(params[:id])
+  end
+
+  def block_wrong_user
+    if params[:id].to_i != current_user.id
+      flash[:alert] = "権限がありません"
+      redirect_to root_path
+    end
   end
 
   def user_params
