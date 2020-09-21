@@ -97,7 +97,8 @@ gem 'rails-i18n'
 gem 'kaminari'
 gem 'kaminari-i18n'
 
-
+# batch_processing
+gem 'whenever', :require => false
 
 group :production do
   gem 'mysql2'
