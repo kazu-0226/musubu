@@ -28,7 +28,7 @@ set :environment, rails_env
 # cronのログの吐き出し場所。ここでエラー内容を確認する
 set :output, "#{Rails.root}/log/cron.log"
 
-every 5.minute do
+every 1.week do
     begin
         runner "Batch::CategoryCreate.g_category"
     rescue => e
