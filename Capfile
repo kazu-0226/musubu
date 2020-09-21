@@ -34,6 +34,7 @@ require "capistrano/rails/assets"
 require "capistrano/rails/migrations"
 # require "capistrano/passenger"
 require "capistrano/puma"
+require "whenever/capistrano"
 install_plugin Capistrano::Puma
 
 # Load custom tasks from `lib/capistrano/tasks` if you have any defined
