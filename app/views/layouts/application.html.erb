@@ -13,6 +13,7 @@
   </head>
   <body>
   <%= render 'shared/header' %>
+  <%# フラッシュメッセージ %>
    <% if flash.any? %>
       <script type="text/javascript">
         <% flash.each do |key, value| %>
@@ -23,5 +24,6 @@
       </script>
     <% end %>
     <%= yield %>
+    <%= render 'shared/footer' %>
   </body>
 </html>

@@ -1,73 +1,71 @@
 <div class= "container">
-<%= form_with model:@user, local: true do |f| %>
-    <div class= "row justify-content-center">
-        <div class= "col-sm6">
-            <%= attachment_image_tag @user, :user_image, class: "round_image", fallback: "no_image.svg", size:"300x300" %>
+    <%= form_with model:@user, local: true do |f| %>
+    <%= render 'shared/error_messages', model: f.object %>
+        <div class= "row justify-content-center">
+            <div class= "col-sm6">
+                <%= attachment_image_tag @user, :user_image, class: "round_image", fallback: "no_image.svg", size:"300x300" %>
+            </div>
         </div>
-    </div>
-        <div class= "row justify-content-center profile-image-edit">
-            
-        </div>
-    <div class= "row justify-content-center">
-        <div class= "col-sm-8">
-            <div class= "main main-raised">
-                <table class="table table-borderless">
-                    <tr>
-                        <td></td>
-                        <td><%= f.attachment_field :user_image, placeholder: "画像", id: "user_image" %></td>
-                    </tr>
-                    <tr>
-                        <td><%= f.label :first_name, '氏名' %></td>
-                        <td><%= f.text_field :last_name%><%= f.text_field :first_name %></td>
-                    </tr>
-                    <tr>
-                        <td><%= f.label :first_name_kana, 'フリガナ' %></td>
-                        <td><%= f.text_field :last_name_kana %><%=f.text_field :first_name_kana %></td>
-                    </tr>
-                    <tr>
-                        <td><%= f.label :prefecture_name, 'お住まいの地域' %></td>
-                        <td><%= f.collection_select :prefecture_code, JpPrefecture::Prefecture.all, :code, :name, id: "user_prefecture_code"%></td>
-                    </tr>
-                    <tr>
-                        <td><%= f.label :phone_number, '電話番号' %></td>
-                        <td><%= f.telephone_field  :phone_number %></td>
-                    </tr>
-                    <tr>
-                        <td><%= f.label :email, 'メールアドレス' %></td>
-                        <td><%= f.email_field :email %></td>
-                    </tr>
-                    <tr>
-                        <td></td>
-                        <td>
-                            <%= f.label :personality, '個人' %><%= f.radio_button :personality, :true %>
-                            <%= f.label :personality, '企業' %><%= f.radio_button :personality, :false %>
-                        </td>
-                    </tr>
-                    <tr>
-                        <td><%= f.label :category_id, '興味のある業種' %></td>
-                        <td><%= f.select :category_id, Category.all.map{|category| [category.name, category.id]} %></td>
-                        <!-- 都度APIを叩かずにcategoryモデルにAPIのデータを保存する方法に変更 -->
-                        <% if false %>
-                        <td><%= f.select :hope_category , @categories.map { |category| [category['category_l_name'], category['category_l_code']] } %></td>
-                        <% end %>
-                    </tr>
-                    <tr>
-                        <td><%= f.label :hope_prefecture_code, '希望地域' %></td>
-                        <td><%= f.collection_select :hope_prefecture_code, JpPrefecture::Prefecture.all, :code, :name, id: "user_prefecture_code"%></td>
-                    </tr>
-                    <tr>
-                        <td><%= f.label :pr, '自己PR' %></td>
-                        <td><%= f.text_area :pr, size: "40x10" %></td>
-                    </tr>
-                </table>
-                <div class= "row justify-content-center">
-                    <%= f.submit "変更を保存する", class: "btn btn-primary"%>
+        <div class= "row justify-content-center">
+            <div class= "col-sm-10">
+                <div class= "main main-raised">
+                    <table class="table table-borderless">
+                        <tr>
+                            <td></td>
+                            <td><%= f.attachment_field :user_image, placeholder: "画像", id: "user_image" %></td>
+                        </tr>
+                        <tr>
+                            <td><%= f.label :first_name, '氏名' %></td>
+                            <td><%= f.text_field :last_name%> <%= f.text_field :first_name %></td>
+                        </tr>
+                        <tr>
+                            <td><%= f.label :first_name_kana, 'フリガナ' %></td>
+                            <td><%= f.text_field :last_name_kana %> <%=f.text_field :first_name_kana %></td>
+                        </tr>
+                        <tr>
+                            <td><%= f.label :prefecture_name, 'お住まいの地域' %></td>
+                            <td><%= f.collection_select :prefecture_code, JpPrefecture::Prefecture.all, :code, :name, id: "user_prefecture_code"%></td>
+                        </tr>
+                        <tr>
+                            <td><%= f.label :phone_number, '電話番号' %></td>
+                            <td><%= f.telephone_field  :phone_number %></td>
+                        </tr>
+                        <tr>
+                            <td><%= f.label :email, 'メールアドレス' %></td>
+                            <td><%= f.email_field :email %></td>
+                        </tr>
+                        <tr>
+                            <td></td>
+                            <td>
+                                <%= f.label :personality, '個人' %><%= f.radio_button :personality, :true %>
+                                <%= f.label :personality, '企業' %><%= f.radio_button :personality, :false %>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td><%= f.label :category_id, '興味のある業種' %></td>
+                            <td><%= f.select :category_id, Category.all.map{|category| [category.name, category.id]} %></td>
+                            <!-- 都度APIを叩かずにcategoryモデルにAPIのデータを保存する方法に変更 -->
+                            <% if false %>
+                            <td><%= f.select :hope_category , @categories.map { |category| [category['category_l_name'], category['category_l_code']] } %></td>
+                            <% end %>
+                        </tr>
+                        <tr>
+                            <td><%= f.label :hope_prefecture_code, '希望地域' %></td>
+                            <td><%= f.collection_select :hope_prefecture_code, JpPrefecture::Prefecture.all, :code, :name, id: "user_prefecture_code"%></td>
+                        </tr>
+                        <tr>
+                            <td><%= f.label :pr, '自己PR' %></td>
+                            <td><%= f.text_area :pr, size: "40x10" %></td>
+                        </tr>
+                    </table>
+                    <div class= "row justify-content-center">
+                        <%= f.submit "変更を保存する", class: "btn btn-primary"%>
+                    </div>
                 </div>
             </div>
         </div>
-    </div>
+    <% end %>
 </div>
-<% end %>
 
 
 

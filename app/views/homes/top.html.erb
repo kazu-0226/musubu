@@ -1,4 +1,57 @@
-    <div id="carouselIndicators" class="carousel slide" data-ride="carousel">
+<div class="page-header header-filter js-mainVisual" style= "background-image: url(<%= asset_path('top3.jpg') %>)">
+      <div class="container">
+      <div class="row">
+        <div class="col-sm-6 page-header-text">
+          <h1 class="title">~結ぶ~</h1>
+          <h4 class="description">後継者不足に悩む飲食店とあなたを...</h4>
+          <br>
+        </div>
+      </div>
+      </div>
+</div>    
+<div class="top-box main-raised">
+    <!-- 新着案件-->
+      <div class="container about-text">
+        <h2 class="my-4">結ぶ
+          <small>とは</small>
+        </h2>
+          <h5>後継者不足に悩む飲食店経営者の方と自分のお店を持ちたい個人の方や飲食店を運営したい企業を<br>
+               <span class="about-strong">『~結ぶ~』</span>
+              <br>
+              マッチングプラットフォームです。
+          </h5>
+      </div>
+    <!-- /新着案件 -->
+    <h2 class="my-4 stripe">新着
+        <small>（後継者募集）</small>
+      </h2>
+      <div class="row">
+        <% @update_shops.each do |update_shop| %>
+        <% if update_shop.name.present? && update_shop.main_image.present? %>
+          <div class="col-sm-4">
+            <div class="card h-100">
+              <%= link_to shop_path(update_shop) do %>
+              <%= attachment_image_tag update_shop, :main_image, class: "card-img-top", fallback: "no_image.svg" %>
+              <% end %>
+              <div class="card-body">
+                <h4 class="card-title">
+                  <%= link_to update_shop.name, shop_path(update_shop) %>
+                </h4>
+                <p class="card-text appeal-card-text"><%= update_shop.appeal_text  %></p>
+              </div>
+            </div>
+          </div>
+        <% end %>
+        <% end %>
+      </div>
+</div>
+
+
+
+
+
+<% if false %>
+  <div id="carouselIndicators" class="carousel slide" data-ride="carousel">
       <ol class="carousel-indicators">
         <li data-target="#carouselIndicators" data-slide-to="0" class="active"></li>
         <li data-target="#carouselIndicators" data-slide-to="1"></li>
@@ -36,32 +89,4 @@
         <span class="sr-only">Next</span>
       </a>
     </div>
-
-
-
-<!-- Page Content -->
-<div class="container">
-  <!-- Page Heading -->
-  <h2 class="my-4">新着案件
-    <small>（後継者募集）</small>
-  </h2>
-  <div class="row">
-    <% @update_shops.each do |update_shop| %>
-  <% if update_shop.name.present? && update_shop.main_image.present? %>
-    <div class="col-lg-4 col-sm-6 mb-4">
-      <div class="card h-100">
-        <%= link_to shop_path(update_shop) do %>
-        <%= attachment_image_tag update_shop, :main_image, class: "card-img-top", fallback: "no_image.svg" %>
-        <% end %>
-        <div class="card-body">
-          <h4 class="card-title">
-            <%= link_to update_shop.name, shop_path(update_shop) %>
-          </h4>
-          <p class="card-text appeal-card-text"><%= update_shop.appeal_text  %></p>
-      </div>
-    </div>
-</div>
-    
-  <% end %>
-  <% end %>
-<!-- /.container -->
+<% end %>

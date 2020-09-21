@@ -36,7 +36,7 @@ class Admins::UsersController < ApplicationController
     end
 
     def user_params
-        params.require(:user).permit(:first_name, :last_name, :first_name_kana, :last_name_kana, :prefecture_code, :phone_number, :email, :hope_prefecture_code, :category_id, :personality, :user_image, :pr )
+        params.require(:user).permit(:first_name, :last_name, :first_name_kana, :last_name_kana, :prefecture_code, :phone_number, :email, :hope_prefecture_code, :category_id, :personality, :user_image, :pr, :is_deleted )
     end
 
     def search_user(content, prefecture_code, category_ids)

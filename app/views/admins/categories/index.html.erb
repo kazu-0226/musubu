@@ -1,0 +1,34 @@
+<div class= "container">
+    <h2>カテゴリ一覧</h2>
+    <%= link_to "カテゴリ作成", g_category_admins_categories_path, method: :post, class: "btn btn-primary category_btn" %>
+    <table class="table table">
+        <thead>
+            <tr>
+                <th>ID</th>
+                <th>ぐるなびID</th>
+                <th>カテゴリ名</th>
+                <th>更新日</th>
+                <th></th>
+            </tr>
+        </thead>
+        <tbody>
+            <% @categories.each do |c| %>
+                <tr>
+                    <td>
+                        <%= c.id %>
+                    </td>
+                    <td>
+                        <%= c.code %>
+                    </td>
+                    <td>
+                        <%= c.name %>
+                    </td>
+                    <td><h6 style="color: #C0C0C0;"><%= c.updated_at.strftime("%Y/%m/%d %H:%M") %></h6></td>
+                    <td>
+                        <%= link_to "削除", admins_category_path(c.id), method: :delete, "data-confirm" => "本当に削除しますか？", class: "btn btn-outline-danger" %>
+                    </td>
+                </tr>
+                <% end %>
+        </tbody>
+    </table>
+</div>

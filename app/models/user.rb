@@ -13,6 +13,23 @@ class User < ApplicationRecord
 
   #画像アップロード
   attachment :user_image
+    
+  #バリデーション
+  validates :is_deleted,  inclusion: { in: [true, false]}
+
+  with_options presence: true,on: :update do
+    validates :first_name
+    validates :last_name
+    validates :first_name_kana
+    validates :last_name_kana
+    validates :prefecture_code
+    validates :phone_number
+    validates :hope_prefecture_code
+    validates :category_id
+    validates :personality
+    #validates :user_image
+    validates :pr
+  end
 
   def full_name
     if self.last_name.present? && self.first_name.present?
@@ -47,5 +64,10 @@ class User < ApplicationRecord
   #ユーザがフォローしているお店をすでフォローしているかしていないか
   def followed_by?(shop)
     shop_followings.where(shop_id: shop.id).exists?
+  end
+
+  #ユーザが退会している場合はログインを弾く
+  def active_for_authentication?
+    super && (self.is_deleted == false)
   end
 end

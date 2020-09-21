@@ -3,6 +3,7 @@ lock "~> 3.14.1"
 
 set :application, "musubu"
 set :repo_url, "git@github.com:kazu-0226/musubu.git"
+set :whenever_roles,        ->{ :app }
 set :deploy_to, "/home/ec2-user/musubu"
 set :rbenv_ruby, '2.5.7'
 set :linked_files, %w{config/master.key .env}
