@@ -69,6 +69,10 @@ Rails.application.routes.draw do
   resources :chat_rooms, only: [:show, :create, :index]
   resources :chat_messages, only:[:create]
   
+  #問い合わせルーティング  
+  get   'inquiry'         => 'inquiry#index'
+  post  'inquiry/confirm' => 'inquiry#confirm'
+  post  'inquiry/thanks'  => 'inquiry#thanks'
 
   # resources :chat_rooms, only: [:show, :create] do
   #   resources :chat_messages, only:[:create]

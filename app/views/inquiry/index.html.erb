@@ -1,0 +1,42 @@
+<%= form_for @inquiry, :url => inquiry_confirm_path do |f| %>
+  <div class="container">
+        <div class="card-header text-center login-card">
+            <h3>お問い合わせ</h3>
+        </div>
+  </div>
+    <div class= "row justify-content-center">
+        <div class= "main main-raised col-sm-8">
+            <div class ="col-sm-6 offset-3">
+                <% if @inquiry.errors.any? %>
+                    <div class="alert alert-danger" role="alert">
+                        <strong>入力内容にエラーがあります</strong>
+                        <ul>
+                            <% @inquiry.errors.each do |attr, msg| %>
+                                <li><%= msg %></li>
+                            <% end %>
+                        </ul>
+                    </div>
+                <% end %>
+
+                <table class="table table-borderless">
+                    <tr>
+                        <th>名前<span class="text-danger">（必須）</span></th>
+                        <td><%= f.text_field :name %></td>
+                    </tr>
+                    <tr>
+                        <th>メールアドレス<span class="text-danger">（必須）</span></th>
+                        <td><%= f.text_field :email %></td>
+                    </tr>
+                    <tr>
+                        <th>お問い合わせ内容</th>
+                        <td><%= f.text_area :message %></td>
+                    </tr>
+                </table>
+                <div class= "row justify-content-center">
+                    <%= f.submit '確認', class: 'btn btn-primary' %>
+                </div>
+            </div>
+        </div>
+    </div>
+<% end %>
+
