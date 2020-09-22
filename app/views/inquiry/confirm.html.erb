@@ -1,0 +1,39 @@
+  <div class="container">
+        <div class="card-header text-center login-card">
+            <h3>お問い合わせ</h3>
+        </div>
+  </div>
+    <div class= "row justify-content-center">
+        <div class= "main main-raised col-sm-8">
+            <div class ="col-sm-6 offset-3">
+                <%= form_for @inquiry, :url => inquiry_thanks_path do |f| %>
+                    <table class="table table-borderless">
+                        <tr>
+                            <th>名前</th>
+                            <td>
+                                <%= f.hidden_field :name %>
+                                <%= @inquiry.name %>
+                            </td>
+                        </tr>
+                        <tr>
+                            <th>メールアドレス</th>
+                            <td>
+                                <%= f.hidden_field :email %>
+                                <%= @inquiry.email %>
+                            </td>
+                        </tr>
+                        <tr>
+                            <th>お問い合わせ内容</th>
+                            <td>
+                                <%= f.hidden_field :message %>
+                                <%= simple_format(@inquiry.message) %>
+                            </td>
+                        </tr>
+                    </table>
+                    <div class= "row justify-content-center">
+                        <%= f.submit '送信', :class => 'btn btn-primary' %>
+                    </div>
+                <% end %>
+            </div>
+        </div>
+    </div>
