@@ -3,7 +3,7 @@ class Admins::ShopsController < ApplicationController
     before_action :set_shop, only: [:show, :edit, :update]
 
     def index
-        @shops = Shop.all.order(id: "DESC").page(params[:page]).per(10)
+        @shops = Shop.all.order(id: "DESC").page(params[:page]).per(5)
     end
 
     def show
