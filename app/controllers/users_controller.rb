@@ -42,7 +42,7 @@ class UsersController < ApplicationController
   end
 
   def index
-    @users = User.where(is_deleted: false)
+    @users = User.where(is_deleted: false).where.not(first_name: nil,last_name: nil ).where.not(last_name: nil ).page(params[:page]).per(5)
   end
 
  
