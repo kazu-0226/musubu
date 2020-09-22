@@ -51,7 +51,6 @@
 <!-- Page Content -->
     <div class="container">
         <% @shops.each do |shop| %>
-        <% if shop.name.present? %>
         <div class= "row">
         <hr>
             <div class ="col-sm-6">
@@ -90,7 +89,9 @@
         </div>
         <hr>                 
         <% end %>
-        <% end %>
     </div>
 <!-- Page Content -->
+    <div class= "row justify-content-center">
+        <%= paginate @shops %>
+    </div>
  </div>

@@ -42,7 +42,7 @@ class ShopsController < ApplicationController
   end
 
   def index
-    @shops= Shop.where(is_deleted: false)
+    @shops= Shop.where(is_deleted: false).where.not(name: nil).page(params[:page]).per(5)
   end
 
   def search
