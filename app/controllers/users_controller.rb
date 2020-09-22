@@ -50,7 +50,7 @@ class UsersController < ApplicationController
     @content = params['content']
     @prefecture_code = params['prefecture_code']
     @category_ids = params['category_ids']
-    @users = search_user(@content, @prefecture_code, @category_ids)
+    @users = search_user(@content, @prefecture_code, @category_ids).page(params[:page]).per(5)
     render :index
   end
 
