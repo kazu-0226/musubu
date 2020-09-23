@@ -4,9 +4,10 @@ Rails.application.routes.draw do
 
   #非ログイン時TOP
   get 'homes/top'
-  get 'homes/about'
-  get 'homes/new'
-  get 'homes/login'
+ 
+  #ゲストログイン
+  post '/homes/guest_user_sign_in', to: 'homes#new_guest_user'
+  post '/homes/guest_shop_sign_in', to: 'homes#new_guest_shop'
 
   #管理者用デバイス
   devise_for :admins
