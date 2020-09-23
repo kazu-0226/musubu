@@ -39,7 +39,7 @@ M&A
 ## 開発環境
 - OS：Linux(CentOS)
 - 言語：HTML,CSS,JavaScript,Ruby,SQL
-- フレームワーク：Ruby on Rails,Vue.js
+- フレームワーク：Ruby on Rails
 - JSライブラリ：jQuery
 - 仮想環境：Vagrant,VirtualBox
 - 外部API ぐるなびAPI,GoogleMapAPI
