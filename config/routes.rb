@@ -21,12 +21,12 @@ Rails.application.routes.draw do
     resources :users, only: [:index, :edit, :show, :update] do
       collection do
         #検索用に追加
-        post 'search'
+        get 'search'
       end
     end
     resources :shops, only: [:index, :edit, :show, :update] do
       collection do
-        post 'search'
+        get 'search'
       end
     end
     resources :chat_rooms, only: [:index]
@@ -47,7 +47,7 @@ Rails.application.routes.draw do
     end
     collection do
       #検索用に追加
-      post 'search'
+      get 'search'
     end
   end
 
@@ -61,7 +61,7 @@ Rails.application.routes.draw do
     end
     collection do
       #検索用に追加
-      post 'search'
+      get 'search'
     end
   end
 
