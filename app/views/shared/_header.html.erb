@@ -1,96 +1,96 @@
 <header class="sticky-top js-header">  
-    <nav class="navbar navbar-expand-lg navbar-light">
+    <nav class="navbar navbar-expand-lg">
         <%= link_to root_path, class:"navbar-brand"  do %>
-            <% image_tag 'logo4.png', class:"logo" %>
+            <% image_tag 'logo5.png', class:"logo" %>
         <% end %>
         <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavDropdown" aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation">
             <span class="navbar-toggler-icon"></span>
         </button>
             <% if admin_signed_in? %>
-            <div class="collapse navbar-collapse" id="navbarSupportedContent">
+            <div class="collapse navbar-collapse justify-content-end" id="navbarSupportedContent">
                 <ul class="nav navbar-nav navbar-right">
-                    <li >
-                        <%= link_to  admins_homes_top_path do %>
+                    <li class="nav-item" >
+                        <%= link_to  admins_homes_top_path, class:"nav-link" do %>
                             TOP<i class="fas fa-home"></i>
                         <% end %>
                     </li>
                     <li class="nav-item">
-                        <%= link_to admins_shops_path do %>
+                        <%= link_to admins_shops_path, class:"nav-link" do %>
                             店舗一覧<i class="fas fa-store-alt"></i>
                         <% end %>
                     </li>
                     <li class="nav-item">
-                        <%= link_to  admins_users_path do %>
+                        <%= link_to  admins_users_path, class:"nav-link" do %>
                             ユーザ一覧<i class="fas fa-users"></i>
                         <% end %>
                     </li>
                     <li class="nav-item">
-                        <%= link_to  destroy_admin_session_path, method: :delete do %>
+                        <%= link_to  destroy_admin_session_path, method: :delete, class:"nav-link" do %>
                             ログアウト<i class="fas fa-door-open"></i>
                         <% end %>
                     </li>
                 </ul>
             </div>
             <% elsif user_signed_in? %>
-            <div class="collapse navbar-collapse" id="navbarSupportedContent">
+            <div class="collapse navbar-collapse justify-content-end" id="navbarSupportedContent">
                 <ul class="nav navbar-nav navbar-right">
                     <li class="nav-item">
-                        <%= link_to user_path(current_user.id) do %>
+                        <%= link_to user_path(current_user.id), class:"nav-link" do %>
                             マイページ<i class="fas fa-home"></i>
                         <% end %>
                     </li>
                     <li class="nav-item">
-                        <%= link_to chat_rooms_path do %>
+                        <%= link_to chat_rooms_path, class:"nav-link" do %>
                             チャット<i class="far fa-envelope"></i>
                         <% end %>
                     </li>
                     <li class="nav-item">
-                        <%= link_to  shops_path do %>
+                        <%= link_to  shops_path, class:"nav-link" do %>
                            お店を探す<i class="fas fa-store-alt"></i>
                         <% end %>
                     </li>
                     <li class="nav-item">
-                        <%= link_to destroy_user_session_path, method: :delete  do %>
+                        <%= link_to destroy_user_session_path, method: :delete, class:"nav-link"  do %>
                             ログアウト<i class="fas fa-door-open"></i>
                         <% end %>
                     </li>
                 </ul>
             </div>
             <% elsif shop_signed_in? %>
-            <div class="collapse navbar-collapse" id="navbarSupportedContent">
+            <div class="collapse navbar-collapse justify-content-end" id="navbarSupportedContent">
                 <ul class="nav navbar-nav navbar-right">
                     <li class="nav-item">
-                        <%= link_to  shop_path(current_shop.id) do %>
+                        <%= link_to  shop_path(current_shop.id), class:"nav-link" do %>
                             マイページ<i class="fas fa-home"></i>
                         <% end %>
                     </li>
                      <li class="nav-item">
-                        <%= link_to chat_rooms_path do %>
+                        <%= link_to chat_rooms_path, class:"nav-link" do %>
                             チャット<i class="far fa-envelope"></i>
                         <% end %>
                     </li>
                     <li class="nav-item">
-                        <%= link_to  users_path do %>
+                        <%= link_to  users_path, class:"nav-link" do %>
                             後継者を探す<i class="fas fa-users"></i>
                         <% end %>
                     </li>
                     <li class="nav-item">
-                        <%= link_to destroy_shop_session_path, method: :delete do %>
+                        <%= link_to destroy_shop_session_path, method: :delete, class:"nav-link" do %>
                             ログアウト<i class="fas fa-door-open"></i>
                         <% end %>
                     </li>
                 </ul>
             </div>
             <% else %>
-                <div class="collapse navbar-collapse" id="navbarSupportedContent">
+                <div class="collapse navbar-collapse justify-content-end" id="navbarSupportedContent">
                     <ul class="nav navbar-nav navbar-right">
-                        <li class="dropdown"><a class="dropdown-toggle" href="#" data-toggle="dropdown">ログイン</a>
+                        <li class="dropdown"><a class="dropdown-toggle nav-link" href="#" data-toggle="dropdown">ログイン</a>
                         <ul class="dropdown-menu">
                             <li class="nav-item"><%= link_to "会員の方", new_user_session_path  %></li>
                             <li class="nav-item"><%= link_to "お店の方", new_shop_session_path %></li>
                         </ul>
                         </li>
-                        <li class="dropdown"><a class="dropdown-toggle" href="#" data-toggle="dropdown">新規登録</a>
+                        <li class="dropdown"><a class="dropdown-toggle nav-link" href="#" data-toggle="dropdown">新規登録</a>
                             <ul class="dropdown-menu">
                                 <li class="nav-item"><%= link_to "会員の方", new_user_registration_path  %></li>
                                 <li class="nav-item"><%= link_to "お店の方", new_shop_registration_path %></li>
