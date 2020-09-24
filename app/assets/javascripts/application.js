@@ -30,12 +30,12 @@ $(function(){
          //メインビジュアル内にいるので、クラスを外す。
          header.removeClass('headerColor-default');
          $(".nav-link").removeClass('nav-link-default');
-         $('.logo').attr('logo6.png');
+        //  $('.logo').attr('src','app/assets/images/logo6.png');
        }else {
          //メインビジュアルより下までスクロールしたので、クラスを付けて色を変える
          header.addClass('headerColor-default');
          $(".nav-link").addClass('nav-link-default');
-         $('.logo').attr('logo5.png');
+        //  $('.logo').attr('src','app/assets/images/logo5.png');
        }
     });
   });
