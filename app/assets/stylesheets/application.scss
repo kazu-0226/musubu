@@ -20,20 +20,37 @@
 
 /*ヘッダー*/
  header {
-    background-color: rgba(255,255,255,0);
-    padding-bottom: 10px;
+    background-color: rgba(0,0,255,0);
+    margin-bottom: 20px;
   }
 
 .logo{
-  width: 30%;
+  width:90px;
+  position:relative;left:50px;
+}
+
+.logo-scrolled{
+  display: none;
+}
+
+.logo-default{
+  display: none;
 }
 
 .nav-item{
-  margin-left: 10px;
+  margin-left: 16px;
+}
+
+.nav-link{
+  color:  #FB924B;
+}
+
+.nav-link-default{
+  color: white;
 }
 
 .headerColor-default {
-  color:  #FE9F18;
+  background-color:  #FB924B;
   /* （画像よりも下までスクロールした時に変えたい文字色） */
 }
 
