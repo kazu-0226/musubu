@@ -30,12 +30,14 @@ $(function(){
          //メインビジュアル内にいるので、クラスを外す。
          header.removeClass('headerColor-default');
          $(".nav-link").removeClass('nav-link-default');
-        $('.logo').attr('src','logo5.png');
+         $('.logo-default').show();
+         $('.logo-scrolled').hide();
        }else {
          //メインビジュアルより下までスクロールしたので、クラスを付けて色を変える
          header.addClass('headerColor-default');
-         $(".nav-link").addClass('nav-link-default');
-        $('.logo').attr('src','logo6.png');
+        $(".nav-link").addClass('nav-link-default');
+        $('.logo-default').hide();
+        $('.logo-scrolled').show();
        }
     });
   });
