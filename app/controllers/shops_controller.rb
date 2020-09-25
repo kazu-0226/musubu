@@ -49,8 +49,7 @@ class ShopsController < ApplicationController
     @content = params['content']
     @prefecture_code = params['prefecture_code']
     @category_ids = params['category_ids']
-    @shops = search_shop(@content, @prefecture_code, @category_ids).page(params[:page]).per(5)
-    render :index
+    @shops = search_shop(@content, @prefecture_code, @category_ids).where(is_deleted: false).where.not(name: nil).page(params[:page]).per(5)
   end
 
   def followers

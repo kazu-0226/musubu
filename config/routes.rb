@@ -4,9 +4,10 @@ Rails.application.routes.draw do
 
   #非ログイン時TOP
   get 'homes/top'
-  get 'homes/about'
-  get 'homes/new'
-  get 'homes/login'
+ 
+  #ゲストログイン
+  post '/homes/guest_user_sign_in', to: 'homes#new_guest_user'
+  post '/homes/guest_shop_sign_in', to: 'homes#new_guest_shop'
 
   #管理者用デバイス
   devise_for :admins
@@ -21,12 +22,12 @@ Rails.application.routes.draw do
     resources :users, only: [:index, :edit, :show, :update] do
       collection do
         #検索用に追加
-        post 'search'
+        get 'search'
       end
     end
     resources :shops, only: [:index, :edit, :show, :update] do
       collection do
-        post 'search'
+        get 'search'
       end
     end
     resources :chat_rooms, only: [:index]
@@ -47,7 +48,7 @@ Rails.application.routes.draw do
     end
     collection do
       #検索用に追加
-      post 'search'
+      get 'search'
     end
   end
 
@@ -61,7 +62,7 @@ Rails.application.routes.draw do
     end
     collection do
       #検索用に追加
-      post 'search'
+      get 'search'
     end
   end
 

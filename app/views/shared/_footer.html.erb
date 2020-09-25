@@ -7,6 +7,14 @@
               お問合せ<i class="far fa-envelope"></i>
             <% end %>
           </li>
+          <% unless user_signed_in? or shop_signed_in? %>
+          <li>
+            <%= link_to 'ユーザーゲストログイン（閲覧用）', homes_guest_user_sign_in_path, method: :post %>
+          </li>
+          <li>
+            <%= link_to 'お店ゲストログイン（閲覧用）', homes_guest_shop_sign_in_path, method: :post %>
+          </li>
+          <% end %>
         </ul>
       </nav>
       <div class="copyright float-right">

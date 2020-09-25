@@ -42,7 +42,7 @@ class UsersController < ApplicationController
   end
 
   def index
-    @users = User.where(is_deleted: false).where.not(first_name: nil,last_name: nil ).where.not(last_name: nil ).page(params[:page]).per(5)
+    @users = User.where(is_deleted: false).where.not(first_name: nil,last_name: nil ).page(params[:page]).per(5)
   end
 
  
@@ -50,8 +50,7 @@ class UsersController < ApplicationController
     @content = params['content']
     @prefecture_code = params['prefecture_code']
     @category_ids = params['category_ids']
-    @users = search_user(@content, @prefecture_code, @category_ids).page(params[:page]).per(5)
-    render :index
+    @users = search_user(@content, @prefecture_code, @category_ids).where(is_deleted: false).where.not(first_name: nil,last_name: nil ).page(params[:page]).per(5)
   end
 
   def followers

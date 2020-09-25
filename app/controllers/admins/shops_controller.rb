@@ -27,7 +27,6 @@ class Admins::ShopsController < ApplicationController
         @prefecture_code = params['prefecture_code']
         @category_ids = params['category_ids']
         @shops = search_shop(@content, @prefecture_code, @category_ids).page(params[:page]).per(5)
-        render :index
       end
 
     private
