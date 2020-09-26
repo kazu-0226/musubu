@@ -40,7 +40,7 @@ User.create!(
         prefecture_code: '1',
         phone_number: '090-0000-0000',
         personality: 'true',
-        category_id: '1',
+        category_id: '7',
         hope_prefecture_code: '1',
         pr: 'この文章はダミーです。文字の大きさ、量、字間、行間等を確認するために入れています。',
         is_deleted: 'FALSE'
@@ -67,7 +67,7 @@ User.create!(
         last_name: '佐野',
         first_name_kana: 'ショウジ',
         last_name_kana: 'サノ',
-        prefecture_code: '1',
+        prefecture_code: '9',
         phone_number: '090-0000-0000',
         personality: 'true',
         category_id: '1',
@@ -82,7 +82,7 @@ User.create!(
         last_name: '田中',
         first_name_kana: 'セイジ',
         last_name_kana: 'タナカ',
-        prefecture_code: '1',
+        prefecture_code: '12',
         phone_number: '090-0000-0000',
         personality: 'true',
         category_id: '1',
@@ -100,7 +100,7 @@ User.create!(
         prefecture_code: '1',
         phone_number: '090-0000-0000',
         personality: 'true',
-        category_id: '1',
+        category_id: '12',
         hope_prefecture_code: '1',
         pr: 'この文章はダミーです。文字の大きさ、量、字間、行間等を確認するために入れています。',
         is_deleted: 'FALSE'
@@ -115,7 +115,7 @@ User.create!(
         prefecture_code: '1',
         phone_number: '090-0000-0000',
         personality: 'true',
-        category_id: '1',
+        category_id: '11',
         hope_prefecture_code: '1',
         pr: 'この文章はダミーです。文字の大きさ、量、字間、行間等を確認するために入れています。',
         is_deleted: 'FALSE'
@@ -130,7 +130,7 @@ User.create!(
         prefecture_code: '1',
         phone_number: '090-0000-0000',
         personality: 'true',
-        category_id: '1',
+        category_id: '14',
         hope_prefecture_code: '1',
         pr: 'この文章はダミーです。文字の大きさ、量、字間、行間等を確認するために入れています。',
         is_deleted: 'FALSE'
@@ -145,7 +145,7 @@ User.create!(
         prefecture_code: '1',
         phone_number: '090-0000-0000',
         personality: 'true',
-        category_id: '1',
+        category_id: '17',
         hope_prefecture_code: '1',
         pr: 'この文章はダミーです。文字の大きさ、量、字間、行間等を確認するために入れています。',
         is_deleted: 'FALSE'
