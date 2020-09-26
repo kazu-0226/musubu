@@ -19,53 +19,29 @@
 //= require toastr
 //= require_tree .
 
-// App.chat_room = App.cable.subscriptions.create("ChatRoomChannel", {
-//     connected: function() {
-//       // Called when the subscription is ready for use on the server
-//     },
-  
-//     disconnected: function() {
-//       // Called when the subscription has been terminated by the server
-//     },
-  
-//     received: function(data) {
-//         alert("dfdf")
-//       // Called when there's incoming data on the websocket for this channel
-//     },
-  
-//     speak: function(message) {
-//         alert(message);
-//         return this.perform('speak');
-//       }
-//     }, $(document).on('keypress', '[data-behavior~=chat_post]', function(event) {
-//       if (event.keyCode === 13) {
-//         debugger
-//         var userForm = $('#user-id-form');
-//         var shopForm = $('#shop-id-form');
-//         alert(shopForm.val())
-//         var chatRoomForm = $('#chat-room-form');
-//         alert(chatRoomForm.val())
-//         var chatForm = $('#chat-form');
-//         App.chat_room.speak(chatForm.val());
-//         return chatForm.val('');
-//       }
-//     }));
 
-
+$(document).on('turbolinks:load', function() { 
 $(function(){
     var imgHeight = $('.js-mainVisual').outerHeight(); //画像の高さを取得。これがイベント発火位置になる。
     var header = $('.js-header'); //ヘッダーコンテンツ
-  
-    $(window).on('load scroll', function(){
+    
+    $(window).on('turbolinks:load scroll', function(){
        if ($(window).scrollTop() < imgHeight) {
          //メインビジュアル内にいるので、クラスを外す。
          header.removeClass('headerColor-default');
+         $(".nav-link").removeClass('nav-link-default');
+         $('.logo-default').show();
+         $('.logo-scrolled').hide();
        }else {
          //メインビジュアルより下までスクロールしたので、クラスを付けて色を変える
          header.addClass('headerColor-default');
+        $(".nav-link").addClass('nav-link-default');
+        $('.logo-default').hide();
+        $('.logo-scrolled').show();
        }
     });
   });
+});
 
 // function addToSearchUrl() {
 //     let path = location.pathname;
