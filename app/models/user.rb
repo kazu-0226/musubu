@@ -40,7 +40,7 @@ class User < ApplicationRecord
   def full_name_kana
     if self.last_name_kana.present? && self.first_name_kana.present?
     self.last_name_kana + self.first_name_kana
-  end
+    end
   end
 
   #jp_prefectureを使用したprefecture_codeからprefecture_nameへの変換

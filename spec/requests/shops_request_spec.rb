@@ -1,6 +1,6 @@
 require 'rails_helper'
 
-RSpec.describe "Shops::Shops", type: :request do
+RSpec.describe "Shops", type: :request do
 
   describe "GET /mypage" do
     it "returns http success" do

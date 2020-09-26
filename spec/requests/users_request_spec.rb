@@ -1,6 +1,6 @@
 require 'rails_helper'
 
-RSpec.describe "Users::Users", type: :request do
+RSpec.describe "Users", type: :request do
   let (:id) { '1' }
   # describe "GET /show" do
   #   it "returns http success" do
