@@ -1,5 +1,16 @@
 # 結ぶ（むすぶ）
-musubuu.com
+http://musubuu.com/
+
+既存ユーザー・店舗のログイン
+
+メールアドレス：1@1
+
+パスワード：qazwsx
+
+footerよりメールアドレスとパスワードを入力せずにゲストログインできます。
+
+※メールアドレスの変更はお控えいただければ幸いです。
+
 
 ## サイト概要
 飲食店経営者と店舗経営をしたい（個人,企業）のマッチングプラットフォーム。
@@ -31,9 +42,16 @@ M&A
 ### 主な利用シーン
 飲食店の譲渡
 
-## 設計書
-
 ### 機能一覧
+- ユーザーや店舗、管理者（ログインのみ）の登録、ログイン機能(devise)
+- 画像管理(refile)
+- 地図表示（GoogleMapAPI）
+- フォロー機能(Ajax)
+- チャット機能(Action Cable）
+- ページネーション機能(kaminari)
+- 検索機能(ransack未使用)
+- カテゴリ作成（ぐるなびAPI）
+-　バッチ処理（カテゴリ更新）
 <https://docs.google.com/spreadsheets/d/1lmwajsESFuNPbFwBXMTSVjh6C8d50j1PClmK3fSbwSs/edit?usp=sharing>
 
 ## 開発環境
