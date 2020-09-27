@@ -26,18 +26,20 @@ RSpec.describe "Shops", type: :request do
     end
   end
 
-  describe 'お店ログイン' do
-    let(:shop) { create(:shop) }
-    before do
-      visit new_shop_session_path
+  describe 'ユーザーログイン' do
+    subject do
+      fill_in 'shop[email]', with: shop.email
+      fill_in 'shop[password]', with: shop.password
+      click_button 'ログイン'
     end
-    context 'ログイン画面に遷移' do
-      let(:test_shop) { shop }
-      it 'ログインに成功する' do
-        fill_in 'shop[email]', with: test_shop.email
-        fill_in 'shop[password]', with: test_shop.password
-        click_button 'ログイン'
+    # let(:shop) { create(:shop) }
+    before { visit new_shop_session_path }
 
+    # context 'ログイン画面に遷移' do
+    context '論理削除されていない shop の場合' do
+      let(:shop) { create(:shop) }
+      it 'ログインに成功する' do
+        subject
         expect(page).to have_content '編集'
       end
 
@@ -45,25 +47,18 @@ RSpec.describe "Shops", type: :request do
         fill_in 'shop[email]', with: ''
         fill_in 'shop[password]', with: ''
         click_button 'ログイン'
-
         expect(current_path).to eq(new_shop_session_path)
       end
     end
-  end
 
-  describe 'お店ログイン' do
-    let(:test_shop) { create(:shop,is_deleted:true) }
-    before do   
-      visit new_shop_session_path
-    end
-    context 'ログイン画面に遷移' do
-      it '論理削除したユーザのログイン' do
-        fill_in 'shop[email]', with: test_shop.email
-        fill_in 'shop[password]', with: test_shop.password
-        click_button 'ログイン'
+    context '論理削除された shop の場合' do
+      let(:shop) { create(:shop,is_deleted:true) }
+      it 'ログインできない' do
+        subject
         expect(current_path).to eq(new_shop_session_path)
       end
     end
+
   end
 
   describe '編集のテスト' do

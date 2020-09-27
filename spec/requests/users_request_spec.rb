@@ -27,17 +27,19 @@ RSpec.describe "Users", type: :request do
   end
 
   describe 'ユーザーログイン' do
-    let(:user) { create(:user) }
-    before do
-      visit new_user_session_path
+    subject do
+      fill_in 'user[email]', with: user.email
+      fill_in 'user[password]', with: user.password
+      click_button 'ログイン'
     end
-    context 'ログイン画面に遷移' do
-      let(:test_user) { user }
-      it 'ログインに成功する' do
-        fill_in 'user[email]', with: test_user.email
-        fill_in 'user[password]', with: test_user.password
-        click_button 'ログイン'
+    # let(:user) { create(:user) }
+    before { visit new_user_session_path }
 
+    # context 'ログイン画面に遷移' do
+    context '論理削除されていない user の場合' do
+      let(:user) { create(:user) }
+      it 'ログインに成功する' do
+        subject
         expect(page).to have_content 'プロフィール編集'
       end
 
@@ -45,26 +47,20 @@ RSpec.describe "Users", type: :request do
         fill_in 'user[email]', with: ''
         fill_in 'user[password]', with: ''
         click_button 'ログイン'
-
         expect(current_path).to eq(new_user_session_path)
       end
     end
-  end
 
-  describe 'ユーザーログイン' do
-    let(:test_user) { create(:user,is_deleted:true) }
-    before do   
-      visit new_user_session_path
-    end
-    context 'ログイン画面に遷移' do
-      it '論理削除したユーザのログイン' do
-        fill_in 'user[email]', with: test_user.email
-        fill_in 'user[password]', with: test_user.password
-        click_button 'ログイン'
+    context '論理削除された user の場合' do
+      let(:user) { create(:user,is_deleted:true) }
+      it 'ログインできない' do
+        subject
         expect(current_path).to eq(new_user_session_path)
       end
     end
+
   end
+
 
   describe '編集のテスト' do
     let(:test_user) { create(:user) }
