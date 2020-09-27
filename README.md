@@ -56,6 +56,10 @@ M&A
 
 <https://docs.google.com/spreadsheets/d/1lmwajsESFuNPbFwBXMTSVjh6C8d50j1PClmK3fSbwSs/edit?usp=sharing>
 
+### テスト（RSpec）
+- 単体テスト(model：User,Shop)　カバレッジ70%以上
+- 機能テスト(request)　論理削除のログインや他ユーザーの編集防止など
+
 ## 開発環境
 - OS：Linux(CentOS)
 - 言語：HTML,CSS,JavaScript,Ruby,SQL
