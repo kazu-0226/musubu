@@ -51,7 +51,7 @@ M&A
 - ページネーション機能(kaminari)
 - 検索機能(ransack未使用)
 - カテゴリ作成（ぐるなびAPI）
--　バッチ処理（カテゴリ更新）
+- バッチ処理（カテゴリ更新）
 
 
 <https://docs.google.com/spreadsheets/d/1lmwajsESFuNPbFwBXMTSVjh6C8d50j1PClmK3fSbwSs/edit?usp=sharing>
