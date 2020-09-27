@@ -2,20 +2,6 @@ require 'rails_helper'
 
 RSpec.describe "Users", type: :request do
 
-  # describe "GET /show" do
-  #   it "returns http success" do
-  #     get "/users/users/show"
-  #     expect(response).to have_http_status(:success)
-  #   end
-  # end
-
-  # describe "GET /edit" do
-  #   it "returns http success" do
-  #     get "/users/users/edit"
-  #     expect(response).to have_http_status(:success)
-  #   end
-  # end
-
   describe 'ユーザー新規登録' do
     before do
       visit new_user_registration_path
@@ -64,24 +50,41 @@ RSpec.describe "Users", type: :request do
       end
     end
   end
-  # describe 'ユーザーログイン' do
-  #   let(:user) { create(:user) }
-  #   user.is_deleted = "true"
-  #   before do
-  #     visit new_user_session_path
-  #   end
-  #   context 'ログイン画面に遷移' do
-  #     let(:test_user) { user }
-  #     it '論理削除したユーザのログイン' do
-  #       fill_in 'user[email]', with: test_user.email
-  #       fill_in 'user[password]', with: test_user.password
-  #       click_button 'ログイン'
-    
-  #       expect(current_path).to eq(new_user_session_path)
-  #     end
-  #   end
-  # end
+
+  describe 'ユーザーログイン' do
+    let(:test_user) { create(:user,is_deleted:true) }
+    before do   
+      visit new_user_session_path
+    end
+    context 'ログイン画面に遷移' do
+      it '論理削除したユーザのログイン' do
+        fill_in 'user[email]', with: test_user.email
+        fill_in 'user[password]', with: test_user.password
+        click_button 'ログイン'
+        expect(current_path).to eq(new_user_session_path)
+      end
+    end
+  end
 
   
+
+  describe '編集のテスト' do
+    let(:test_user) { create(:user) }
+    let(:test_user2) { create(:user) }
+    context '自分の編集画面への遷移' do
+      it '遷移できる' do
+        sign_in test_user
+        visit edit_user_path(test_user)
+        expect(current_path).to eq('/users/' + test_user.id.to_s + '/edit')
+      end
+    end
+    context '他人の編集画面への遷移' do
+      it '遷移できない' do
+        sign_in test_user
+        visit edit_user_path(test_user2)
+        expect(current_path).to eq('/')
+      end
+    end
+  end
 
 end

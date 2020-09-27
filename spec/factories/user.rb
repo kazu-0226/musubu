@@ -10,7 +10,7 @@ FactoryBot.define do
       category_id ="1"
       hope_prefecture_code ="1"
       pr { Faker::Lorem.characters(number:30) }
-      is_deleted ="FALSE"
+      is_deleted = false
       email { Faker::Internet.email }
       password { 'password' }
       password_confirmation { 'password' }
