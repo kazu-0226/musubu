@@ -66,8 +66,6 @@ RSpec.describe "Users", type: :request do
     end
   end
 
-  
-
   describe '編集のテスト' do
     let(:test_user) { create(:user) }
     let(:test_user2) { create(:user) }
