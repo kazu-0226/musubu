@@ -23,7 +23,7 @@ class UsersController < ApplicationController
         end
       end
     else
-      flash[:notice] = "この店舗は退会しました"
+      flash[:notice] = "このユーザーは退会しました"
       redirect_back(fallback_location: root_path)
     end
   end
