@@ -15,6 +15,9 @@ footerよりメールアドレスとパスワードを入力せずにゲスト�
 ## サイト概要
 飲食店経営者と店舗経営をしたい（個人,企業）のマッチングプラットフォーム。
 
+![店舗一覧](https://user-images.githubusercontent.com/59648368/94983083-83c7f200-057a-11eb-8d06-9aa23e21e0d2.png)
+![店舗詳細](https://user-images.githubusercontent.com/59648368/94983089-87f40f80-057a-11eb-9275-06ae2eb8dc0c.png)
+![チャット](https://user-images.githubusercontent.com/59648368/94983090-89bdd300-057a-11eb-9bf5-a5eb3437c776.png)
 ### サイトテーマ
 後継者不足に悩む飲食店経営者の方と自分のお店を持ちたい個人の方や飲食店を運営したい企業さんを「結ぶ」。
 
