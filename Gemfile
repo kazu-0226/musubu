@@ -75,6 +75,7 @@ gem 'devise'
 # Image Upload
 gem "refile", require: "refile/rails", github: 'manfe/refile'
 gem "refile-mini_magick"
+gem "refile-s3"
 
 # Address
 gem 'jp_prefecture'
