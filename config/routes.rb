@@ -18,7 +18,7 @@ Rails.application.routes.draw do
     sessions: 'users/sessions',
     registrations: 'users/registrations'
   }
-  # rails routes で確認(omniauth_callbackコントローラーを介し、APIにリクエストを送る)。
+  # omniauth_callbackコントローラーを介し、APIにリクエストを送る。
 
   #店舗用デバイス
   devise_for :shops
