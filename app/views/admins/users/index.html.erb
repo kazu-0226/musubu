@@ -48,6 +48,9 @@
         <% end %>
     </div>
 </div>
+<div>
+    <%= link_to "CSV出力", admins_users_path(format: :csv), class: "btn btn-primary" %>
+</div>
  <div class="container">
     <% @users.each do |user| %>
     <div class= "row">
