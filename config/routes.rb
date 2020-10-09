@@ -15,6 +15,7 @@ Rails.application.routes.draw do
   #会員用デバイス
   devise_for :users, controllers: {
     omniauth_callbacks: 'users/omniauth_callbacks',
+    sessions: 'users/sessions',
     registrations: 'users/registrations'
   }
   # rails routes で確認(omniauth_callbackコントローラーを介し、APIにリクエストを送る)。
