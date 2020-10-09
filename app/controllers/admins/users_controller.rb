@@ -4,6 +4,12 @@ class Admins::UsersController < ApplicationController
 
     def index
         @users = User.all.order(id: "DESC").page(params[:page]).per(5)
+        respond_to do |format|
+            format.html
+            format.csv do
+              @users = User.all
+            end
+        end
     end
 
     def show

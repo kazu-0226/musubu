@@ -4,6 +4,12 @@ class Admins::ShopsController < ApplicationController
 
     def index
         @shops = Shop.all.order(id: "DESC").page(params[:page]).per(5)
+        respond_to do |format|
+          format.html
+          format.csv do
+            @shops = Shop.all
+          end
+        end
     end
 
     def show

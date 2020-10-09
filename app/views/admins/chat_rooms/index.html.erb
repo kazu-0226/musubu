@@ -1,5 +1,8 @@
 <div class= "container">
     <h2>チャット一覧</h2>
+    <div>
+        <%= link_to "CSV出力", admins_chat_rooms_path(format: :csv), class: "btn btn-primary" %>
+    </div>
     <table class="table table">
         <thead>
             <tr>
