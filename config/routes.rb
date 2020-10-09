@@ -11,8 +11,14 @@ Rails.application.routes.draw do
 
   #管理者用デバイス
   devise_for :admins
+
   #会員用デバイス
-  devise_for :users
+  devise_for :users, controllers: {
+    omniauth_callbacks: 'users/omniauth_callbacks',
+    registrations: 'users/registrations'
+  }
+  # rails routes で確認(omniauth_callbackコントローラーを介し、APIにリクエストを送る)。
+
   #店舗用デバイス
   devise_for :shops
 
