@@ -47,15 +47,16 @@ M&A
 
 ### 機能一覧
 - ユーザーや店舗、管理者（ログインのみ）の登録、ログイン機能(devise)
+- Google認証（ユーザー）
 - 画像管理(refile)
 - 地図表示（GoogleMapAPI）
 - フォロー機能(Ajax)
 - チャット機能(Action Cable）
-- ページネーション機能(kaminari)
+- ページネーション機能(kaminari）
 - 検索機能(ransack未使用)
 - カテゴリ作成（ぐるなびAPI）
 - バッチ処理（カテゴリ更新）
-
+- CSV出力(検索結果も対応)
 
 <https://docs.google.com/spreadsheets/d/1lmwajsESFuNPbFwBXMTSVjh6C8d50j1PClmK3fSbwSs/edit?usp=sharing>
 

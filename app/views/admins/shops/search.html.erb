@@ -48,6 +48,9 @@
         <% end %>
     </div>
 </div>
+<div class="container">
+    <%= link_to "CSV出力", search_admins_shops_path(format: :csv, content: @content, prefecture_code: @prefecture_code, category_ids: @category_ids), class: "btn btn-primary csv-btn" %>
+</div>
 <!-- Page Content -->
     <div class="container">
         <% @shops.each do |shop| %>

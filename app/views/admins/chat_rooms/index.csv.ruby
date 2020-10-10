@@ -1,7 +1,7 @@
 require 'csv'
 
 CSV.generate do |csv|
-  csv_column_names = %w(id created_at updated_at)
+  csv_column_names = %w(id user_id shop_id created_at updated_at)
   csv << csv_column_names
   @chat_rooms.each do |chat_room|
     csv_column_values = [
