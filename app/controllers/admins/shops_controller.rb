@@ -33,6 +33,12 @@ class Admins::ShopsController < ApplicationController
         @prefecture_code = params['prefecture_code']
         @category_ids = params['category_ids']
         @shops = search_shop(@content, @prefecture_code, @category_ids).page(params[:page]).per(5)
+        respond_to do |format|
+          format.html
+          format.csv do
+            @shops = search_shop(@content, @prefecture_code, @category_ids)
+          end
+        end
       end
 
     private
