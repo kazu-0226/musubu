@@ -33,11 +33,7 @@
           </tr>
           <tr>
           <td  colspan="2">
-            <%- if devise_mapping.omniauthable? %>
-              <%- resource_class.omniauth_providers.each do |provider| %>
-                <%= link_to "Sign in with #{OmniAuth::Utils.camelize(provider)}", omniauth_authorize_path(resource_name, provider), class: "btn btn-primary" %><br />
-              <% end %>
-            <% end %>
+            <%= link_to "Googleアカウントで登録", google_oauth_path(type: "user"), class: "btn btn-primary" %><br />
           </td>
           </tr>
           </table>

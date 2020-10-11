@@ -1,6 +1,6 @@
 <div class="container">
 <div class="card-header text-center login-card">
-<h2>会員新規登録</h2>
+<h2>お店新規登録</h2>
 </div>
     <div class= "row justify-content-center">
       <div class= "main main-raised col-sm-8">
@@ -31,6 +31,9 @@
           <tr>
             <td colspan="2"><%= f.submit "新規登録", class: "btn btn-primary" %></td>
           </tr>
+          <td  colspan="2">
+              <%= link_to "Googleアカウントで登録", google_oauth_path(type: "shop"), class: "btn btn-primary" %><br />
+          </td>
           </table>
           <% end %>
         </div>
