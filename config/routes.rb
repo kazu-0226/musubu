@@ -13,15 +13,21 @@ Rails.application.routes.draw do
   devise_for :admins
 
   #会員用デバイス
-  devise_for :users, controllers: {
-    omniauth_callbacks: 'users/omniauth_callbacks',
-    sessions: 'users/sessions',
-    registrations: 'users/registrations'
-  }
+  devise_for :users
   # omniauth_callbackコントローラーを介し、APIにリクエストを送る。
+  devise_scope :user do
+    #get "/auth/:provider/callback" => "users/omniauth_callbacks#google_oauth2"
+    get "/auth/google_oauth2/callback" => "users/omniauth_callbacks#google_oauth2"
+    get "/auth/google_oauth2" => "users/omniauth_callbacks#passthru", as: :google_oauth
+  end
 
   #店舗用デバイス
   devise_for :shops
+  # devise_scope :shop do
+  #   #get "/auth/:provider/callback" => "users/omniauth_callbacks#google_oauth2"
+  #   get "shops/auth/google_oauth2/callback" => "shops/omniauth_callbacks#google_oauth2"
+  #   get "/auth/google_oauth2" => "shops/omniauth_callbacks#passthru", as: :shop_google_oauth
+  # end
 
   #管理者用ルーティング 
   namespace :admins do
