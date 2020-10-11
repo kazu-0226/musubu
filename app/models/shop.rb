@@ -79,4 +79,19 @@ class Shop < ApplicationRecord
   def updated?
     self.updated_at.between?(1.week.ago, Time.current)
   end
+
+  protected
+  # google認証
+    def self.from_omniauth(access_token)
+      data = access_token.info
+      shop = Shop.where(email: data['email']).first
+
+      # Uncomment the section below if you want shops to be created if they don't exist
+      unless shop
+        shop = Shop.create(email: data['email'],
+             password: Devise.friendly_token[0,20]
+          )
+      end
+      shop
+    end
 end
