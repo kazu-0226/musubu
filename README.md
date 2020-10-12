@@ -1,5 +1,5 @@
 # 結ぶ（むすぶ）
-http://musubuu.com/
+https://musubuu.com/
 
 既存ユーザー・店舗のログイン
 
@@ -58,7 +58,13 @@ M&A
 - バッチ処理（カテゴリ更新）
 - CSV出力(検索結果も対応)
 
-<https://docs.google.com/spreadsheets/d/1lmwajsESFuNPbFwBXMTSVjh6C8d50j1PClmK3fSbwSs/edit?usp=sharing>
+[詳細はこちら](https://docs.google.com/spreadsheets/d/1lmwajsESFuNPbFwBXMTSVjh6C8d50j1PClmK3fSbwSs/edit?usp=sharing)
+
+### 各種設計
+- [ER図](https://drive.google.com/file/d/1plkLw5cj3sMJiV1y1R3QZvYrSiUya2mN/view?usp=sharing)
+- [テーブル定義](https://drive.google.com/file/d/1Rdjfk6PzsaxTycq3DeyiGYXFabcoZqnU/view?usp=sharing)
+- [詳細設計](https://docs.google.com/spreadsheets/d/14ZGLn75VAoGgxCy_y-yxxbSmJ99ZkNlCJRu6S0YxU2c/edit?usp=sharing)
+
 
 ### テスト（RSpec）
 - 単体テスト(model：User,Shop)　カバレッジ70%以上
