@@ -65,6 +65,9 @@ M&A
 - [テーブル定義](https://drive.google.com/file/d/1Rdjfk6PzsaxTycq3DeyiGYXFabcoZqnU/view?usp=sharing)
 - [詳細設計](https://docs.google.com/spreadsheets/d/14ZGLn75VAoGgxCy_y-yxxbSmJ99ZkNlCJRu6S0YxU2c/edit?usp=sharing)
 
+### AWS構成
+![構成図](https://user-images.githubusercontent.com/59648368/95850288-8fda5d80-0d8b-11eb-820d-93149ba9cd38.png)
+- [設計書](https://docs.google.com/spreadsheets/d/1sndoUzbd2iC1l_Ww0eE6XKP9LDn7fb3-DtfEEmapJEA/edit?usp=sharing)
 
 ### テスト（RSpec）
 - 単体テスト(model：User,Shop)　カバレッジ70%以上
