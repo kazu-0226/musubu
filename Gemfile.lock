@@ -154,6 +154,11 @@ GEM
     geocoder (1.6.4)
     globalid (0.4.2)
       activesupport (>= 4.2.0)
+    gon (6.4.0)
+      actionpack (>= 3.0.20)
+      i18n (>= 0.7)
+      multi_json
+      request_store (>= 1.0)
     hashie (4.1.0)
     http-accept (1.7.0)
     http-cookie (1.0.3)
@@ -290,6 +295,8 @@ GEM
       aws-sdk (~> 2.0)
       refile (~> 0.6.0)
     regexp_parser (1.8.1)
+    request_store (1.5.0)
+      rack (>= 1.4)
     responders (3.0.1)
       actionpack (>= 5.0)
       railties (>= 5.0)
@@ -415,6 +422,7 @@ DEPENDENCIES
   faker
   font-awesome-sass (~> 5.8.1)
   geocoder
+  gon
   jbuilder (~> 2.5)
   jp_prefecture
   jquery-rails

@@ -34,14 +34,40 @@
         <input type="hidden" name="user_id" id="user-id-form" value="<%= @room.user.id %>">
       <% end %>
       <input type="hidden" name="chat_room_id" id="chat-room-id-form"  value="<%= @room.id %>">
+      <button type="button" id="call-btn" data-toggle="modal" data-target="#exampleModalCenter">
+      <i class="fa fa-phone" aria-hidden="true"></i>
+      </button>
       <input type="text" name="content" id="content-form" data-behavior="chat_speaker" size="50">
       <button id="chat_sendbtn" data-behavior="chat_speaker"><i class="fas fa-paper-plane"></i></i></button>
     </div>
   </div>
 </div>
 
-<%# 送信ボタンの入力制御 %>
+<!-- Modal -->
+<div class="modal fade" id="exampleModalCenter" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
+  <div class="modal-dialog modal-dialog-centered" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="exampleModalCenterTitle">通話したい相手のIDを入力してください</h5>
+      </div>
+      <div class="modal-body">
+        <video id="my-video" width="400px" autoplay muted playsinline></video>
+        <video id="their-video" width="400px" autoplay muted playsinline></video>
+        <p>このIDを相手にお伝えください</p>
+        <p id="my-id"></p>
+        <textarea id="their-id"></textarea>
+        <button id="make-call">発信</button>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary close" data-dismiss="modal">Close</button>
+      </div>
+    </div>
+  </div>
+</div>
+
 <script>
+// 送信ボタンの入力制御
+
 window.addEventListener('DOMContentLoaded',function(){
 document.getElementById('chat_sendbtn').disabled = true;
 document.getElementById('content-form').addEventListener('keyup',function(){
@@ -57,4 +83,80 @@ document.getElementById('chat_sendbtn').disabled = true;
 }
 },false);
 },false);
+
+
+// 通話機能
+
+let localStream;
+
+  // カメラ映像取得
+  document.getElementById("call-btn").onclick = function() {
+  navigator.mediaDevices.getUserMedia({video: true, audio: true})
+    .then( stream => {
+    // 成功時にvideo要素にカメラ映像をセットし、再生
+    const videoElm = document.getElementById('my-video');
+    videoElm.srcObject = stream;
+    videoElm.play();
+    // 着信時に相手にカメラ映像を返せるように、グローバル変数に保存しておく
+    localStream = stream;
+  }).catch( error => {
+    // 失敗時にはエラーログを出力
+    console.error('mediaDevice.getUserMedia() error:', error);
+    return;
+  });
+  document.getElementsByClassName("close")[0].onclick = function() {
+  const videoElm = document.getElementById('my-video');
+  videoElm.srcObject.getTracks().forEach(track => track.stop());
+};
+};
+
+
+  
+  //Peer作成
+  const peer = new Peer({
+    key: "<%= ENV['SKYWAY_ID'] %>",
+    debug: 3
+  });
+
+  //PeerID取得
+    peer.on('open', () => {
+        document.getElementById('my-id').textContent = peer.id;
+    });
+
+    // 発信処理
+document.getElementById('make-call').onclick = () => {
+  const theirID = document.getElementById('their-id').value;
+  const mediaConnection = peer.call(theirID, localStream);
+  console.log(mediaConnection)
+  setEventListener(mediaConnection);
+};
+
+// イベントリスナを設置する関数
+const setEventListener = mediaConnection => {
+  mediaConnection.on('stream', stream => {
+    // video要素にカメラ映像をセットして再生
+    const videoElm = document.getElementById('their-video')
+    videoElm.srcObject = stream;
+    videoElm.play();
+  });
+  mediaConnection.once('close', () => {
+     const videoElm = document.getElementById('their-video')
+      videoElm.srcObject.getTracks().forEach(track => track.stop());
+      videoElm.srcObject = null;
+   });
+  document.getElementsByClassName("close")[0].addEventListener('click', () => mediaConnection.close(true));
+};
+
+//着信処理
+peer.on('call', mediaConnection => {
+  mediaConnection.answer(localStream);
+  setEventListener(mediaConnection);
+});
+
+
+  peer.on('close', () => {
+  console.log("bbb");
+  alert('通話終了。');
+});
+
 </script>

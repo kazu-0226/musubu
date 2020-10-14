@@ -86,6 +86,7 @@ gem "geocoder"
 
 # Security
 gem 'dotenv-rails'
+gem 'gon'
 
 # View
 gem 'bootstrap', '~> 4.2.1'
