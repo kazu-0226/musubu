@@ -17,6 +17,7 @@ class ChatRoomsController < ApplicationController
     @room = ChatRoom.find(params[:id])
     @messages = @room.chat_messages.includes(:user).includes(:shop)
     @message = ChatMessage.new
+    gon.skyway_key = ENV['SKYWAY_ID']
   end
 
   def index
