@@ -4,7 +4,7 @@
       you:<%= @room.shop.name %>
       ユーザ:<%= @room.user.full_name %>
     <% elsif user_signed_in? %>
-      you<%= @room.user.full_name %>
+      you:<%= @room.user.full_name %>
       お店:<%= @room.shop.name %>
     <% end %>
     </span>
@@ -34,7 +34,7 @@
         <input type="hidden" name="user_id" id="user-id-form" value="<%= @room.user.id %>">
       <% end %>
       <input type="hidden" name="chat_room_id" id="chat-room-id-form"  value="<%= @room.id %>">
-      <button type="button" id="call-btn" data-toggle="modal" data-target="#exampleModalCenter">
+      <button type="button" id="call-btn" data-toggle="modal" data-target="#videoModalCenter">
       <i class="fa fa-phone" aria-hidden="true"></i>
       </button>
       <input type="text" name="content" id="content-form" data-behavior="chat_speaker" size="50">
@@ -44,22 +44,36 @@
 </div>
 
 <!-- Modal -->
-<div class="modal fade" id="exampleModalCenter" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
+<div class="modal fade" id="videoModalCenter" tabindex="-1" role="dialog" aria-labelledby="videoModalCenterTitle" aria-hidden="true">
   <div class="modal-dialog modal-dialog-centered" role="document">
     <div class="modal-content">
       <div class="modal-header">
-        <h5 class="modal-title" id="exampleModalCenterTitle">通話したい相手のIDを入力してください</h5>
+        <h5 class="modal-title" id="videoModalCenterTitle">通話したい相手のIDを入力してください</h5>
       </div>
       <div class="modal-body">
-        <video id="my-video" width="400px" autoplay muted playsinline></video>
-        <video id="their-video" width="400px" autoplay muted playsinline></video>
+        <div class="my-video-box">
+          <% if shop_signed_in? %>
+            <p>you:<%= @room.shop.name %></p>
+          <% elsif user_signed_in? %>
+            <p>you:<%= @room.user.full_name %></p>
+          <% end %>
+          <video id="my-video" width="400px" autoplay muted playsinline></video>
+        </div>
+        <div class="their-video-box">
+          <% if shop_signed_in? %>
+          <p>ユーザ:<%= @room.user.full_name %></p>
+          <% elsif user_signed_in? %>
+            <p>お店:<%= @room.shop.name %></p> 
+          <% end %>
+          <video id="their-video" width="400px" autoplay muted playsinline></video>
+        </div>
         <p>このIDを相手にお伝えください</p>
         <p id="my-id"></p>
-        <textarea id="their-id"></textarea>
+        <textarea id="their-id" placeholder="通話したい相手のIDを入力" ></textarea>
         <button id="make-call">発信</button>
       </div>
       <div class="modal-footer">
-        <button type="button" class="btn btn-secondary close" data-dismiss="modal">Close</button>
+        <button type="button" class="btn btn-secondary close" data-dismiss="modal">通話終了</button>
       </div>
     </div>
   </div>
