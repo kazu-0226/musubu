@@ -96,6 +96,7 @@ let localStream;
     // 成功時にvideo要素にカメラ映像をセットし、再生
     const videoElm = document.getElementById('my-video');
     videoElm.srcObject = stream;
+    videoElm.muted = false;
     videoElm.play();
     // 着信時に相手にカメラ映像を返せるように、グローバル変数に保存しておく
     localStream = stream;
@@ -107,6 +108,7 @@ let localStream;
   document.getElementsByClassName("close")[0].onclick = function() {
   const videoElm = document.getElementById('my-video');
   videoElm.srcObject.getTracks().forEach(track => track.stop());
+  videoElm.srcObject = null;
 };
 };
 
@@ -137,6 +139,7 @@ const setEventListener = mediaConnection => {
     // video要素にカメラ映像をセットして再生
     const videoElm = document.getElementById('their-video')
     videoElm.srcObject = stream;
+    videoElm.muted = false;
     videoElm.play();
   });
   mediaConnection.once('close', () => {
@@ -144,19 +147,15 @@ const setEventListener = mediaConnection => {
       videoElm.srcObject.getTracks().forEach(track => track.stop());
       videoElm.srcObject = null;
    });
-  document.getElementsByClassName("close")[0].addEventListener('click', () => mediaConnection.close(true));
+  document.getElementsByClassName("close")[0].addEventListener('click', () => {
+    mediaConnection.close(true);
+  });
 };
 
 //着信処理
 peer.on('call', mediaConnection => {
   mediaConnection.answer(localStream);
   setEventListener(mediaConnection);
-});
-
-
-  peer.on('close', () => {
-  console.log("bbb");
-  alert('通話終了。');
 });
 
 </script>
