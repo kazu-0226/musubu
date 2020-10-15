@@ -52,6 +52,7 @@ M&A
 - 地図表示（GoogleMapAPI）
 - フォロー機能(Ajax)
 - チャット機能(Action Cable）
+- ビデオ通話機能(SkayWay)
 - ページネーション機能(kaminari）
 - 検索機能(ransack未使用)
 - カテゴリ作成（ぐるなびAPI）
