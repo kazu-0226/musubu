@@ -51,19 +51,19 @@
         <h5 class="modal-title" id="videoModalCenterTitle">通話したい相手のIDを入力してください</h5>
       </div>
       <div class="modal-body">
-        <div class="my-video-box">
+        <div class="video-box">
           <% if shop_signed_in? %>
-            <p>you:<%= @room.shop.name %></p>
+            <p><%= @room.shop.name %></p>
           <% elsif user_signed_in? %>
-            <p>you:<%= @room.user.full_name %></p>
+            <p><%= @room.user.full_name %></p>
           <% end %>
           <video id="my-video" width="400px" autoplay muted playsinline></video>
         </div>
-        <div class="their-video-box">
+        <div class="video-box">
           <% if shop_signed_in? %>
-          <p>ユーザ:<%= @room.user.full_name %></p>
+          <p><%= @room.user.full_name %></p>
           <% elsif user_signed_in? %>
-            <p>お店:<%= @room.shop.name %></p> 
+            <p><%= @room.shop.name %></p> 
           <% end %>
           <video id="their-video" width="400px" autoplay muted playsinline></video>
         </div>
@@ -125,8 +125,6 @@ let localStream;
   videoElm.srcObject = null;
 };
 };
-
-
   
   //Peer作成
   const peer = new Peer({
