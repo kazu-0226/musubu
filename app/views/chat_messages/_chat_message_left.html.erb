@@ -5,7 +5,7 @@
         <% end %>
     </div>
     <div class="says">
-        <strong><%= content %></strong> <br>
+        <strong><%= content_url_to_link(content).html_safe %></strong> <br>
         <%= created_at.strftime("%Y-%m-%d %H:%M")%>
     </div>
 </div>

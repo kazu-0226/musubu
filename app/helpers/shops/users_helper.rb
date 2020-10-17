@@ -1,2 +1,0 @@
-module Shops::UsersHelper
-end
