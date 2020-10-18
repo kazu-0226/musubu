@@ -3,7 +3,7 @@ class ChatMessage < ApplicationRecord
   belongs_to :chat_room
   belongs_to :user, optional: true
   belongs_to :shop, optional: true
-
+  has_many :notifications, dependent: :destroy
   #バリデーション
   with_options presence: true do
     validates :content

@@ -1,0 +1,12 @@
+<h2 class="text-center">通知</h2>
+<% if @notifications.exists? %>
+    <table class="table table-borderless">
+        <tbody>
+            <tr>
+                <td><%= render @notifications %></td>
+            </tr>
+        </tbody>
+    </table>
+<% else %>
+    <p>通知はありません</p>
+<% end %>

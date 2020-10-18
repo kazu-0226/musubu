@@ -10,6 +10,8 @@ class User < ApplicationRecord
   has_many :shop_followings, dependent: :destroy
   has_many :chat_rooms, dependent: :destroy
   has_many :chat_messages, dependent: :destroy
+  has_many :active_notifications, class_name: "Notification", foreign_key: "visiter_id", dependent: :destroy
+  has_many :passive_notifications, class_name: "Notification", foreign_key: "visited_id", dependent: :destroy
 
   #画像アップロード
   attachment :user_image
@@ -64,6 +66,21 @@ class User < ApplicationRecord
   #ユーザがフォローしているお店をすでフォローしているかしていないか
   def followed_by?(shop)
     shop_followings.where(shop_id: shop.id).exists?
+  end
+
+  # フォロー通知(user→shop)
+  def create_notification_follow_shop!(shop)
+    temp = Notification.where(["visiter_id = ? and visiter_type = ? and visited_id = ? and visited_type = ? and action = ? ", id, 'user', shop.id, 'shop', 'follow'])
+    # if temp.blank? 再フォローぼ場合も通知したいため削除
+      notification = active_notifications.new(
+        visiter_id: id,
+        visiter_type: 'user',
+        visited_id: shop.id,
+        visited_type: 'shop',
+        action: 'follow'
+      )
+      notification.save if notification.valid?
+    # end
   end
 
   #ユーザが退会している場合はログインを弾く
