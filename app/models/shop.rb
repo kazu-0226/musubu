@@ -74,17 +74,17 @@ class Shop < ApplicationRecord
 
    # フォロー通知(shop→user)
    def create_notification_follow_user!(user)
-    temp = Notification.where(["visiter_id = ? and visiter_type = ? and visited_id = ? and visited_type = ? and action = ? ", current_shop.id, 'shop', user.id, 'user', 'follow'])
-    if temp.blank?
+    temp = Notification.where(["visiter_id = ? and visiter_type = ? and visited_id = ? and visited_type = ? and action = ? ", id, 'shop', user.id, 'user', 'follow'])
+    # if temp.blank?
       notification = active_notifications.new(
-        visiter_id: current_shop.id,
+        visiter_id: id,
         visiter_type: 'shop',
         visited_id: user.id,
         visited_type: 'user',
         action: 'follow'
       )
       notification.save if notification.valid?
-    end
+    # end
   end
 
   #お店が退会している場合はログインを弾く

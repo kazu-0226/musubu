@@ -71,7 +71,7 @@ class User < ApplicationRecord
   # フォロー通知(user→shop)
   def create_notification_follow_shop!(shop)
     temp = Notification.where(["visiter_id = ? and visiter_type = ? and visited_id = ? and visited_type = ? and action = ? ", id, 'user', shop.id, 'shop', 'follow'])
-    if temp.blank?
+    # if temp.blank? 再フォローぼ場合も通知したいため削除
       notification = active_notifications.new(
         visiter_id: id,
         visiter_type: 'user',
@@ -80,7 +80,7 @@ class User < ApplicationRecord
         action: 'follow'
       )
       notification.save if notification.valid?
-    end
+    # end
   end
 
   #ユーザが退会している場合はログインを弾く

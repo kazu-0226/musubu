@@ -1,0 +1,17 @@
+<div class= "container">
+    <div class="row">
+        <div class="col-sm-6 offset-sm-3">
+            <div class="user-view clearfix ">
+                <% if shop_signed_in? %>
+                    <%= attachment_image_tag notification.user_visiter, :user_image, format: 'jpeg', class: "round_image", fallback: "no_image.svg", size: "30x30" %>
+                    <%= notification_form(notification) %><span class="moderate-font"><%= " (#{time_ago_in_words(notification.created_at)} 前)" %></span>
+                <% end %>
+                <% if user_signed_in? %>
+                    <%= attachment_image_tag notification.shop_visiter, :main_image, format: 'jpeg', class: "round_image", fallback: "no_image.svg", size: "30x30" %>
+                    <%= notification_form(notification) %><span class="moderate-font"><%= " (#{time_ago_in_words(notification.created_at)} 前)" %></span>
+                <% end %>
+                <hr>
+            </div>
+        </div>
+    </div>
+</div>
