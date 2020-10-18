@@ -1,6 +1,9 @@
 class UserFollowingsController < ApplicationController
+    #userがshopをフォローする
     def create
         @shop = Shop.find_by(id: params[:shop_id])
+        # フォロー通知作成
+        current_user.create_notification_follow_shop!(@shop)
         @follow = current_user.user_followings.new(shop_id: params[:shop_id])
         @follow.save
         #非同期通信の際にインタンス変数を渡す必要があるため、チャットボタンの表示を定義する
