@@ -553,3 +553,18 @@ footer a{
 .pagination>li>a:hover {        
   border-radius: 15px;  
 }
+
+.fa-bell{
+  position: relative;
+}
+
+.notify-badge{
+  width: 20px;
+  height: 20px;
+  position: absolute;
+  background-color: red;
+  text-align: center;
+  border-radius: 50%;
+  color:white;
+  left: 79%;
+}

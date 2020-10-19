@@ -47,15 +47,14 @@
                             チャット<i class="far fa-envelope"></i>
                         <% end %>
                     </li>
-                    <% if unchecked_notifications.any? %>
-                        <i class="fa fa-circle" style="color: gold;"></i>
-                        <%= unchecked_count %>
-                    <% end %>
                     <li class="nav-item">
                         <%= link_to notifications_path, class:"nav-link" do %>
                         通知<i class="fas fa-bell"></i>
                         <% end %>
                     </li>
+                        <% if unchecked_notifications.any? %>
+                            <span class="badge badge-warning notify-badge"><%= unchecked_count %></span>
+                        <% end %>
                     <li class="nav-item">
                         <%= link_to  shops_path, class:"nav-link" do %>
                            お店を探す<i class="fas fa-store-alt"></i>
