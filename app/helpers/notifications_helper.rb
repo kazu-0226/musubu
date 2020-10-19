@@ -1,5 +1,5 @@
 module NotificationsHelper
-
+    # actionによるメッセージの表示を分ける
     def notification_form(notification)
         if user_signed_in?
             @visiter = notification.shop_visiter
@@ -19,4 +19,21 @@ module NotificationsHelper
         end
     end
     
+    # 未確認の通知を示す
+    def unchecked_notifications
+        if user_signed_in?
+            @notifications = current_user.passive_notifications.where(checked: false, visited_type: 'user')
+        elsif shop_signed_in?
+            @notifications = current_shop.passive_notifications.where(checked: false, visited_type: 'shop')
+        end
+    end
+
+    # 未確認の件数をカウントする
+    def unchecked_count
+        if user_signed_in?
+            @notification_count = current_user.passive_notifications.where(checked: false, visited_type: 'user').count
+        elsif shop_signed_in?
+            @notification_count = current_shop.passive_notifications.where(checked: false, visited_type: 'shop').count
+        end
+    end
 end
