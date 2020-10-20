@@ -47,6 +47,14 @@
                             チャット<i class="far fa-envelope"></i>
                         <% end %>
                     </li>
+                    <li class="nav-item notification">
+                        <%= link_to notifications_path, class:"nav-link" do %>
+                        通知<i class="fas fa-bell"></i>
+                        <% end %>
+                        <% if unchecked_notifications.any? %>
+                            <span class="badge badge-warning notify-badge"><%= unchecked_count %></span>
+                        <% end %>
+                    </li>
                     <li class="nav-item">
                         <%= link_to  shops_path, class:"nav-link" do %>
                            お店を探す<i class="fas fa-store-alt"></i>
@@ -70,6 +78,14 @@
                      <li class="nav-item">
                         <%= link_to chat_rooms_path, class:"nav-link" do %>
                             チャット<i class="far fa-envelope"></i>
+                        <% end %>
+                    </li>
+                     <li class="nav-item notification">
+                        <%= link_to notifications_path, class:"nav-link" do %>
+                        通知<i class="fas fa-bell"></i>
+                        <% end %>
+                        <% if unchecked_notifications.any? %>
+                            <span class="badge badge-warning notify-badge"><%= unchecked_count %></span>
                         <% end %>
                     </li>
                     <li class="nav-item">
