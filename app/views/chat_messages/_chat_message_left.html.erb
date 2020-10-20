@@ -5,7 +5,9 @@
         <% end %>
     </div>
     <div class="says">
+    <%# binding.pry if content.match(/^http/) %>
         <strong><%= content_url_to_link(content).html_safe %></strong> <br>
+
         <%= created_at.strftime("%Y-%m-%d %H:%M")%>
     </div>
 </div>

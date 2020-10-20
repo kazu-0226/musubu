@@ -3,11 +3,13 @@ module ChatMessagesHelper
     require "uri"
  
     def content_url_to_link(content)
+        # 左右のパーシャルで呼び出すため、contentが二重に書き換えられるのを防ぐため、dupメソッドでコピーしてcontentを複数用意する
+        dup_content = content.dup
         # URI.extractで引数の[“http”, “https”].uniqで引数のcontentが「httpかhttps」のいずれかで始まるテキスト要素を重複を削除した形で配列を生成
-        URI.extract(content, ["http", "https"]).uniq.each do |url|
+        URI.extract(dup_content, ["http", "https"]).uniq.each do |url|
             # 「gsub!」メソッドでcontentをの値を”< a href=”#{url}”target=”_blank”>#{url}</a>”に置換
-            content.gsub!(url, "<a href='#{url}' target='_blank'>#{url}</a>")
+            dup_content.gsub!(url, "<a href='#{url}' target='_blank'>#{url}</a>")
         end
-        content
+        dup_content
     end
 end
