@@ -2,9 +2,13 @@ module NotificationsHelper
     # actionによるメッセージの表示を分ける
     def notification_form(notification)
         if user_signed_in?
+            #binding.pry
             @visiter = notification.shop_visiter
+            @room = notification.chat_room_id
         elsif shop_signed_in?
+            #binding.pry
             @visiter = notification.user_visiter
+            @room = notification.chat_room_id
         end
         #notification.actionがfollowかdm
         case notification.action
@@ -16,9 +20,9 @@ module NotificationsHelper
             end
         when "dm" then
             if user_signed_in?
-                tag.a(notification.shop_visiter.name, href: shop_path(@visiter), style:"font-weight: bold;")+"からメッセージが届きました"
+                tag.a(notification.shop_visiter.name, href: shop_path(@visiter), style:"font-weight: bold;")+"から"+tag.a('メッセージ', href: chat_room_path(@room), style:"font-weight: bold;")+"が届きました"
             elsif shop_signed_in?
-                tag.a(notification.user_visiter.full_name, href: user_path(@visiter), style:"font-weight: bold;")+"からメッセージが届きました"
+                tag.a(notification.user_visiter.full_name, href: user_path(@visiter), style:"font-weight: bold;")+"から"+tag.a('メッセージ', href: chat_room_path(@room), style:"font-weight: bold;")+"が届きました"
             end
         end
     end

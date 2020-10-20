@@ -18,7 +18,7 @@ class ChatRoomChannel < ApplicationCable::Channel
       ChatMessage.create_notification_dm_by_user!(data["user_id"], data["chat_room_id"])
     else
       ChatMessage.create! content: data["content"], shop_id: data["shop_id"], chat_room_id: data["chat_room_id"]
-      ChatMessage.create_notification_dm_by_shop!(shop_id: data["shop_id"], chat_room_id: data["chat_room_id"])
+      ChatMessage.create_notification_dm_by_shop!(data["shop_id"], data["chat_room_id"])
     end
   end
 end

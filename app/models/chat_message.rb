@@ -13,8 +13,7 @@ class ChatMessage < ApplicationRecord
 
   # Callbacks
   after_create_commit { ChatMessageBroadcastJob.perform_later self }
-  # after_create_commit :create_notification_dm_by_user!, if: :user_id.present?,
-  #   else: :create_notification_dm_by_shop!
+
 
 
   # DM通知(user→shop)
@@ -32,9 +31,9 @@ class ChatMessage < ApplicationRecord
   end
 
    # DM通知(shop→user)
-   def create_notification_dm_by_shop!(shop_id, chat_room_id)
-    @room = chat_room.find_by(id: chat_room_id)
-    notification = active_notifications.new(
+   def self.create_notification_dm_by_shop!(shop_id, chat_room_id)
+    @room = ChatRoom.find_by(id: chat_room_id)
+    notification = Notification.new(
       visiter_id: shop_id,
       visiter_type: 'shop',
       visited_id: @room.user_id,
