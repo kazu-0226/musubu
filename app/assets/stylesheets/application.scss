@@ -554,7 +554,7 @@ footer a{
   border-radius: 15px;  
 }
 
-.fa-bell{
+.notification{
   position: relative;
 }
 
@@ -566,5 +566,6 @@ footer a{
   text-align: center;
   border-radius: 50%;
   color:white;
-  left: 79%;
+  top: 0;
+  right: -10px;
 }
