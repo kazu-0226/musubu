@@ -20,7 +20,7 @@ footerよりメールアドレスとパスワードを入力せずにゲスト�
 - 店舗詳細
 ![店舗詳細](https://user-images.githubusercontent.com/59648368/94983089-87f40f80-057a-11eb-9275-06ae2eb8dc0c.png)
 - リアルタイムチャット
-![チャット](https://user-images.githubusercontent.com/59648368/94983090-89bdd300-057a-11eb-9bf5-a5eb3437c776.png)
+![チャット](https://user-images.githubusercontent.com/59648368/96331926-1f3d8480-109c-11eb-9455-01289f2d4328.png)
 - ビデオチャット
 ![ビデオチャット](https://user-images.githubusercontent.com/59648368/96243777-2d2dcf80-0fe0-11eb-9d38-3cd77c6eae4b.jpg)
 
@@ -64,6 +64,7 @@ M&A
 - カテゴリ作成（ぐるなびAPI）
 - バッチ処理（カテゴリ更新）
 - CSV出力(検索結果も対応)
+- 通知機能
 
 [詳細はこちら](https://docs.google.com/spreadsheets/d/1lmwajsESFuNPbFwBXMTSVjh6C8d50j1PClmK3fSbwSs/edit?usp=sharing)
 

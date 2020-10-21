@@ -82,6 +82,8 @@ Rails.application.routes.draw do
   #チャットルーティング 
   resources :chat_rooms, only: [:show, :create, :index]
   resources :chat_messages, only:[:create]
+
+  resources :notifications, only:[:index]
   
   #問い合わせルーティング  
   get   'inquiry'         => 'inquiry#index'
