@@ -107,5 +107,6 @@ gem 'kaminari-i18n'
 gem 'whenever', :require => false
 
 group :production do
-  gem 'mysql2'
+  gem 'mysql2'	
+  gem 'google-analytics-rails'
 end
