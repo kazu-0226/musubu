@@ -56,6 +56,11 @@ class ChatRoomsController < ApplicationController
     elsif admin_signed_in?
       flash[:alert] = "管理者でログインしています"
     end
+
+    unless user_signed_in? || shop_signed_in? || admin_signed_in?
+      flash[:alert] = "ログインが必要です"
+      redirect_to root_path
+    end
   end
 
 
