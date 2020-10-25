@@ -29,11 +29,15 @@ set :environment, rails_env
 set :output, "#{Rails.root}/log/cron.log"
 
 every 1.week do
-    begin
-        runner "Batch::CategoryCreate.g_category"
+  begin
+    runner "Batch::CategoryCreate.g_category"
     rescue => e
-        Rails.logger.error("aborted rails runner")
-        raise e
-    end
+      Rails.logger.error("aborted rails runner")
+      raise e
+  end
+end
+
+every 1.minutes do
+    runner "MailNotificationMailer.check_notice_mail.deliver_now"
 end
   
