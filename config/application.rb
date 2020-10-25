@@ -23,6 +23,6 @@ module Musubu
     config.active_record.default_timezone = :local
     # config/locales/配下の全てのrb, ymlファイルを読み込み対象とする
     config.i18n.load_path += Dir[Rails.root.join('config', 'locales', '**', '*.{rb,yml}').to_s]
-    
   end
+
 end

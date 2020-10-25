@@ -28,6 +28,7 @@ set :environment, rails_env
 # cronのログの吐き出し場所。ここでエラー内容を確認する
 set :output, "#{Rails.root}/log/cron.log"
 
+# 毎週カテゴリを更新する
 every 1.week do
   begin
     runner "Batch::CategoryCreate.g_category"
@@ -37,7 +38,13 @@ every 1.week do
   end
 end
 
-every 1.minutes do
-    runner "MailNotificationMailer.check_notice_mail.deliver_now"
+# 未読の通知が3件ある場合は通知する
+every 1.days, at: '11:00 pm' do
+  time = Date.new
+  Rails.logger.error("-----------send mail-----------#{time}")
+  runner "MailNotificationMailer.check_notice_mail.deliver_now"
+  rescue => e
+    Rails.logger.error("not mailer task")
+    raise e
 end
   
