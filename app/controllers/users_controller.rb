@@ -69,34 +69,34 @@ class UsersController < ApplicationController
   end
   
   private
-  def set_user
-    @user = User.find(params[:id])
-  end
+    def set_user
+      @user = User.find(params[:id])
+    end
 
-  def block_wrong_user
-    if params[:id].to_i != current_user.id
-      flash[:alert] = "権限がありません"
-      redirect_to root_path
+    def block_wrong_user
+      if params[:id].to_i != current_user.id
+        flash[:alert] = "権限がありません"
+        redirect_to root_path
+      end
     end
-  end
 
-  def user_params
-    params.require(:user).permit(:first_name, :last_name, :first_name_kana, :last_name_kana, :prefecture_code, :phone_number, :email, :hope_prefecture_code, :category_id, :personality, :user_image, :pr )
-  end
+    def user_params
+      params.require(:user).permit(:first_name, :last_name, :first_name_kana, :last_name_kana, :prefecture_code, :phone_number, :email, :hope_prefecture_code, :category_id, :personality, :user_image, :pr )
+    end
 
-  def search_user(content, prefecture_code, category_ids)
-    users = User.where(is_deleted: false)
-    #「where!」で例外処理を利用して、present?でtrueの検索をして「return shops」で値を返す
-    if content.present?
-      users.where!(['first_name LIKE ? OR last_name LIKE ? OR first_name_kana LIKE ? OR last_name_kana LIKE ? OR pr LIKE ?', "%#{content}%", "%#{content}%", "%#{content}%", "%#{content}%", "%#{content}%"])
+    def search_user(content, prefecture_code, category_ids)
+      users = User.where(is_deleted: false)
+      #「where!」で破壊的メソッドを利用して、present?でtrueの検索をして「return shops」で値を返す
+      if content.present?
+        users.where!(['first_name LIKE ? OR last_name LIKE ? OR first_name_kana LIKE ? OR last_name_kana LIKE ? OR pr LIKE ?', "%#{content}%", "%#{content}%", "%#{content}%", "%#{content}%", "%#{content}%"])
+      end
+      if prefecture_code.present?
+        users.where!(hope_prefecture_code: prefecture_code)
+      end
+      if category_ids.present?
+        users.where!(category_id: category_ids)
+      end
+      return users
     end
-    if prefecture_code.present?
-      users.where!(hope_prefecture_code: prefecture_code)
-    end
-    if category_ids.present?
-      users.where!(category_id: category_ids)
-    end
-    return users
-  end
 
 end

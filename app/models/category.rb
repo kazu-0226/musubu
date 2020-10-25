@@ -1,6 +1,6 @@
 class Category < ApplicationRecord
-    has_many :users
-    has_many :products
+  has_many :users
+  has_many :products
 
   #バリデーション
   with_options presence: true do
