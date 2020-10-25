@@ -70,34 +70,34 @@ class ShopsController < ApplicationController
 
 
   private
-  def set_shop
-    @shop = Shop.find(params[:id])
-  end
+    def set_shop
+      @shop = Shop.find(params[:id])
+    end
 
-  def block_wrong_shop
-    if params[:id].to_i != current_shop.id
-      flash[:alert] = "権限がありません"
-      redirect_to root_path
+    def block_wrong_shop
+      if params[:id].to_i != current_shop.id
+        flash[:alert] = "権限がありません"
+        redirect_to root_path
+      end
     end
-  end
 
-  def shop_params
-    params.require(:shop).permit(:name, :name_kana, :post_code, :prefecture_code, :city, :block, :building, :phone_number,:email, :category_id, :catchcopy, :main_image, :sub_image, :appeal_text, :appeal_image, :recommend_name, :recommend_text, :recommend_image, :is_deleted)
-  end
+    def shop_params
+      params.require(:shop).permit(:name, :name_kana, :post_code, :prefecture_code, :city, :block, :building, :phone_number,:email, :category_id, :catchcopy, :main_image, :sub_image, :appeal_text, :appeal_image, :recommend_name, :recommend_text, :recommend_image, :is_deleted)
+    end
 
-  def search_shop(content, prefecture_code, category_ids)
-    shops = Shop.where(is_deleted: false)
-    #「where!」で例外処理を利用して、present?でtrueの検索をして「return shops」で値を返す
-    if content.present?
-      shops.where!(['name LIKE ? OR name_kana LIKE ? OR catchcopy LIKE ?', "%#{content}%", "%#{content}%", "%#{content}%"])
+    def search_shop(content, prefecture_code, category_ids)
+      shops = Shop.where(is_deleted: false)
+      #「where!」で破壊的メソッドを利用して、present?でtrueの検索をして「return shops」で値を返す
+      if content.present?
+        shops.where!(['name LIKE ? OR name_kana LIKE ? OR catchcopy LIKE ?', "%#{content}%", "%#{content}%", "%#{content}%"])
+      end
+      if prefecture_code.present?
+        shops.where!(prefecture_code: prefecture_code)
+      end
+      if category_ids.present?
+        shops.where!(category_id: category_ids)
+      end
+      return shops
     end
-    if prefecture_code.present?
-      shops.where!(prefecture_code: prefecture_code)
-    end
-    if category_ids.present?
-      shops.where!(category_id: category_ids)
-    end
-    return shops
-  end
 
 end

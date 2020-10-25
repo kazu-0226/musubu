@@ -41,27 +41,27 @@ class ChatRoomsController < ApplicationController
   end
 
   private
-  def block_wrong_chat
-    chat_room = ChatRoom.find_by(id: params[:id])
-    if user_signed_in?
-      if chat_room.user_id != current_user.id
-      flash[:alert] = "権限がありません"
-      redirect_to root_path
-      end
-    elsif shop_signed_in?
-      if chat_room.shop_id != current_shop.id
+    def block_wrong_chat
+      chat_room = ChatRoom.find_by(id: params[:id])
+      if user_signed_in?
+        if chat_room.user_id != current_user.id
         flash[:alert] = "権限がありません"
         redirect_to root_path
+        end
+      elsif shop_signed_in?
+        if chat_room.shop_id != current_shop.id
+          flash[:alert] = "権限がありません"
+          redirect_to root_path
+        end
+      elsif admin_signed_in?
+        flash[:alert] = "管理者でログインしています"
       end
-    elsif admin_signed_in?
-      flash[:alert] = "管理者でログインしています"
-    end
 
-    unless user_signed_in? || shop_signed_in? || admin_signed_in?
-      flash[:alert] = "ログインが必要です"
-      redirect_to root_path
+      unless user_signed_in? || shop_signed_in? || admin_signed_in?
+        flash[:alert] = "ログインが必要です"
+        redirect_to root_path
+      end
     end
-  end
 
 
 end
