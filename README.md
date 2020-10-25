@@ -64,7 +64,7 @@ M&A
 - カテゴリ作成（ぐるなびAPI）
 - バッチ処理（カテゴリ更新）
 - CSV出力(検索結果も対応)
-- 通知機能
+- 通知機能（未読通知が3件以上ある場合は、バッチ処理でメール通知）
 
 [詳細はこちら](https://docs.google.com/spreadsheets/d/1lmwajsESFuNPbFwBXMTSVjh6C8d50j1PClmK3fSbwSs/edit?usp=sharing)
 
