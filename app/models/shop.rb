@@ -106,8 +106,8 @@ class Shop < ApplicationRecord
       # Uncomment the section below if you want shops to be created if they don't exist
       unless shop
         shop = Shop.create(email: data['email'],
-             password: Devise.friendly_token[0,20]
-          )
+          password: Devise.friendly_token[0,20]
+        )
       end
       shop
     end

@@ -67,16 +67,16 @@ class Users::OmniauthCallbacksController < Devise::OmniauthCallbacksController
 
   private
 
-  def get_target_data
-    type = request.env["omniauth.params"]["type"]
-    if type == "user"
-      target_model = User.from_omniauth(request.env['omniauth.auth'])
-      path = new_user_registration_url
-    elsif type == "shop"
-      target_model = Shop.from_omniauth(request.env['omniauth.auth'])
-      path = new_shop_registration_url
+    def get_target_data
+      type = request.env["omniauth.params"]["type"]
+      if type == "user"
+        target_model = User.from_omniauth(request.env['omniauth.auth'])
+        path = new_user_registration_url
+      elsif type == "shop"
+        target_model = Shop.from_omniauth(request.env['omniauth.auth'])
+        path = new_shop_registration_url
+      end
+      return target_model, path
     end
-    return target_model, path
-  end
 
 end

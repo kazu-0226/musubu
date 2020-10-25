@@ -106,6 +106,9 @@ gem 'kaminari-i18n'
 # batch_processing
 gem 'whenever', :require => false
 
+# readability
+gem 'rubocop-airbnb'
+
 group :production do
   gem 'mysql2'	
   gem 'google-analytics-rails'

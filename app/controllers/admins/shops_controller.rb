@@ -3,13 +3,13 @@ class Admins::ShopsController < ApplicationController
     before_action :set_shop, only: [:show, :edit, :update]
 
     def index
-        @shops = Shop.all.order(id: "DESC").page(params[:page]).per(5)
-        respond_to do |format|
-          format.html
-          format.csv do
-            @shops = Shop.all
-          end
+      @shops = Shop.all.order(id: "DESC").page(params[:page]).per(5)
+      respond_to do |format|
+        format.html
+        format.csv do
+          @shops = Shop.all
         end
+      end
     end
 
     def show
@@ -21,11 +21,11 @@ class Admins::ShopsController < ApplicationController
     end
 
     def update
-        if @shop.update(shop_params)
-            redirect_to admins_shop_path(@shop)
-        else
-            render :edit
-        end 
+      if @shop.update(shop_params)
+        redirect_to admins_shop_path(@shop)
+      else
+        render :edit
+      end 
     end
 
     def search
@@ -48,12 +48,12 @@ class Admins::ShopsController < ApplicationController
     end
 
     def shop_params
-        params.require(:shop).permit(:name, :name_kana, :post_code, :prefecture_code, :city, :block, :building, :phone_number,:email, :category_id, :catchcopy, :main_image, :sub_image, :appeal_text, :appeal_image, :recommend_name, :recommend_text, :recommend_image, :is_deleted)
+      params.require(:shop).permit(:name, :name_kana, :post_code, :prefecture_code, :city, :block, :building, :phone_number,:email, :category_id, :catchcopy, :main_image, :sub_image, :appeal_text, :appeal_image, :recommend_name, :recommend_text, :recommend_image, :is_deleted)
     end
     
     def search_shop(content, prefecture_code, category_ids)
-        shops = Shop.all
-        #「where!」で例外処理を利用して、present?でtrueの検索をして「return shops」で値を返す
+      shops = Shop.all
+      #「where!」で破壊的メソッドを利用して、present?でtrueの検索をして「return shops」で値を返す
         if content.present?
           shops.where!(['name LIKE ? OR name_kana LIKE ? OR catchcopy LIKE ?', "%#{content}%", "%#{content}%", "%#{content}%"])
         end
@@ -63,6 +63,6 @@ class Admins::ShopsController < ApplicationController
         if category_ids.present?
           shops.where!(category_id: category_ids)
         end
-        return shops
+      return shops
     end
 end
