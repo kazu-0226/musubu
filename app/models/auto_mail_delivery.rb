@@ -1,0 +1,2 @@
+class AutoMailDelivery < ApplicationRecord
+end

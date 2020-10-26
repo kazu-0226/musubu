@@ -1,0 +1,14 @@
+
+
+  <div class="container">
+<%= form_with model: [:admins, @auto_mail], url:admins_auto_mail_deliveries_confirm_path, local: true do |f| %>
+    <%= f.label :mail_type, 'HTML形式' %><%= f.radio_button :mail_type, :true %>
+    <%= f.label :mail_type, 'Text形式' %><%= f.radio_button :mail_type, :false %> 
+<br>
+    <%= f.label :target_type, 'User' %><%= f.radio_button :target_type, :user %>
+    <%= f.label :target_type, 'Shop' %><%= f.radio_button :target_type, :shop %>
+    <%= f.label :target_type, 'All' %><%= f.radio_button :target_type, :all %>
+
+     <div><%= f.cktext_area :content, class: "hogehoge" %></div>
+<% end %>
+  </div>
