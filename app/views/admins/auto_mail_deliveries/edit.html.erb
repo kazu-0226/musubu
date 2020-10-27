@@ -1,5 +1,5 @@
 <div class="container">
-  <%= form_with model: [:admins, @auto_mail], url:auto_mail_deliveries_confirm_admins_auto_mail_deliveries_path, local: true do |f| %>
+  <%= form_with model: [:admins, @auto_mail], url:admins_auto_mail_delivery_path, local: true do |f| %>
     <p>配信形式</p>
     <%= f.label :mail_type, 'HTML形式' %><%= f.radio_button :mail_type, :true %>
     <%= f.label :mail_type, 'Text形式' %><%= f.radio_button :mail_type, :false %> 
