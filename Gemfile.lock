@@ -62,13 +62,13 @@ GEM
     autoprefixer-rails (10.0.1.0)
       execjs
     aws-eventstream (1.1.0)
-    aws-sdk (2.11.605)
-      aws-sdk-resources (= 2.11.605)
-    aws-sdk-core (2.11.605)
+    aws-sdk (2.11.613)
+      aws-sdk-resources (= 2.11.613)
+    aws-sdk-core (2.11.613)
       aws-sigv4 (~> 1.0)
       jmespath (~> 1.0)
-    aws-sdk-resources (2.11.605)
-      aws-sdk-core (= 2.11.605)
+    aws-sdk-resources (2.11.613)
+      aws-sdk-core (= 2.11.613)
     aws-sigv4 (1.2.2)
       aws-eventstream (~> 1, >= 1.0.2)
     bcrypt (3.1.16)
@@ -79,6 +79,10 @@ GEM
       autoprefixer-rails (>= 9.1.0)
       popper_js (>= 1.14.3, < 2)
       sassc-rails (>= 2.0.0)
+    bootstrap4-datetime-picker-rails (0.3.1)
+      jquery-rails (~> 4.2, >= 4.2.0)
+      moment-timezone-rails (~> 1.0)
+      momentjs-rails (>= 2.10.5, <= 3.0.0)
     bootstrap_form (4.5.0)
       actionpack (>= 5.2)
       activemodel (>= 5.2)
@@ -114,6 +118,8 @@ GEM
       archive-zip (~> 0.10)
       nokogiri (~> 1.8)
     chronic (0.10.2)
+    ckeditor (5.1.0)
+      orm_adapter (~> 0.5.0)
     coderay (1.1.3)
     coffee-rails (4.2.2)
       coffee-script (>= 2.2.0)
@@ -147,8 +153,9 @@ GEM
       railties (>= 5.0.0)
     faker (2.14.0)
       i18n (>= 1.6, < 2)
-    faraday (1.0.1)
+    faraday (1.1.0)
       multipart-post (>= 1.2, < 3)
+      ruby2_keywords
     ffi (1.13.1)
     font-awesome-sass (5.8.1)
       sassc (>= 1.11)
@@ -213,6 +220,10 @@ GEM
     mini_mime (1.0.2)
     mini_portile2 (2.4.0)
     minitest (5.14.2)
+    moment-timezone-rails (1.0.0)
+      momentjs-rails (>= 2.10.5, <= 3.0.0)
+    momentjs-rails (2.20.1)
+      railties (>= 3.1)
     msgpack (1.3.3)
     multi_json (1.15.0)
     multi_xml (0.6.0)
@@ -301,7 +312,7 @@ GEM
     refile-s3 (0.2.0)
       aws-sdk (~> 2.0)
       refile (~> 0.6.0)
-    regexp_parser (1.8.1)
+    regexp_parser (1.8.2)
     request_store (1.5.0)
       rack (>= 1.4)
     responders (3.0.1)
@@ -314,7 +325,7 @@ GEM
       netrc (~> 0.8)
     rspec-core (3.9.3)
       rspec-support (~> 3.9.3)
-    rspec-expectations (3.9.2)
+    rspec-expectations (3.9.3)
       diff-lcs (>= 1.2.0, < 2.0)
       rspec-support (~> 3.9.0)
     rspec-mocks (3.9.1)
@@ -328,7 +339,7 @@ GEM
       rspec-expectations (~> 3.9)
       rspec-mocks (~> 3.9)
       rspec-support (~> 3.9)
-    rspec-support (3.9.3)
+    rspec-support (3.9.4)
     rubocop (0.76.0)
       jaro_winkler (~> 1.5.1)
       parallel (~> 1.10)
@@ -374,7 +385,7 @@ GEM
     selenium-webdriver (3.142.7)
       childprocess (>= 0.5, < 4.0)
       rubyzip (>= 1.2.2)
-    simplecov (0.19.0)
+    simplecov (0.19.1)
       docile (~> 1.1)
       simplecov-html (~> 0.11)
     simplecov-html (0.12.3)
@@ -435,6 +446,7 @@ PLATFORMS
 DEPENDENCIES
   bootsnap (>= 1.1.0)
   bootstrap (~> 4.2.1)
+  bootstrap4-datetime-picker-rails
   bootstrap_form
   byebug
   capistrano
@@ -443,6 +455,7 @@ DEPENDENCIES
   capistrano3-puma
   capybara (>= 2.15)
   chromedriver-helper
+  ckeditor
   coffee-rails (~> 4.2)
   devise
   dotenv-rails
@@ -458,6 +471,7 @@ DEPENDENCIES
   kaminari
   kaminari-i18n
   listen (>= 3.0.5, < 3.2)
+  momentjs-rails
   mysql2
   omniauth-google-oauth2
   pry-byebug

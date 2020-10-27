@@ -1,0 +1,34 @@
+<div class="container">
+  <h3>登録内容</h3>
+    <table class="table table-borderless">
+      <tr>
+        <th>配信形式</th>
+          <td>
+            <%= @auto_mail.mail_type ? "HTML形式" : "Text形式" %>
+          </td>
+        </tr>
+        <tr>
+          <th>配信対象</th>
+          <td>
+            <%= @auto_mail.target_type %>
+          </td>
+        </tr>
+        <tr>
+          <th>配信時間</th>
+          <td>
+            <%= @auto_mail.reservation_time.strftime("%Y-%m-%d %H:%M") %>
+          </td>
+        </tr>
+    </table>
+    <div class="card">
+      <div class="card-header">
+        <%= @auto_mail.subject %>
+      </div>
+      <div class="card-body">
+      <blockquote class="blockquote mb-0">
+          <%= @auto_mail.content.html_safe %>
+      </blockquote>
+      </div>
+    </div>
+     <%= link_to "編集", edit_admins_auto_mail_delivery_path, class: "btn btn-primary" %>
+</div>

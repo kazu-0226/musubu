@@ -1,0 +1,2 @@
+class AutoMailDeliveryMailer < ApplicationMailer
+end
