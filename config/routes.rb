@@ -1,6 +1,5 @@
 Rails.application.routes.draw do
 
-  mount Ckeditor::Engine => '/ckeditor'
   mount ActionCable.server => '/cable'
   root 'homes#top'
 
@@ -36,8 +35,8 @@ Rails.application.routes.draw do
     get 'homes/top'
     get 'auto_mail_deliveries/index'
     get 'auto_mail_deliveries/form'
-    get 'auto_mail_deliveries/confirm'
-    get 'auto_mail_deliveries/completed'
+    post 'auto_mail_deliveries/confirm'
+    post 'auto_mail_deliveries/completed'
     resources :users, only: [:index, :edit, :show, :update] do
       collection do
         #検索用に追加

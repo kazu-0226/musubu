@@ -1,14 +1,31 @@
-
-
-  <div class="container">
-<%= form_with model: [:admins, @auto_mail], url:admins_auto_mail_deliveries_confirm_path, local: true do |f| %>
+<div class="container">
+  <%= form_with model: [:admins, @auto_mail], url:admins_auto_mail_deliveries_confirm_path, local: true do |f| %>
+    <p>配信形式</p>
     <%= f.label :mail_type, 'HTML形式' %><%= f.radio_button :mail_type, :true %>
     <%= f.label :mail_type, 'Text形式' %><%= f.radio_button :mail_type, :false %> 
-<br>
+    <br>
+    <p>配信対象</p>
     <%= f.label :target_type, 'User' %><%= f.radio_button :target_type, :user %>
     <%= f.label :target_type, 'Shop' %><%= f.radio_button :target_type, :shop %>
     <%= f.label :target_type, 'All' %><%= f.radio_button :target_type, :all %>
+    <div>
+      <%= f.text_field :subject %>
+      <%= f.cktext_area :content, class: "hogehoge" %>
+    </div>
+    <div class="input-group date" id="datetimepicker4" data-target-input="nearest">
+      <%= f.text_field :reservation_time, id: "reservation_time", class: "form-control datepicker", data: { target: '#datetimepicker4'} %>
+       <div class="input-group-append" data-target="#datetimepicker4" data-toggle="datetimepicker">
+        <div class="input-group-text"><i class="fa fa-calendar"></i></div>
+      </div>
+    </div>
+    <%= f.submit %>
+  <% end %>
+</div>
 
-     <div><%= f.cktext_area :content, class: "hogehoge" %></div>
-<% end %>
-  </div>
+<script>
+  $(function () {
+    $('.datepicker').datetimepicker({
+      format: 'YYYY-MM-DD HH:mm:ss'
+    });
+  });
+</script>
