@@ -9,7 +9,7 @@
     <%= f.label :target_type, 'Shop' %><%= f.radio_button :target_type, :shop %>
     <%= f.label :target_type, 'All' %><%= f.radio_button :target_type, :all %>
     <div>
-      <%= f.text_field :subject %>
+      <span>件名：</span><%= f.text_field :subject %>
       <%= f.cktext_area :content, class: "hogehoge" %>
     </div>
     <div class="input-group date" id="datetimepicker4" data-target-input="nearest">

@@ -19,6 +19,12 @@
             <%= @auto_mail.reservation_time.strftime("%Y-%m-%d %H:%M") %>
           </td>
         </tr>
+        <tr>
+          <th>配信ステータス</th>
+          <td>
+            <%= @auto_mail.is_sent ? "配信済み" : "配信待ち" %>
+          </td>
+        </tr>
     </table>
     <div class="card">
       <div class="card-header">

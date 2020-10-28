@@ -18,7 +18,7 @@ class Admins::AutoMailDeliveriesController < ApplicationController
   end
 
   def update
-    if @auto_mail.update(params[:auto_mail_delivery].permit(:subject, :mail_type, :content, :target_type, :reservation_time))
+    if @auto_mail.update(params[:auto_mail_delivery].permit(:subject, :mail_type, :content, :target_type, :reservation_time, :is_sent))
       redirect_to admins_auto_mail_delivery_path(@auto_mail)
     else
       render :edit
@@ -26,7 +26,7 @@ class Admins::AutoMailDeliveriesController < ApplicationController
   end
 
   def confirm
-    @auto_mail = AutoMailDelivery.new(params[:auto_mail_delivery].permit(:subject, :mail_type, :content, :target_type, :reservation_time))
+    @auto_mail = AutoMailDelivery.new(params[:auto_mail_delivery].permit(:subject, :mail_type, :content, :target_type, :reservation_time, :is_sent))
     if @auto_mail.valid?
       render :action => 'confirm'
     else
@@ -35,7 +35,7 @@ class Admins::AutoMailDeliveriesController < ApplicationController
   end
 
   def completed
-    @auto_mail = AutoMailDelivery.new(params[:auto_mail_delivery].permit(:subject, :mail_type, :content, :target_type, :reservation_time))
+    @auto_mail = AutoMailDelivery.new(params[:auto_mail_delivery].permit(:subject, :mail_type, :content, :target_type, :reservation_time, :is_sent))
     @auto_mail.save
   end
 

@@ -10,6 +10,7 @@
                         <th>件名</th>
                         <th>配信形式</th>
                         <th>配信対象</th>
+                        <th>ステータス</th>
                     </tr>
                 </thead>
                 <tbody>
@@ -23,6 +24,7 @@
                             </td>
                             <td><%= am.mail_type ? "HTML形式" : "Text形式" %></td>
                             <td><%= am.target_type %></td>
+                            <td><%= am.is_sent ? "配信済み" : "配信待ち" %></td>
                         </tr>
                     <% end %>
                 </tbody>
