@@ -6,6 +6,6 @@ class Admins::HomesController < ApplicationController
     @active_shops = Shop.where(is_deleted: false)
     @chat_rooms = ChatRoom.all
     @categories = Category.all
-    @auto_mails = AutoMailDelivery.all
+    @auto_mails = AutoMailDelivery.where(is_sent: false)
   end
 end

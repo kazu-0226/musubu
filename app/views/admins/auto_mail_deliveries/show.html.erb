@@ -19,8 +19,18 @@
             <%= @auto_mail.reservation_time.strftime("%Y-%m-%d %H:%M") %>
           </td>
         </tr>
+        <tr>
+          <th>配信ステータス</th>
+          <td>
+            <% if @auto_mail.is_sent %>
+              <span class="badge badge-secondary">配信済み</span>
+            <% else %>
+              <span class="badge badge-primary">配信待ち</span>
+            <% end %>
+          </td>
+        </tr>
     </table>
-    <div class="card">
+    <div class="card mail-form">
       <div class="card-header">
         <%= @auto_mail.subject %>
       </div>
@@ -30,5 +40,7 @@
       </blockquote>
       </div>
     </div>
+    <div class="mail-form">
      <%= link_to "編集", edit_admins_auto_mail_delivery_path, class: "btn btn-primary" %>
+    </div>
 </div>

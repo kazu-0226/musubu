@@ -47,4 +47,11 @@ every 1.days, at: '11:00 pm' do
     Rails.logger.error("not mailer task")
     raise e
 end
-  
+
+# メールの配信を実行する
+every 1.minutes do
+  runner "AutoMailDeliveryMailer.auto_delivery_mail.deliver_now", :output => 'cron.log'
+  rescue => e
+  Rails.logger.error("not mailer task")
+  raise e
+end
