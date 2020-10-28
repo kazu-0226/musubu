@@ -17,6 +17,7 @@
  @import 'font-awesome-sprockets';
  @import 'font-awesome';
  @import "toastr";
+ @import "tempusdominus-bootstrap-4.css";
 
 /*ヘッダー*/
  header {
@@ -394,6 +395,11 @@ height: 300px;
   color: white;
 }
 
+.admin-mails {
+  background-color: #9400d3;
+  color: white;
+}
+
 .more-info {
   text-decoration: none;
   background: rgba(0,0,0,0.15);
@@ -412,6 +418,11 @@ height: 300px;
 }
 
 .csv-btn{
+  margin-bottom: 15px;
+}
+
+/* 配信メールフォーム */
+.mail-form{
   margin-bottom: 15px;
 }
 

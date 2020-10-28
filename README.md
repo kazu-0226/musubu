@@ -60,11 +60,13 @@ M&A
 - チャット機能(Action Cable）
 - ビデオ通話機能(SkayWay)
 - ページネーション機能(kaminari）
-- 検索機能(ransack未使用)
+- 複数条件検索機能(ransack未使用)
 - カテゴリ作成（ぐるなびAPI）
-- バッチ処理（カテゴリ更新）
+- バッチ処理
+    - ぐるなびAPIを叩いて定期的にカテゴリ更新
+    - 未読通知3件以上の場合、メール通知
 - CSV出力(検索結果も対応)
-- 通知機能（未読通知が3件以上ある場合は、バッチ処理でメール通知）
+- 通知機能（フォロー、DM受信の際に通知）
 
 [詳細はこちら](https://docs.google.com/spreadsheets/d/1lmwajsESFuNPbFwBXMTSVjh6C8d50j1PClmK3fSbwSs/edit?usp=sharing)
 

@@ -1,0 +1,43 @@
+<div class="container">
+  <h3>登録内容確認</h3>
+  <%= form_with model: [:admins, @auto_mail], url:auto_mail_deliveries_completed_admins_auto_mail_deliveries_path	, local: true do |f| %>
+    <table class="table table-borderless">
+      <tr>
+        <th>配信形式</th>
+          <td>
+            <%= f.hidden_field :mail_type %>
+            <%= @auto_mail.mail_type ? "HTML形式" : "Text形式" %>
+          </td>
+        </tr>
+        <tr>
+          <th>配信対象</th>
+          <td>
+            <%= f.hidden_field :target_type %>
+            <%= @auto_mail.target_type %>
+          </td>
+        </tr>
+        <tr>
+          <th>配信時間</th>
+          <td>
+            <%= f.hidden_field :reservation_time %>
+            <%= @auto_mail.reservation_time.strftime("%Y-%m-%d %H:%M") %>
+          </td>
+        </tr>
+    </table>
+    <div class="card mail-form">
+      <div class="card-header">
+        <%= f.hidden_field :subject %>
+        <%= @auto_mail.subject %>
+      </div>
+      <div class="card-body">
+      <blockquote class="blockquote mb-0">
+          <%= f.hidden_field :content %>
+          <%= @auto_mail.content.html_safe %>
+      </blockquote>
+      </div>
+    </div>
+    <div class="mail-form">
+    <%= f.submit %>
+    </div>
+  <% end %>
+</div>

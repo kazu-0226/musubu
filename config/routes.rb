@@ -1,4 +1,5 @@
 Rails.application.routes.draw do
+
   mount ActionCable.server => '/cable'
   root 'homes#top'
 
@@ -32,23 +33,36 @@ Rails.application.routes.draw do
   #管理者用ルーティング 
   namespace :admins do
     get 'homes/top'
+
+    resources :auto_mail_deliveries, only: [:index, :edit, :show, :update] do
+      collection do
+        get 'auto_mail_deliveries/form'
+        post 'auto_mail_deliveries/confirm'
+        post 'auto_mail_deliveries/completed'
+      end
+    end
+
     resources :users, only: [:index, :edit, :show, :update] do
       collection do
         #検索用に追加
         get 'search'
       end
     end
+
     resources :shops, only: [:index, :edit, :show, :update] do
       collection do
         get 'search'
       end
     end
+
     resources :chat_rooms, only: [:index]
+
     resources :categories, only: [:index, :destroy] do
       collection do
         post 'g_category'
       end
     end
+
   end
 
   #店舗ルーティング 
