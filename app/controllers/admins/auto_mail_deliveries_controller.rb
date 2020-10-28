@@ -19,8 +19,9 @@ class Admins::AutoMailDeliveriesController < ApplicationController
 
   def update
     if @auto_mail.update(params[:auto_mail_delivery].permit(:subject, :mail_type, :content, :target_type, :reservation_time, :is_sent))
-      redirect_to admins_auto_mail_delivery_path(@auto_mail)
+      redirect_to admins_auto_mail_delivery_path(@auto_mail), notice: '配信内容を更新しました'
     else
+      flash.now[:alert] = '配信内容に誤り、空欄があります'
       render :edit
     end
   end
@@ -30,6 +31,7 @@ class Admins::AutoMailDeliveriesController < ApplicationController
     if @auto_mail.valid?
       render :action => 'confirm'
     else
+      flash.now[:alert] = '配信内容に誤り、空欄があります'
       render :action => 'form'
     end
   end
