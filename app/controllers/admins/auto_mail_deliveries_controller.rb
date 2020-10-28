@@ -2,7 +2,7 @@ class Admins::AutoMailDeliveriesController < ApplicationController
   before_action :set_mail, only: [:show, :edit, :update]
 
   def index
-    @auto_mails = AutoMailDelivery.all
+    @auto_mails = AutoMailDelivery.all.order(id: "DESC").page(params[:page]).per(10)
   end
 
   def show
