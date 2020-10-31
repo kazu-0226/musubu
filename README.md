@@ -23,6 +23,9 @@ footerよりメールアドレスとパスワードを入力せずにゲスト�
 ![チャット](https://user-images.githubusercontent.com/59648368/96331926-1f3d8480-109c-11eb-9455-01289f2d4328.png)
 - ビデオチャット
 ![ビデオチャット](https://user-images.githubusercontent.com/59648368/96243777-2d2dcf80-0fe0-11eb-9d38-3cd77c6eae4b.jpg)
+- 予約メール配信
+![予約メール配信](https://user-images.githubusercontent.com/59648368/97573921-cf60a500-1a2d-11eb-9002-4c9ed4478d07.png)
+
 
 ### サイトテーマ
 後継者不足に悩む飲食店経営者の方と自分のお店を持ちたい個人の方や飲食店を運営したい企業さんを「結ぶ」。
@@ -63,10 +66,13 @@ M&A
 - 複数条件検索機能(ransack未使用)
 - カテゴリ作成（ぐるなびAPI）
 - バッチ処理
-    - ぐるなびAPIを叩いて定期的にカテゴリ更新
-    - 未読通知3件以上の場合、メール通知
+    - ぐるなびAPIを叩いて定期的にカテゴリ更新する
+    - 未読通知3件以上の場合、メール通知する
+    - 予約された時刻にメールを配信する
 - CSV出力(検索結果も対応)
 - 通知機能（フォロー、DM受信の際に通知）
+- 予約メール配信機能(対象モデル、メール形式、時間の指定が可能）
+
 
 [詳細はこちら](https://docs.google.com/spreadsheets/d/1lmwajsESFuNPbFwBXMTSVjh6C8d50j1PClmK3fSbwSs/edit?usp=sharing)
 
