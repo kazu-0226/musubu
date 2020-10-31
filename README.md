@@ -71,7 +71,11 @@ M&A
     - 予約された時刻にメールを配信する
 - CSV出力(検索結果も対応)
 - 通知機能（フォロー、DM受信の際に通知）
-- 予約メール配信機能(対象モデル、メール形式、時間の指定が可能）
+- 予約メール配信機能(リッチエディタ、対象モデル、メール形式、時間の指定が可能）
+- S3
+    - UserやShopの画像アップロード用ストレージ
+    - 予約メールの画像アップロード(CKeditor)用ストレージ
+
 
 
 [詳細はこちら](https://docs.google.com/spreadsheets/d/1lmwajsESFuNPbFwBXMTSVjh6C8d50j1PClmK3fSbwSs/edit?usp=sharing)
