@@ -77,6 +77,10 @@ gem 'omniauth-google-oauth2'
 gem "refile", require: "refile/rails", github: 'manfe/refile'
 gem "refile-mini_magick"
 gem "refile-s3"
+gem 'carrierwave'
+gem 'mini_magick'
+gem 'fog-aws'
+
 
 # Address
 gem 'jp_prefecture'
