@@ -2,6 +2,7 @@ class ShopsController < ApplicationController
   before_action :authenticate_shop!, only: [:edit, :update, :withdraw]
   before_action :block_wrong_shop, only: [:edit, :update, :withdraw]
   before_action :set_shop, only: [:show, :edit, :update, :withdraw, :followers, :followings ]
+  before_action :check_guest, only: [:update, :withdraw ]
 
   def show
     if @shop.is_deleted == false
@@ -77,6 +78,14 @@ class ShopsController < ApplicationController
     def block_wrong_shop
       if params[:id].to_i != current_shop.id
         flash[:alert] = "権限がありません"
+        redirect_to root_path
+      end
+    end
+
+    def check_guest
+      @guest = Shop.find_by(email: 'guest@example.com')
+      if current_shop == @guest
+        flash[:alert] = "ゲストアカウントのため、変更や退会はお控えください"
         redirect_to root_path
       end
     end
