@@ -63,7 +63,7 @@ M&A
 ### 機能一覧
 - ユーザーや店舗、管理者（ログインのみ）の登録、ログイン機能(devise)
 - Google認証（複数モデル）
-- 画像管理(refile)
+- 画像管理(refile,carrierwave)
 - 地図表示（GoogleMapAPI）
 - フォロー機能(Ajax)
 - チャット機能(Action Cable）
