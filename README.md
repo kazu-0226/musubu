@@ -92,7 +92,7 @@ M&A
 - [詳細設計](https://docs.google.com/spreadsheets/d/14ZGLn75VAoGgxCy_y-yxxbSmJ99ZkNlCJRu6S0YxU2c/edit?usp=sharing)
 
 ### AWS構成
-![構成図](https://user-images.githubusercontent.com/59648368/95850288-8fda5d80-0d8b-11eb-820d-93149ba9cd38.png)
+![構成図](https://user-images.githubusercontent.com/59648368/98527308-339d2780-22be-11eb-8695-3cdf250d91be.png)
 - [設計書](https://docs.google.com/spreadsheets/d/1sndoUzbd2iC1l_Ww0eE6XKP9LDn7fb3-DtfEEmapJEA/edit?usp=sharing)
 
 ### テスト（RSpec）
