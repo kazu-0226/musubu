@@ -45,9 +45,9 @@ Rails.application.routes.draw do
 
     resources :news, only: [:index, :edit, :show, :update] do
       collection do
-        get 'news/form'
-        post 'news/confirm'
-        post 'news/completed'
+        get 'form'
+        post 'confirm'
+        post 'completed'
       end
     end
 

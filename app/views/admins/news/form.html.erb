@@ -1,2 +1,63 @@
-<h1>Admins::News#form</h1>
-<p>Find me in app/views/admins/news/form.html.erb</p>
+<div class="container">
+  <h3>ニュース作成フォーム</h3>
+  <%= form_with model: [:admins, @news], url:confirm_admins_news_index_path, local: true do |f| %>
+    <div class="news-form">
+        <div>
+          <%= f.label :news_image, '■画像' %>
+        </div>
+       <%= attachment_image_tag @news, :news_image, class: "pre_image news_image", fallback: "no_image.svg"%>
+       <%= f.attachment_field :news_image, placeholder: "画像", id: "news_image", class: "image_form" %>
+    </div>
+
+    <div class="news-form">
+      <span>タイトル：</span><%= f.text_field :title %>
+    </div>
+
+    <div class="news-form">
+      <%= f.cktext_area :content, class: "mail_content-form" %>
+    </div>
+
+    <div class="input-group date news-form" id="startdatetimepicker" data-target-input="nearest">
+        <%= f.text_field :start_date, id: "start_date", class: "form-control datepicker", data: { date_format: 'YYYY-MM-DD'} %>
+        <div class="input-group-append" data-target="#startdatetimepicker" data-toggle="startdatetimepicker">
+          <div class="input-group-text"><i class="fa fa-calendar"></i></div>
+    </div>
+    <div class="input-group date news-form" id="enddatetimepicker" data-target-input="nearest">
+        <%= f.text_field :end_date, id: "end_date", class: "form-control datepicker", data: { date_format: 'YYYY-MM-DD'} %>
+        <div class="input-group-append" data-target="#enddatetimepicker" data-toggle="enddatetimepicker">
+          <div class="input-group-text"><i class="fa fa-calendar"></i></div>
+       </div>
+    </div>
+
+    <div class="news-form">
+      <%= f.hidden_field :open_status, :value => 'true' %>
+      <%= f.submit %>
+    </div>
+  <% end %>
+</div>
+
+
+<script>
+  $(function () {
+    $('#startdatepicker').datetimepicker({
+      pickTime: false
+    });
+  });
+
+  $(function () {
+    $('#endtdatepicker').datetimepicker({
+      pickTime: false
+    });
+  });
+
+  $(function(){
+    $('.image_form').on('change', function (e) {
+        var reader = new FileReader();
+        var form = $(this)
+        reader.onload = function (e) {
+        form.prevAll(".pre_image").attr('src', e.target.result);
+        }  
+        reader.readAsDataURL(e.target.files[0]);    
+    });
+  });
+</script>
