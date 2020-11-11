@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2020_10_28_072819) do
+ActiveRecord::Schema.define(version: 2020_11_11_043136) do
 
   create_table "admins", force: :cascade do |t|
     t.string "email", default: "", null: false
@@ -72,6 +72,17 @@ ActiveRecord::Schema.define(version: 2020_10_28_072819) do
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.index ["type"], name: "index_ckeditor_assets_on_type"
+  end
+
+  create_table "news", force: :cascade do |t|
+    t.string "news_image_id"
+    t.string "title"
+    t.text "content"
+    t.date "start_date"
+    t.date "end_date"
+    t.boolean "open_status", default: false, null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
   end
 
   create_table "notifications", force: :cascade do |t|

@@ -43,6 +43,14 @@ Rails.application.routes.draw do
       end
     end
 
+    resources :news, only: [:index, :edit, :show, :update] do
+      collection do
+        get 'news/form'
+        post 'news/confirm'
+        post 'news/completed'
+      end
+    end
+
     resources :users, only: [:index, :edit, :show, :update] do
       collection do
         #検索用に追加
