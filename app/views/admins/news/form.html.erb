@@ -16,23 +16,29 @@
     <div class="news-form">
       <%= f.cktext_area :content, class: "mail_content-form" %>
     </div>
-
-    <div class="input-group date news-form" id="startdatetimepicker" data-target-input="nearest">
-        <%= f.text_field :start_date, id: "start_date", class: "form-control datepicker", data: { date_format: 'YYYY-MM-DD'} %>
-        <div class="input-group-append" data-target="#startdatetimepicker" data-toggle="startdatetimepicker">
-          <div class="input-group-text"><i class="fa fa-calendar"></i></div>
-    </div>
-    <div class="input-group date news-form" id="enddatetimepicker" data-target-input="nearest">
-        <%= f.text_field :end_date, id: "end_date", class: "form-control datepicker", data: { date_format: 'YYYY-MM-DD'} %>
-        <div class="input-group-append" data-target="#enddatetimepicker" data-toggle="enddatetimepicker">
-          <div class="input-group-text"><i class="fa fa-calendar"></i></div>
-       </div>
+    <div class="news-form">
+      <div class="start_date">
+        <div class="input-group date" id="startdatetimepicker" data-target-input="nearest">
+            <%= f.text_field :start_date, id: "start_date", class: "form-control datepicker", data: { date_format: 'YYYY-MM-DD'} %>
+            <div class="input-group-append" data-target="#startdatetimepicker" data-toggle="datetimepicker">
+            <div class="input-group-text"><i class="fa fa-calendar"></i></div>
+        </div>
+      </div>
+      <div class="end_date"> 
+        <div class="input-group date" id="enddatetimepicker" data-target-input="nearest">
+            <%= f.text_field :end_date, id: "end_date", class: "form-control datepicker", data: { date_format: 'YYYY-MM-DD'} %>
+            <div class="input-group-append" data-target="#enddatetimepicker" data-toggle="datetimepicker">
+            <div class="input-group-text"><i class="fa fa-calendar"></i></div>
+        </div>
+        </div>
+      </div>
     </div>
 
     <div class="news-form">
-      <%= f.hidden_field :open_status, :value => 'true' %>
-      <%= f.submit %>
+        <%= f.hidden_field :open_status, :value => 'true' %>
+        <%= f.submit %>
     </div>
+
   <% end %>
 </div>
 

@@ -1,2 +1,41 @@
-<h1>Admins::News#show</h1>
-<p>Find me in app/views/admins/news/show.html.erb</p>
+<div class="container">
+  <h3>ニュース登録内容</h3>
+    <%= attachment_image_tag @news, :news_image, class: "pre_image news_image", fallback: "no_image.svg"%>
+    <table class="table table-borderless">
+      <tr>
+        <th>公開日</th>
+          <td>
+            <%= @news.start_date %>
+          </td>
+        </tr>
+        <tr>
+        <th>公開終了日</th>
+          <td>
+            <%= @news.end_date %>
+          </td>
+        </tr>
+        <tr>
+        <th>公開ステータス</th>
+            <td>
+            <% if @news.open_status %>
+            <span class="badge badge-primary">公開</span>
+            <% else %>
+            <span class="badge badge-secondary">公開停止</span>
+            <% end %>
+            </td>
+        </tr>
+    </table>
+    <div class="card mail-form">
+      <div class="card-header">
+        <%= @news.title %>
+      </div>
+      <div class="card-body">
+      <blockquote class="blockquote mb-0">
+          <%= @news.content.html_safe %>
+      </blockquote>
+      </div>
+    </div>
+    <div class="mail-form">
+     <%= link_to "編集", edit_admins_news_path, class: "btn btn-primary" %>
+    </div>
+</div>

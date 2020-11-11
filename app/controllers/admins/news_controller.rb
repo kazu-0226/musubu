@@ -37,7 +37,7 @@ class Admins::NewsController < ApplicationController
   private
 
   def news_params
-    params.require(:news).permit(:news_image_id, :title, :content, :start_date, :end_date, :open_status )
+    params.require(:news).permit(:news_image, :title, :content, :start_date, :end_date, :open_status )
   end
 
   def set_news

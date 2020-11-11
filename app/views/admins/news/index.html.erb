@@ -1,2 +1,41 @@
-<h1>Admins::News#index</h1>
-<p>Find me in app/views/admins/news/index.html.erb</p>
+<div class="container">
+    <h3 class>ニュース一覧</h3>
+    <div class= "row justify-content-center">
+        <div class = "col-sm-10">
+            <%= link_to "ニュース作成", form_admins_news_index_path, class: "btn btn-primary category_btn" %>
+            <table class="table">
+                <thead>
+                    <tr>
+                        <th>公開日</th>
+                        <th>終了日</th>
+                        <th>タイトル</th>
+                        <th>ステータス</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <% @news.each do |n| %>
+                        <tr>
+                            <td><%= n.start_date.strftime("%Y-%m-%d") %></td>
+                            <td><%= n.end_date.strftime("%Y-%m-%d") %></td>
+                            <td>
+                                <%= link_to admins_news_path(n.id) do %>
+                                    <%= n.title %>
+                                <% end %>
+                            </td>
+                            <td>
+                              <% if n.open_status %>
+                                <span class="badge badge-primary">公開</span>
+                              <% else %>
+                                <span class="badge badge-secondary">公開停止</span>
+                              <% end %>
+                            </td>
+                        </tr>
+                    <% end %>
+                </tbody>
+            </table>
+            <div class= "row justify-content-center">
+                <%= paginate @news %>
+            </div>
+        </div>
+    </div>
+</div>
