@@ -2,10 +2,8 @@
   <h3>登録内容確認</h3>
   <%= form_with model: [:admins, @news], url:completed_admins_news_index_path	, local: true do |f| %>
     <%= attachment_image_tag @news, :news_image, class: "pre_image news_image", fallback: "no_image.svg"%>
-    <%= f.hidden_field :news_image, :value=>  @tempfile %>
-    <%= f.hidden_field :news_image, :value=>  @original_filename %>
-    <%= f.hidden_field :news_image, :value=>  @content_type %>
-    <%= f.hidden_field :news_image, :value=>  @headers %>
+    <%# 画像が保存できない不具合あり %>
+    <%= f.hidden_field :news_image, value: @news.news_image %>
     <table class="table table-borderless">
       <tr>
         <th>公開日</th>
