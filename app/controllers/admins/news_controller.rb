@@ -31,7 +31,12 @@ class Admins::NewsController < ApplicationController
   end
 
   def update
-    @news.update
+    if @news.update(news_params)
+      redirect_to admins_news_path(@news), notice: '内容を更新しました'
+    else
+      flash.now[:alert] = '配信内容に誤り、空欄があります'
+      render :edit
+    end
   end
 
   private
