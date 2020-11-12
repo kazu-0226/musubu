@@ -1,6 +1,8 @@
 class HomesController < ApplicationController
   def top
     @update_shops = Shop.where(is_deleted: false).order('shops.updated_at DESC').limit(3)
+    date = Date.today
+    @news = News.where(open_status: true).where( 'start_date <= ? ', date ).where('end_date >= ? ', date).order('news.start_date DESC').limit(3)
   end
 
   def new_guest_user

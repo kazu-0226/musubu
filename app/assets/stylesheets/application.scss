@@ -541,6 +541,21 @@ height: 300px;
   background: repeating-linear-gradient(-45deg,#E30110, #E30110 2px, white 2px, white 4px);
 }
 
+.news-box{
+  height: 250px;
+  
+}
+
+.news-text{
+  overflow: hidden;
+}
+
+.news-top-image{
+  width: 100%;
+  height: 248px;
+  object-fit: cover;
+}
+
 /* フッター */
 footer{
   clear: both;
