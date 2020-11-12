@@ -53,13 +53,26 @@
             </p>
             <% end %>
         </div>
-         <div class= "card admin-content admin-mails">
+        <div class= "card admin-content admin-mails">
             <div class="card-body">
                 <h3 class="display-4 dashbord-counter"><%= @auto_mails.count %></h3>
                 <p>配信予定メール</p>
                 <i class="fas fa-envelope fa-4x dashbord-icon"></i>
             </div>
             <%= link_to admins_auto_mail_deliveries_path, class:"card-footer text-center more-info" do %>
+            <p>
+            詳しい情報へ
+            <span><i class="fas fa-arrow-alt-circle-right"></i></span>
+            </p>
+            <% end %>
+        </div>
+        <div class= "card admin-content admin-news">
+            <div class="card-body">
+                <h3 class="display-4 dashbord-counter"><%= @news.count %></h3>
+                <p>公開ニュース</p>
+                <i class="fas fa-newspaper fa-4x dashbord-icon"></i>
+            </div>
+            <%= link_to admins_news_index_path, class:"card-footer text-center more-info" do %>
             <p>
             詳しい情報へ
             <span><i class="fas fa-arrow-alt-circle-right"></i></span>

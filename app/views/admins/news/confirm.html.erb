@@ -1,0 +1,40 @@
+<div class="container">
+  <h3>登録内容確認</h3>
+  <%= form_with model: [:admins, @news], url:completed_admins_news_index_path	, local: true do |f| %>
+    <%= attachment_image_tag @news, :news_image, class: "pre_image news_image", fallback: "no_image.svg"%>
+    <%# 画像が保存できない不具合あり %>
+    <%= f.hidden_field :news_image, value: @news.news_image %>
+    <table class="table table-borderless">
+      <tr>
+        <th>公開日</th>
+          <td>
+            <%= f.hidden_field :start_date %>
+            <%= @news.start_date %>
+          </td>
+        </tr>
+        <tr>
+        <th>公開終了日</th>
+          <td>
+            <%= f.hidden_field :end_date %>
+            <%= @news.end_date %>
+          </td>
+        </tr>
+    </table>
+    <div class="card mail-form">
+      <div class="card-header">
+        <%= f.hidden_field :title %>
+        <%= @news.title %>
+      </div>
+      <div class="card-body">
+      <blockquote class="blockquote mb-0">
+          <%= f.hidden_field :content %>
+          <%= @news.content.html_safe %>
+      </blockquote>
+      </div>
+    </div>
+    <div class="mail-form">
+      <%= f.hidden_field :open_status, :value => 'true' %>
+      <%= f.submit %>
+    </div>
+  <% end %>
+</div>

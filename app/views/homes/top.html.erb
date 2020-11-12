@@ -27,23 +27,42 @@
       </h2>
       <div class="row">
         <% @update_shops.each do |update_shop| %>
-        <% if update_shop.name.present? && update_shop.main_image.present? %>
-          <div class="col-sm-4">
-            <div class="card h-100">
-              <%= link_to shop_path(update_shop) do %>
-              <%= attachment_image_tag update_shop, :main_image, class: "card-img-top", fallback: "no_image.svg" %>
-              <% end %>
-              <div class="card-body">
-                <h4 class="card-title">
-                  <%= link_to update_shop.name, shop_path(update_shop) %>
-                </h4>
-                <p class="card-text appeal-card-text"><%= update_shop.appeal_text  %></p>
+          <% if update_shop.name.present? && update_shop.main_image.present? %>
+            <div class="col-sm-4">
+              <div class="card h-100">
+                <%= link_to shop_path(update_shop) do %>
+                  <%= attachment_image_tag update_shop, :main_image, class: "card-img-top", fallback: "no_image.svg" %>
+                <% end %>
+                <div class="card-body">
+                  <h4 class="card-title">
+                    <%= link_to update_shop.name, shop_path(update_shop) %>
+                  </h4>
+                  <p class="card-text appeal-card-text"><%= update_shop.appeal_text  %></p>
+                </div>
               </div>
             </div>
-          </div>
-        <% end %>
+          <% end %>
         <% end %>
       </div>
+    
+    <h2 class="my-4 stripe">新着ニュース</h2>
+    <% @news.each do |news| %>
+      <div class="card mb-3 news-box" style="max-width: 100%;">
+        <div class="row no-gutters">
+          <div class="col-md-4">
+            <%= attachment_image_tag news, :news_image, class: "bd-placeholder-img news-top-image", fallback: "no_image.svg" %>
+          </div>
+          <div class="col-md-8">
+            <div class="card-body">
+              <h5 class="card-title"><%= news.title %></h5>
+              <p class="card-text news-text"><%#=  sanitize news.content %></p>
+              <p class="card-text"><small class="text-muted"><%= news.start_date.strftime("%Y-%m-%d") %></small></p>
+            </div>
+          </div>
+       </div>
+      </div>
+    <% end %>
+</div>
 </div>
 
 

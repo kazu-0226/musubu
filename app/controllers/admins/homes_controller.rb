@@ -7,5 +7,7 @@ class Admins::HomesController < ApplicationController
     @chat_rooms = ChatRoom.all
     @categories = Category.all
     @auto_mails = AutoMailDelivery.where(is_sent: false)
+    date = Date.today
+    @news = News.where(open_status: true).where( 'start_date <= ? ', date ).where('end_date >= ? ', date)
   end
 end
