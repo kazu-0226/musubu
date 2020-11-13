@@ -1,0 +1,112 @@
+Running via Spring preloader in process 7139
+Running via Spring preloader in process 7365
+Running via Spring preloader in process 7560
+Running via Spring preloader in process 7804
+Running via Spring preloader in process 7979
+Running via Spring preloader in process 8198
+Running via Spring preloader in process 8378
+Running via Spring preloader in process 8624
+Running via Spring preloader in process 8814
+Running via Spring preloader in process 9034
+Running via Spring preloader in process 9209
+Running via Spring preloader in process 9391
+Running via Spring preloader in process 9581
+Running via Spring preloader in process 9763
+Running via Spring preloader in process 9938
+Running via Spring preloader in process 10154
+Running via Spring preloader in process 10371
+Running via Spring preloader in process 10553
+Running via Spring preloader in process 10750
+Running via Spring preloader in process 10932
+Running via Spring preloader in process 11114
+Running via Spring preloader in process 11296
+bundler: failed to load command: bin/rails (bin/rails)
+RuntimeError: Error connecting to Spring server
+  /home/vagrant/.rbenv/versions/2.5.7/lib/ruby/gems/2.5.0/gems/spring-2.1.1/lib/spring/client/run.rb:140:in `connect_to_application'
+  /home/vagrant/.rbenv/versions/2.5.7/lib/ruby/gems/2.5.0/gems/spring-2.1.1/lib/spring/client/run.rb:67:in `run'
+  /home/vagrant/.rbenv/versions/2.5.7/lib/ruby/gems/2.5.0/gems/spring-2.1.1/lib/spring/client/run.rb:42:in `warm_run'
+  /home/vagrant/.rbenv/versions/2.5.7/lib/ruby/gems/2.5.0/gems/spring-2.1.1/lib/spring/client/run.rb:35:in `call'
+  /home/vagrant/.rbenv/versions/2.5.7/lib/ruby/gems/2.5.0/gems/spring-2.1.1/lib/spring/client/command.rb:7:in `call'
+  /home/vagrant/.rbenv/versions/2.5.7/lib/ruby/gems/2.5.0/gems/spring-2.1.1/lib/spring/client/rails.rb:24:in `call'
+  /home/vagrant/.rbenv/versions/2.5.7/lib/ruby/gems/2.5.0/gems/spring-2.1.1/lib/spring/client/command.rb:7:in `call'
+  /home/vagrant/.rbenv/versions/2.5.7/lib/ruby/gems/2.5.0/gems/spring-2.1.1/lib/spring/client.rb:30:in `run'
+  /home/vagrant/.rbenv/versions/2.5.7/lib/ruby/gems/2.5.0/gems/spring-2.1.1/bin/spring:49:in `<top (required)>'
+  /home/vagrant/.rbenv/versions/2.5.7/lib/ruby/gems/2.5.0/gems/spring-2.1.1/lib/spring/binstub.rb:11:in `load'
+  /home/vagrant/.rbenv/versions/2.5.7/lib/ruby/gems/2.5.0/gems/spring-2.1.1/lib/spring/binstub.rb:11:in `<top (required)>'
+  /home/vagrant/work/musubu/bin/spring:15:in `require'
+  /home/vagrant/work/musubu/bin/spring:15:in `<top (required)>'
+  bin/rails:3:in `load'
+  bin/rails:3:in `<top (required)>'
+Version 2 of the Ruby SDK will enter maintenance mode as of November 20, 2020. To continue receiving service updates and new features, please upgrade to Version 3. More information can be found here: https://aws.amazon.com/blogs/developer/deprecation-schedule-for-aws-sdk-for-ruby-v2/
+Running via Spring preloader in process 11860
+Running via Spring preloader in process 11846
+Running via Spring preloader in process 12044
+Running via Spring preloader in process 12249
+Running via Spring preloader in process 12431
+Running via Spring preloader in process 12620
+Running via Spring preloader in process 12802
+Running via Spring preloader in process 12976
+Running via Spring preloader in process 13158
+Running via Spring preloader in process 13367
+Running via Spring preloader in process 13542
+Running via Spring preloader in process 13725
+Running via Spring preloader in process 13914
+Running via Spring preloader in process 14096
+Running via Spring preloader in process 14271
+Running via Spring preloader in process 14460
+Running via Spring preloader in process 14635
+Running via Spring preloader in process 14824
+Running via Spring preloader in process 15006
+Running via Spring preloader in process 15188
+Running via Spring preloader in process 15391
+Running via Spring preloader in process 15566
+Running via Spring preloader in process 15755
+Running via Spring preloader in process 15972
+Running via Spring preloader in process 16172
+Running via Spring preloader in process 16355
+Running via Spring preloader in process 16541
+Running via Spring preloader in process 16723
+Running via Spring preloader in process 16917
+Running via Spring preloader in process 17096
+Running via Spring preloader in process 17285
+Running via Spring preloader in process 17461
+Running via Spring preloader in process 17651
+Running via Spring preloader in process 17826
+Running via Spring preloader in process 18008
+Running via Spring preloader in process 18227
+bundler: failed to load command: bin/rails (bin/rails)
+RuntimeError: Error connecting to Spring server
+  /home/vagrant/.rbenv/versions/2.5.7/lib/ruby/gems/2.5.0/gems/spring-2.1.1/lib/spring/client/run.rb:140:in `connect_to_application'
+  /home/vagrant/.rbenv/versions/2.5.7/lib/ruby/gems/2.5.0/gems/spring-2.1.1/lib/spring/client/run.rb:67:in `run'
+  /home/vagrant/.rbenv/versions/2.5.7/lib/ruby/gems/2.5.0/gems/spring-2.1.1/lib/spring/client/run.rb:42:in `warm_run'
+  /home/vagrant/.rbenv/versions/2.5.7/lib/ruby/gems/2.5.0/gems/spring-2.1.1/lib/spring/client/run.rb:35:in `call'
+  /home/vagrant/.rbenv/versions/2.5.7/lib/ruby/gems/2.5.0/gems/spring-2.1.1/lib/spring/client/command.rb:7:in `call'
+  /home/vagrant/.rbenv/versions/2.5.7/lib/ruby/gems/2.5.0/gems/spring-2.1.1/lib/spring/client/rails.rb:24:in `call'
+  /home/vagrant/.rbenv/versions/2.5.7/lib/ruby/gems/2.5.0/gems/spring-2.1.1/lib/spring/client/command.rb:7:in `call'
+  /home/vagrant/.rbenv/versions/2.5.7/lib/ruby/gems/2.5.0/gems/spring-2.1.1/lib/spring/client.rb:30:in `run'
+  /home/vagrant/.rbenv/versions/2.5.7/lib/ruby/gems/2.5.0/gems/spring-2.1.1/bin/spring:49:in `<top (required)>'
+  /home/vagrant/.rbenv/versions/2.5.7/lib/ruby/gems/2.5.0/gems/spring-2.1.1/lib/spring/binstub.rb:11:in `load'
+  /home/vagrant/.rbenv/versions/2.5.7/lib/ruby/gems/2.5.0/gems/spring-2.1.1/lib/spring/binstub.rb:11:in `<top (required)>'
+  /home/vagrant/work/musubu/bin/spring:15:in `require'
+  /home/vagrant/work/musubu/bin/spring:15:in `<top (required)>'
+  bin/rails:3:in `load'
+  bin/rails:3:in `<top (required)>'
+Running via Spring preloader in process 18679
+Running via Spring preloader in process 18862
+Running via Spring preloader in process 19045
+Running via Spring preloader in process 19220
+Running via Spring preloader in process 19403
+Running via Spring preloader in process 19593
+Running via Spring preloader in process 19768
+Running via Spring preloader in process 19951
+Running via Spring preloader in process 20133
+Running via Spring preloader in process 20317
+Running via Spring preloader in process 20499
+Running via Spring preloader in process 20681
+Running via Spring preloader in process 20870
+Running via Spring preloader in process 21045
+Running via Spring preloader in process 21228
+Running via Spring preloader in process 21447
+Running via Spring preloader in process 21570
+Running via Spring preloader in process 21671
+Running via Spring preloader in process 21785
