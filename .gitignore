@@ -33,4 +33,4 @@
 .DS_Store
 /.env
 /coverage/
-cron.log
+/cron.log
