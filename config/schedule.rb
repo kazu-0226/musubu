@@ -55,3 +55,14 @@ every 1.minutes do
   Rails.logger.error("not mailer task")
   raise e
 end
+
+# ニュースを非公開にする
+every 1.days, at: '0:00 pm' do
+  begin
+    runner "Batch::NewsStatus.news_status_check"
+    rescue => e
+      Rails.logger.error("aborted rails runner")
+      raise e
+  end
+end
+
