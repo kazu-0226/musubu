@@ -1,0 +1,15 @@
+<div class= "container">
+  <h2 class="catch">
+    <%= @news.title %>
+  </h2>
+  <div class="card mail-form">
+      <div class="card-header news_date">
+        <small><%= @news.start_date.strftime("%Y-%m-%d") %></small>
+      </div>
+      <div class="card-body" style="max-width: 100%;">
+        <blockquote class="blockquote mb-0">
+            <%= @news.content.html_safe %>
+        </blockquote>
+      </div>
+    </div>
+</div>

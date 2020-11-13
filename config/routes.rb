@@ -107,6 +107,8 @@ Rails.application.routes.draw do
   resources :chat_messages, only:[:create]
 
   resources :notifications, only:[:index]
+
+  resources :news, only:[:index, :show]
   
   #問い合わせルーティング  
   get   'inquiry'         => 'inquiry#index'

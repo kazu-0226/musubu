@@ -47,21 +47,26 @@
     
     <h2 class="my-4 stripe">新着ニュース</h2>
     <% @news.each do |news| %>
-      <div class="card mb-3 news-box" style="max-width: 100%;">
-        <div class="row no-gutters">
-          <div class="col-md-4">
-            <%= attachment_image_tag news, :news_image, class: "bd-placeholder-img news-top-image", fallback: "no_image.svg" %>
-          </div>
-          <div class="col-md-8">
-            <div class="card-body">
-              <h5 class="card-title"><%= news.title %></h5>
-              <p class="card-text news-text"><%#=  sanitize news.content %></p>
-              <p class="card-text"><small class="text-muted"><%= news.start_date.strftime("%Y-%m-%d") %></small></p>
+      <%= link_to news_path(news.id) do %>
+        <div class="card mb-3 news-box" style="max-width: 100%;">
+          <div class="row no-gutters">
+            <div class="col-md-4">
+              <%= attachment_image_tag news, :news_image, class: "bd-placeholder-img news-top-image", fallback: "no_image.svg" %>
             </div>
-          </div>
-       </div>
-      </div>
+            <div class="col-md-8">
+              <div class="card-body">
+                <h5 class="card-title"><%= news.title %></h5>
+                <p class="card-text news-text"><%#=  news.content.html_safe %></p>
+                <p class="card-text"><small class="text-muted"><%= news.start_date.strftime("%Y-%m-%d") %></small></p>
+              </div>
+            </div>
+        </div>
+        </div>
+      <% end %>
     <% end %>
+    <div class="row justify-content-end">
+      <%= link_to "more", news_index_path, class: "btn btn-outline-secondary news-more-btn" %>
+    </div>
 </div>
 </div>
 
